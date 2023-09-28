@@ -1,4 +1,4 @@
-import {TextBlock, Image, Primitive, SlideObject} from "./types"
+import {TextBlock, Image, ObjectType, Primitive, SlideObject, Presentation} from "./types"
 
 const textBlock: TextBlock = {
     coordinates: {
@@ -36,6 +36,8 @@ const shape: Primitive = {
     }
 }
 
+const objectType: ObjectType = 'image'
+
 const slideObject: SlideObject = {
     coordinates: {
         x: 12,
@@ -46,6 +48,12 @@ const slideObject: SlideObject = {
     type: 'image',
 }
 
+const presentation: Presentation = {
+    name: 'pres',
+}
+
 console.log("TextBlock: ", textBlock)
 console.log("Primitive: ", shape)
 console.log("SlideObject: ", slideObject)
+console.log("ObjectType: ", objectType)
+console.log("Presentation: ", presentation)

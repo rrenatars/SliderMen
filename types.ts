@@ -12,7 +12,7 @@ type SlideObject = {
 
 type Color = {
     hex: string,
-    opacity: number & { >= 0: true, <= 1: true },
+    opacity: number;
 }
 
 type TextBlock = SlideObject & {
@@ -36,9 +36,20 @@ type Image = SlideObject & {
     path: string,
 }
 
+type History = {
+    events: string[] | null | undefined
+}
+
+type Presentation = {
+    name: string,
+    history?: History,
+}
+
 export {
     TextBlock,
     Image,
     Primitive,
     SlideObject,
+    ObjectType,
+    Presentation,
 }

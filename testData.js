@@ -34,6 +34,7 @@ const shape = {
         opacity: 5.0,
     }
 };
+const objectType = 'image';
 const slideObject = {
     coordinates: {
         x: 12,
@@ -43,6 +44,11 @@ const slideObject = {
     height: 100,
     type: 'image',
 };
+const presentation = {
+    name: 'pres',
+};
 console.log("TextBlock: ", textBlock);
 console.log("Primitive: ", shape);
 console.log("SlideObject: ", slideObject);
+console.log("ObjectType: ", objectType);
+console.log("Presentation: ", presentation);
