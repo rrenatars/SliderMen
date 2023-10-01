@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-09-22T09:23:48.808Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="SAcyj-XYW6n3CNUJ4Bhw" version="21.7.5" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-29T09:36:04.515Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="3st15jY7OtHP67dtx1_s" version="21.8.0" type="github">
   <diagram name="Страница — 1" id="iNld8wYBHNFczWK-KUSU">
-    <mxGraphModel dx="2856" dy="1663" grid="1" gridSize="16" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#00ffee" math="0" shadow="1">
+    <mxGraphModel dx="3375" dy="1921" grid="1" gridSize="16" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#00ffee" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -149,10 +149,10 @@
           <mxGeometry x="-245.5" y="220" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="enOVVRFEu1GshkFp2Plu-53" value="Свойства объекта" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" parent="1" vertex="1">
-          <mxGeometry x="160" y="542" width="192" height="176" as="geometry" />
+          <mxGeometry x="160" y="542" width="192" height="208" as="geometry" />
         </mxCell>
-        <mxCell id="enOVVRFEu1GshkFp2Plu-54" value="Координаты(x,y)&lt;br&gt;Длина &lt;br&gt;Ширина&lt;br&gt;Тип(картинка, примитив, текст)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" parent="enOVVRFEu1GshkFp2Plu-53" vertex="1">
-          <mxGeometry y="30" width="192" height="146" as="geometry" />
+        <mxCell id="enOVVRFEu1GshkFp2Plu-54" value="Координаты(x,y)&lt;br&gt;Длина &lt;br&gt;Высоту&lt;br&gt;Тип(картинка, примитив, текст)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" parent="enOVVRFEu1GshkFp2Plu-53" vertex="1">
+          <mxGeometry y="30" width="192" height="178" as="geometry" />
         </mxCell>
         <mxCell id="enOVVRFEu1GshkFp2Plu-63" value="текущее состояние" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="-94" y="-80" width="176" height="150" as="geometry" />
@@ -199,7 +199,7 @@
         <mxCell id="enOVVRFEu1GshkFp2Plu-79" value="Размер шрифта" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" parent="enOVVRFEu1GshkFp2Plu-77" vertex="1">
           <mxGeometry y="126" width="144" height="62" as="geometry" />
         </mxCell>
-        <mxCell id="yJ3b80GRjbrO27rnjDYc-11" value="Семейство шрифтов&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" vertex="1" parent="enOVVRFEu1GshkFp2Plu-77">
+        <mxCell id="yJ3b80GRjbrO27rnjDYc-11" value="Семейство шрифтов&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" parent="enOVVRFEu1GshkFp2Plu-77" vertex="1">
           <mxGeometry y="188" width="144" height="64" as="geometry" />
         </mxCell>
         <mxCell id="enOVVRFEu1GshkFp2Plu-81" value="Свойства фона" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" parent="1" vertex="1">
@@ -250,7 +250,7 @@
         <mxCell id="enOVVRFEu1GshkFp2Plu-105" value="Взаимодействия" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" parent="1" vertex="1">
           <mxGeometry x="-32" y="542" width="192" height="176" as="geometry" />
         </mxCell>
-        <mxCell id="enOVVRFEu1GshkFp2Plu-106" value="Изменить координаты(x,y)&lt;br&gt;Изменить длину&lt;br&gt;Изменить ширину&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" parent="enOVVRFEu1GshkFp2Plu-105" vertex="1">
+        <mxCell id="enOVVRFEu1GshkFp2Plu-106" value="Изменить координаты(x,y)&lt;br&gt;Изменить длину&lt;br&gt;Изменить высоту" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" parent="enOVVRFEu1GshkFp2Plu-105" vertex="1">
           <mxGeometry y="30" width="192" height="146" as="geometry" />
         </mxCell>
         <mxCell id="enOVVRFEu1GshkFp2Plu-111" value="взаимодействия" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" parent="1" vertex="1">
@@ -267,9 +267,6 @@
         </mxCell>
         <mxCell id="enOVVRFEu1GshkFp2Plu-123" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Добавить объект&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;fontSize=15;fillColor=none;" parent="enOVVRFEu1GshkFp2Plu-111" vertex="1">
           <mxGeometry y="210" width="140" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="yJ3b80GRjbrO27rnjDYc-10" value="List Item" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Architects Daughter;" vertex="1" parent="1">
-          <mxGeometry x="176" y="640" width="80" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
