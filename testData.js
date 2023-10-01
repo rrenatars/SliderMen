@@ -1,13 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const types_1 = require("./types");
 const textBlock = {
+    id: "2",
     coordinates: {
         x: 12,
         y: 12,
     },
     width: 12,
     height: 12,
-    type: 'text',
+    type: types_1.ObjectType.TextBlock,
     value: 'привет',
     color: {
         hex: '12',
@@ -17,14 +19,15 @@ const textBlock = {
     fontFamily: 'Roboto',
 };
 const shape = {
+    id: "12",
     coordinates: {
         x: 12,
         y: 12,
     },
     width: 12,
     height: 12,
-    type: 'primitive',
-    figure: 'triangle',
+    type: types_1.ObjectType.Primitive,
+    figure: types_1.Figures.Triangle,
     outlineColor: {
         hex: '12',
         opacity: 1,
@@ -34,21 +37,37 @@ const shape = {
         opacity: 5.0,
     }
 };
-const objectType = 'image';
-const slideObject = {
-    coordinates: {
-        x: 12,
-        y: 13,
+const background = {
+    color: {
+        hex: "fff",
+        opacity: 1,
     },
-    width: 300,
-    height: 100,
-    type: 'image',
+    base64: "fadfadsf",
+};
+const image = {
+    id: "3",
+    coordinates: {
+        x: 10,
+        y: 120,
+    },
+    width: 100,
+    height: 312,
+    type: types_1.ObjectType.Image,
+    base64: "fadca",
+};
+const slide1 = {
+    id: "4",
+    objects: [textBlock, shape, image],
+    background: background,
 };
 const presentation = {
+    id: "1",
     name: 'pres',
+    slides: [slide1],
 };
 console.log("TextBlock: ", textBlock);
 console.log("Primitive: ", shape);
-console.log("SlideObject: ", slideObject);
-console.log("ObjectType: ", objectType);
+console.log("Presentation: ", presentation);
+console.log("Background: ", background);
+console.log("Slide: ", slide1);
 console.log("Presentation: ", presentation);
