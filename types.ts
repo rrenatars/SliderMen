@@ -45,37 +45,6 @@ type Image = SlideObject & {
     base64: string,
 }
 
-const image: Image = {
-    id: '2',
-    coordinates: {
-        x: 0,
-        y: 0,
-    },
-    width: 100,
-    height: 100,
-    base64: '',
-    type: ObjectType.IMAGE,
-}
-
-const primitive: Primitive = {
-    id: '2',
-    coordinates: {
-        x: 12,
-        y: 54,
-    },
-    width: 100,
-    height: 100,
-    type: ObjectType.PRIMITIVE,
-    fillColor: {
-        hex: "23",
-        opacity: 1.0,
-    },
-    primitiveType: Figures.TRIANGLE,
-}
-
-console.log(image)
-console.log(primitive)
-
 type Background = {
     color: Color,
     base64?: string,
@@ -107,9 +76,11 @@ export {
     Image,
     Primitive,
     SlideObject,
-    ObjectType,
     Presentation,
     Background,
     Slide,
+    Color,
     Figures,
+    ObjectType,
+    History
 }
