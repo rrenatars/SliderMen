@@ -4,12 +4,9 @@ const history = {
     events: [],
 };
 const presentation = {
-    id: `presentation1`,
-    name: `Моя презентация`,
+    id: 'presentation1',
+    name: 'Моя презентация',
     history: history,
     slides: [],
-    selection: {
-        slideId: `12`,
-    },
 };
-console.log(`Presentation: `, presentation);
+console.log('Presentation: ', presentation);

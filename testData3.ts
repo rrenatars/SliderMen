@@ -160,3 +160,5 @@ const presentation: Presentation = {
         objectId: 'primitive1',
     },
 }
+
+console.log(presentation)

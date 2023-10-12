@@ -82,3 +82,5 @@ const presentation: Presentation = {
         slideId: 'slide1',
     },
 }
+
+console.log(presentation)
