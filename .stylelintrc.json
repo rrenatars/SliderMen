@@ -1,23 +1,23 @@
 {
-    "extends": [
-        "stylelint-config-standard"
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-prettier"
+  ],
+  "rules": {
+    "order/order": [
+      "custom-properties",
+      "declarations"
     ],
-    "plugins": [
-        "stylelint-order",
-        "stylelint-prettier"
+    "order/properties-order": [
+      "width",
+      "height"
     ],
-    "rules": {
-        "order/order": [
-            "custom-properties",
-            "declarations"
-        ],
-        "order/properties-order": [
-            "width",
-            "height"
-        ],
-        "color-hex-case": "lower",
-        "color-hex-length": "long",
-        "color-no-invalid-hex": true,
-        "prettier/prettier": true
-    }
+    "prettier/prettier": true,
+    "color-hex-length": "long",
+    "color-no-invalid-hex": true,
+    "at-rule-empty-line-before": "always"
+  }
 }
