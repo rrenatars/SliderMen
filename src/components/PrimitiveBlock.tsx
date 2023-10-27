@@ -23,12 +23,8 @@ function PrimitiveBlock(props: { primitive: Primitive }) {
         shapeStyle = {
             width: 0,
             height: 0,
-            borderLeft: `${width / 2}px solid ${
-                outlineColor?.hex || 'transparent'
-            }`,
-            borderRight: `${width / 2}px solid ${
-                outlineColor?.hex || 'transparent'
-            }`,
+            borderLeft: `${width / 2}px solid transparent`,
+            borderRight: `${width / 2}px solid transparent`,
             borderBottom: `${height}px solid ${fillColor.hex}`,
         }
     } else if (primitiveType === 'rectangle') {
