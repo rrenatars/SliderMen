@@ -13,12 +13,12 @@ import {
     TextBlock,
 } from './types'
 import { PrimitiveBlock } from './components/PrimitiveBlock'
-import { primitive3 } from './testData3'
+import { primitive2 } from './testData3'
 
 function App() {
     return (
         <div>
-            <PrimitiveBlock primitive={primitive3}></PrimitiveBlock>
+            <PrimitiveBlock primitive={primitive2}></PrimitiveBlock>
         </div>
     )
 }

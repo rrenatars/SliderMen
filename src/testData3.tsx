@@ -163,4 +163,4 @@ const presentation: Presentation = {
 
 console.log(presentation)
 
-export { primitive3 }
+export { primitive2 }
