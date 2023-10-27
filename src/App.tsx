@@ -1,10 +1,14 @@
 import React from 'react'
 import './App.css'
+import { presentation } from './testData3'
+import { PresentationView } from './components/PresentationView'
 
 function App() {
     return (
         <div className="app">
-            <p>Hello, world!!!!!!!!!</p>
+            <PresentationView
+                presentationData={presentation}
+            ></PresentationView>
         </div>
     )
 }
