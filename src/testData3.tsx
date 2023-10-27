@@ -18,7 +18,7 @@ const color: Color = {
 
 const color2: Color = {
     hex: '#FF7600',
-    opacity: 1.0,
+    opacity: 0.6,
 }
 
 const textBlock: TextBlock = {
@@ -90,7 +90,7 @@ const primitive2: Primitive = {
     id: 'primitive2',
     coordinates: { x: 30, y: 50 },
     width: 70,
-    height: 65,
+    height: 70,
     primitiveType: Figures.CIRCLE,
     fillColor: color2,
     outlineColor: color,
@@ -104,7 +104,7 @@ const primitive3: Primitive = {
     height: 80,
     primitiveType: Figures.TRIANGLE,
     fillColor: color,
-    outlineColor: color,
+    outlineColor: color2,
     type: ObjectType.PRIMITIVE,
 }
 
@@ -162,3 +162,5 @@ const presentation: Presentation = {
 }
 
 console.log(presentation)
+
+export { primitive3 }
