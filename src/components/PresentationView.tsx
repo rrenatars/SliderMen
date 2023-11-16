@@ -9,22 +9,24 @@ function PresentationView(props: { presentationData: Presentation }) {
     return (
         <div>
             <h1>{name}</h1>
-            <div className={styles.slides}>
-                {slides.map((slide) => (
-                    <SlideView slideData={slide} key={slide.id}></SlideView>
-                ))}
-            </div>
-            <div>
-                {slides.map(
-                    (slide) =>
-                        selection?.slideId === slide.id && (
-                            <SlideView
-                                selectionSlideClass={styles.selectionSlide}
-                                slideData={slide}
-                                key={slide.id}
-                            ></SlideView>
-                        ),
-                )}
+            <div className={styles.workfield}>
+                <div className={styles.slides}>
+                    {slides.map((slide) => (
+                        <SlideView slideData={slide} key={slide.id}></SlideView>
+                    ))}
+                </div>
+                <div>
+                    {slides.map(
+                        (slide) =>
+                            selection?.slideId === slide.id && (
+                                <SlideView
+                                    selectionSlideClass={styles.selectionSlide}
+                                    slideData={slide}
+                                    key={slide.id}
+                                ></SlideView>
+                            ),
+                    )}
+                </div>
             </div>
         </div>
     )

@@ -1,6 +1,13 @@
 .slides {
     display: flex;
     position: relative;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.workfield {
+    display: flex;
+    gap: 100px
 }
 
 .selectionSlide {

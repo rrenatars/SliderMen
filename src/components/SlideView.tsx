@@ -22,7 +22,7 @@ function SlideView(props: { slideData: Slide; selectionSlideClass?: string }) {
 
     return (
         <div
-            className={props.selectionSlideClass || styles.content}
+            className={props.selectionSlideClass || styles.sideSlide}
             style={{ backgroundColor: background.color.hex }}
         >
             {textBlockElements.map((textBlock) => (
