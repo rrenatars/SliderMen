@@ -1,10 +1,11 @@
 import React from 'react'
-import { Image, ObjectType, Slide, TextBlock } from '../types'
+import { Image, ObjectType, Slide, TextBlock, Primitive } from '../types'
 import { SlideTextBlock } from './SlideTextBlock'
 import { ImageBlock } from './ImageBlock'
+import { PrimitiveBlock } from './PrimitiveBlock'
 import styles from './SlideView.module.css'
 
-function SlideView(props: { slideData: Slide; className?: string }) {
+function SlideView(props: { slideData: Slide; selectionSlideClass?: string }) {
     const { id, objects, background } = props.slideData
 
     const textBlockElements = objects.filter(
@@ -15,9 +16,13 @@ function SlideView(props: { slideData: Slide; className?: string }) {
         (slideObject) => slideObject.type === ObjectType.IMAGE,
     ) as Image[]
 
+    const primitiveElements = objects.filter(
+        (primitive) => primitive.type === ObjectType.PRIMITIVE,
+    ) as Primitive[]
+
     return (
         <div
-            className={props.className || styles.content}
+            className={props.selectionSlideClass || styles.content}
             style={{ backgroundColor: background.color.hex }}
         >
             {textBlockElements.map((textBlock) => (
@@ -28,6 +33,12 @@ function SlideView(props: { slideData: Slide; className?: string }) {
             ))}
             {imageBlockElements.map((imageBlock) => (
                 <ImageBlock imageBlockData={imageBlock} key={id}></ImageBlock>
+            ))}
+            {primitiveElements.map((primitive) => (
+                <PrimitiveBlock
+                    primitive={primitive}
+                    key={primitive.id}
+                ></PrimitiveBlock>
             ))}
         </div>
     )

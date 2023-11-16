@@ -1,5 +1,5 @@
 import React from 'react'
-import { Figures, Primitive } from '../types'
+import { Primitive } from '../types'
 
 function PrimitiveBlock(props: { primitive: Primitive }) {
     const {

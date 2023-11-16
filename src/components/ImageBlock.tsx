@@ -2,8 +2,7 @@ import React from 'react'
 import { Image } from '../types'
 
 function ImageBlock(props: { imageBlockData: Image }) {
-    const { id, coordinates, width, height, type, base64 } =
-        props.imageBlockData
+    const { coordinates, width, height, base64 } = props.imageBlockData
 
     return (
         <div>
