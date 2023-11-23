@@ -1,21 +1,26 @@
 import React from 'react'
 import { Image } from '../types'
 
-function ImageBlock(props: { imageBlockData: Image }) {
+function ImageBlock(props: { imageBlockData: Image; scale: number }) {
     const { coordinates, width, height, base64 } = props.imageBlockData
 
     return (
-        <div>
+        <div
+            style={{
+                width: (width * props.scale) / 100,
+                height: (height * props.scale) / 100,
+                top: (coordinates.y * props.scale) / 100,
+                left: (coordinates.y * props.scale) / 100,
+                position: 'absolute',
+            }}
+        >
             <img
-                style={{
-                    position: 'absolute',
-                    width: width,
-                    height: height,
-                    top: coordinates.y,
-                    left: coordinates.x,
-                }}
                 src={base64}
                 alt=""
+                style={{
+                    width: (width * props.scale) / 100,
+                    height: (height * props.scale) / 100,
+                }}
             />
         </div>
     )

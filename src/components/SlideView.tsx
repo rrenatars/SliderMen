@@ -5,7 +5,11 @@ import { ImageBlock } from './ImageBlock'
 import { PrimitiveBlock } from './PrimitiveBlock'
 import styles from './SlideView.module.css'
 
-function SlideView(props: { slideData: Slide; selectionSlideClass?: string }) {
+function SlideView(props: {
+    slideData: Slide
+    selectionSlideClass?: string
+    scale?: number
+}) {
     const { id, objects, background } = props.slideData
 
     const textBlockElements = objects.filter(
@@ -32,7 +36,11 @@ function SlideView(props: { slideData: Slide; selectionSlideClass?: string }) {
                 ></SlideTextBlock>
             ))}
             {imageBlockElements.map((imageBlock) => (
-                <ImageBlock imageBlockData={imageBlock} key={id}></ImageBlock>
+                <ImageBlock
+                    imageBlockData={imageBlock}
+                    key={id}
+                    scale={props.scale || 100}
+                ></ImageBlock>
             ))}
             {primitiveElements.map((primitive) => (
                 <PrimitiveBlock

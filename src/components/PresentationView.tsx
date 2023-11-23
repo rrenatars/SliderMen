@@ -12,7 +12,11 @@ function PresentationView(props: { presentationData: Presentation }) {
             <div className={styles.workfield}>
                 <div className={styles.slides}>
                     {slides.map((slide) => (
-                        <SlideView slideData={slide} key={slide.id}></SlideView>
+                        <SlideView
+                            slideData={slide}
+                            key={slide.id}
+                            scale={20}
+                        ></SlideView>
                     ))}
                 </div>
                 <div>
