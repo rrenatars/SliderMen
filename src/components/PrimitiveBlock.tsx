@@ -1,7 +1,7 @@
 import React from 'react'
-import { Figures, Primitive } from '../types'
+import { Primitive } from '../types'
 
-function PrimitiveBlock(props: { primitive: Primitive }) {
+function PrimitiveBlock(props: { primitive: Primitive; scale: number }) {
     const {
         primitiveType,
         outlineColor,
@@ -11,40 +11,58 @@ function PrimitiveBlock(props: { primitive: Primitive }) {
         height,
     } = props.primitive
 
-    let shapeStyle = {} // Начальный стиль для фигуры
+    const scalePercent = props.scale / 100
+
+    let shapeElement = null
 
     if (primitiveType === 'circle') {
-        shapeStyle = {
-            borderRadius: '50%',
-            backgroundColor: fillColor.hex,
-            border: `2px solid ${outlineColor?.hex || 'transparent'}`,
-        }
+        shapeElement = (
+            <circle
+                cx={(width / 2) * scalePercent}
+                cy={(height / 2) * scalePercent}
+                r={(width / 2) * scalePercent}
+                fill={fillColor.hex}
+                stroke={outlineColor?.hex || 'transparent'}
+                strokeWidth={2 * scalePercent}
+            />
+        )
     } else if (primitiveType === 'triangle') {
-        shapeStyle = {
-            width: 0,
-            height: 0,
-            borderLeft: `${width / 2}px solid transparent`,
-            borderRight: `${width / 2}px solid transparent`,
-            borderBottom: `${height}px solid ${fillColor.hex}`,
-        }
+        shapeElement = (
+            <polygon
+                points={`${coordinates.x * scalePercent},${
+                    coordinates.y * scalePercent
+                } ${(coordinates.x - width / 2) * scalePercent},${
+                    (coordinates.y - height) * scalePercent
+                } ${(coordinates.x - width) * scalePercent},${
+                    coordinates.y * scalePercent
+                }`}
+                fill={fillColor.hex}
+            />
+        )
     } else if (primitiveType === 'rectangle') {
-        shapeStyle = {
-            backgroundColor: fillColor.hex,
-            border: `2px solid ${outlineColor?.hex || 'transparent'}`,
-        }
+        shapeElement = (
+            <rect
+                width={width * scalePercent}
+                height={height * scalePercent}
+                fill={fillColor.hex}
+                stroke={outlineColor?.hex || 'transparent'}
+                strokeWidth={2 * scalePercent}
+            />
+        )
     }
 
     return (
-        <div
+        <svg
             style={{
-                position: 'absolute',
-                left: coordinates.x,
-                top: coordinates.y,
-                width: width,
-                height: height,
-                ...shapeStyle,
+                position: 'relative',
+                left: coordinates.x * scalePercent,
+                top: coordinates.y * scalePercent,
+                width: width * scalePercent,
+                height: height * scalePercent,
             }}
-        ></div>
+        >
+            {shapeElement}
+        </svg>
     )
 }
 
