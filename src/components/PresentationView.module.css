@@ -1,8 +1,17 @@
+.presentationName {
+    margin-left: 30px;
+}
+
 .slides {
     display: flex;
     position: relative;
     flex-direction: column;
-    gap: 50px;
+    gap: 25px;
+    height: 500px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    overflow: auto;
 }
 
 .workfield {
