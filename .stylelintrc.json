@@ -18,6 +18,9 @@
     "prettier/prettier": true,
     "color-hex-length": "long",
     "color-no-invalid-hex": true,
-    "at-rule-empty-line-before": "always"
+    "at-rule-empty-line-before": "always",
+    "selector-class-pattern": ["[a-z][A-Za-z0-9]*", {
+      "message": "Kebab-case"
+    }]
   }
 }
