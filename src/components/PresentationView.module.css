@@ -1,0 +1,19 @@
+.slides {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.workfield {
+    margin-left: 20px;
+    display: flex;
+    gap: 100px;
+}
+
+.selectionSlide {
+    position: relative;
+    border: 2px solid #000000;
+    width: 1000px;
+    height: 500px;
+}

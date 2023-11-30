@@ -1,24 +1,14 @@
 import React from 'react'
-import './App.css'
-import {
-    Background,
-    Color,
-    Figures,
-    History,
-    Image,
-    ObjectType,
-    Presentation,
-    Primitive,
-    Slide,
-    TextBlock,
-} from './types'
-import { PrimitiveBlock } from './components/PrimitiveBlock'
-import { primitive2 } from './testData3'
+import { presentation } from './testData3'
+import { PresentationView } from './components/PresentationView'
+import styles from './App.module.css'
 
 function App() {
     return (
-        <div>
-            <PrimitiveBlock primitive={primitive2}></PrimitiveBlock>
+        <div className={styles.app}>
+            <PresentationView
+                presentationData={presentation}
+            ></PresentationView>
         </div>
     )
 }
