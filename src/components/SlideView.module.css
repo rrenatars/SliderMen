@@ -2,13 +2,4 @@
     position: relative;
     width: 200px;
     height: 100px;
-    outline: 2px solid #c4c7c5;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.indexAndSideSlide {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
 }
