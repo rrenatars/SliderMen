@@ -1,0 +1,16 @@
+Index: src/components/SlideView.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react'\r\nimport { Image, ObjectType, Slide, TextBlock, Primitive } from '../types'\r\nimport { SlideTextBlock } from './SlideTextBlock'\r\nimport { ImageBlock } from './ImageBlock'\r\nimport { PrimitiveBlock } from './PrimitiveBlock'\r\nimport styles from './SlideView.module.css'\r\n\r\nfunction SlideView(props: {\r\n    slideData: Slide\r\n    selectionSlideClass?: string\r\n    scale?: number\r\n}) {\r\n    const { id, objects, background } = props.slideData\r\n\r\n    const textBlockElements = objects.filter(\r\n        (slideObject) => slideObject.type === ObjectType.TEXTBLOCK,\r\n    ) as TextBlock[]\r\n\r\n    const imageBlockElements = objects.filter(\r\n        (slideObject) => slideObject.type === ObjectType.IMAGE,\r\n    ) as Image[]\r\n\r\n    const primitiveElements = objects.filter(\r\n        (primitive) => primitive.type === ObjectType.PRIMITIVE,\r\n    ) as Primitive[]\r\n\r\n    return (\r\n        <div\r\n            className={props.selectionSlideClass || styles.sideSlide}\r\n            style={{ backgroundColor: background.color.hex }}\r\n        >\r\n            {textBlockElements.map((textBlock) => (\r\n                <SlideTextBlock\r\n                    textBlockData={textBlock}\r\n                    key={id}\r\n                ></SlideTextBlock>\r\n            ))}\r\n            {imageBlockElements.map((imageBlock) => (\r\n                <ImageBlock\r\n                    imageBlockData={imageBlock}\r\n                    key={id}\r\n                    scale={props.scale || 100}\r\n                ></ImageBlock>\r\n            ))}\r\n            {primitiveElements.map((primitive) => (\r\n                <PrimitiveBlock\r\n                    primitive={primitive}\r\n                    key={primitive.id}\r\n                ></PrimitiveBlock>\r\n            ))}\r\n        </div>\r\n    )\r\n}\r\n\r\nexport { SlideView }\r\n
+===================================================================
+diff --git a/src/components/SlideView.tsx b/src/components/SlideView.tsx
+--- a/src/components/SlideView.tsx	
++++ b/src/components/SlideView.tsx	
+@@ -46,6 +46,7 @@
+                 <PrimitiveBlock
+                     primitive={primitive}
+                     key={primitive.id}
++                    scale={props.scale || 100}
+                 ></PrimitiveBlock>
+             ))}
+         </div>
