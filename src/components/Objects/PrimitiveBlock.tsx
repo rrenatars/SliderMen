@@ -1,7 +1,12 @@
 import React from 'react'
 import { Primitive } from '../../types'
 
-function PrimitiveBlock(props: { primitive: Primitive; scale: number }) {
+function PrimitiveBlock(props: {
+    primitiveBlockData: Primitive
+    scale: number
+    isSelected: boolean
+    onClick?: React.MouseEventHandler<SVGSVGElement> | undefined
+}) {
     const {
         primitiveType,
         outlineColor,
@@ -9,7 +14,7 @@ function PrimitiveBlock(props: { primitive: Primitive; scale: number }) {
         coordinates,
         width,
         height,
-    } = props.primitive
+    } = props.primitiveBlockData
 
     const scalePercent = props.scale / 100
 
@@ -51,21 +56,16 @@ function PrimitiveBlock(props: { primitive: Primitive; scale: number }) {
         )
     }
 
-    console.log(
-        'x: ',
-        coordinates.x * scalePercent,
-        ' y: ',
-        coordinates.y * scalePercent,
-    )
-
     return (
         <svg
+            onClick={props.onClick}
             style={{
                 position: 'relative',
                 left: coordinates.x * scalePercent,
                 top: coordinates.y * scalePercent,
                 width: width * scalePercent,
                 height: height * scalePercent,
+                border: props.isSelected ? '2px solid blue' : 'none',
             }}
         >
             {shapeElement}

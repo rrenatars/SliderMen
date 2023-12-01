@@ -1,7 +1,12 @@
 import { TextBlock } from '../../types'
 import React from 'react'
 
-function SlideTextBlock(props: { textBlockData: TextBlock; scale: number }) {
+function SlideTextBlock(props: {
+    textBlockData: TextBlock
+    scale: number
+    isSelected: boolean
+    onClick?: React.MouseEventHandler<HTMLDivElement> | undefined
+}) {
     const { value, color, fontSize, fontFamily, coordinates, width, height } =
         props.textBlockData
 
@@ -9,6 +14,7 @@ function SlideTextBlock(props: { textBlockData: TextBlock; scale: number }) {
 
     return (
         <div
+            onClick={props.onClick}
             style={{
                 position: 'absolute',
                 color: color.hex,
@@ -20,6 +26,7 @@ function SlideTextBlock(props: { textBlockData: TextBlock; scale: number }) {
                 top: coordinates.y * scalePercent,
                 left: coordinates.x * scalePercent,
                 opacity: color.opacity,
+                border: props.isSelected ? '2px solid blue' : 'none',
             }}
         >
             {value}
