@@ -29,13 +29,9 @@ function PrimitiveBlock(props: { primitive: Primitive; scale: number }) {
     } else if (primitiveType === 'triangle') {
         shapeElement = (
             <polygon
-                points={`${coordinates.x * scalePercent},${
-                    coordinates.y * scalePercent
-                } ${(coordinates.x - width / 2) * scalePercent},${
-                    (coordinates.y - height + 20) * scalePercent
-                } ${(coordinates.x - width) * scalePercent},${
-                    coordinates.y * scalePercent
-                }`}
+                points={`0,${height * scalePercent} ${
+                    (width / 2) * scalePercent
+                },${0} ${width * scalePercent},${height * scalePercent}`}
                 fill={fillColor.hex}
             />
         )
@@ -61,7 +57,7 @@ function PrimitiveBlock(props: { primitive: Primitive; scale: number }) {
     return (
         <svg
             style={{
-                position: 'relative',
+                position: 'absolute',
                 left: coordinates.x * scalePercent,
                 top: coordinates.y * scalePercent,
                 width: width * scalePercent,
