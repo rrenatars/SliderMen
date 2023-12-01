@@ -1,0 +1,82 @@
+Index: src/testData3.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/testData3.tsx b/src/testData3.tsx
+--- a/src/testData3.tsx	
++++ b/src/testData3.tsx	
+@@ -231,4 +231,4 @@
+ 
+ export { presentation }
+ 
+-export { primitive2 }
++export { presentation }
+Index: src/App.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react'\r\nimport { presentation } from './testData3'\r\nimport { PresentationView } from './components/PresentationView'\r\nimport styles from './App.module.css'\r\n\r\nfunction App() {\r\n    return (\r\n        <div className={styles.app}>\r\n            <PresentationView\r\n                presentationData={presentation}\r\n            ></PresentationView>\r\n        </div>\r\n    )\r\n}\r\n\r\nexport default App\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/App.tsx b/src/App.tsx
+--- a/src/App.tsx	
++++ b/src/App.tsx	
+@@ -1,14 +1,24 @@
+ import React from 'react'
+-import { presentation } from './testData3'
+-import { PresentationView } from './components/PresentationView'
+-import styles from './App.module.css'
++import './App.css'
++import {
++    Background,
++    Color,
++    Figures,
++    History,
++    Image,
++    ObjectType,
++    Presentation,
++    Primitive,
++    Slide,
++    TextBlock,
++} from './types'
++import { PrimitiveBlock } from './components/PrimitiveBlock'
++import { primitive2 } from './testData3'
+ 
+ function App() {
+     return (
+-        <div className={styles.app}>
+-            <PresentationView
+-                presentationData={presentation}
+-            ></PresentationView>
++        <div>
++            <PrimitiveBlock primitive={primitive2}></PrimitiveBlock>
+         </div>
+     )
+ }
+Index: src/components/PrimitiveBlock.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react'\r\nimport { Primitive } from '../types'\r\n\r\nfunction PrimitiveBlock(props: { primitive: Primitive; scale: number }) {\r\n    const {\r\n        primitiveType,\r\n        outlineColor,\r\n        fillColor,\r\n        coordinates,\r\n        width,\r\n        height,\r\n    } = props.primitive\r\n\r\n    const scalePercent = props.scale / 100\r\n\r\n    let shapeElement = null\r\n\r\n    if (primitiveType === 'circle') {\r\n        shapeElement = (\r\n            <circle\r\n                cx={(width / 2) * scalePercent}\r\n                cy={(height / 2) * scalePercent}\r\n                r={(width / 2) * scalePercent}\r\n                fill={fillColor.hex}\r\n                stroke={outlineColor?.hex || 'transparent'}\r\n                strokeWidth={2 * scalePercent}\r\n            />\r\n        )\r\n    } else if (primitiveType === 'triangle') {\r\n        shapeElement = (\r\n            <polygon\r\n                points={`${coordinates.x * scalePercent},${\r\n                    coordinates.y * scalePercent\r\n                } ${(coordinates.x - width / 2) * scalePercent},${\r\n                    (coordinates.y - height) * scalePercent\r\n                } ${(coordinates.x - width) * scalePercent},${\r\n                    coordinates.y * scalePercent\r\n                }`}\r\n                fill={fillColor.hex}\r\n            />\r\n        )\r\n    } else if (primitiveType === 'rectangle') {\r\n        shapeElement = (\r\n            <rect\r\n                width={width * scalePercent}\r\n                height={height * scalePercent}\r\n                fill={fillColor.hex}\r\n                stroke={outlineColor?.hex || 'transparent'}\r\n                strokeWidth={2 * scalePercent}\r\n            />\r\n        )\r\n    }\r\n\r\n    return (\r\n        <svg\r\n            style={{\r\n                position: 'relative',\r\n                left: coordinates.x * scalePercent,\r\n                top: coordinates.y * scalePercent,\r\n                width: width * scalePercent,\r\n                height: height * scalePercent,\r\n            }}\r\n        >\r\n            {shapeElement}\r\n        </svg>\r\n    )\r\n}\r\n\r\nexport { PrimitiveBlock }\r\n
+===================================================================
+diff --git a/src/components/PrimitiveBlock.tsx b/src/components/PrimitiveBlock.tsx
+--- a/src/components/PrimitiveBlock.tsx	
++++ b/src/components/PrimitiveBlock.tsx	
+@@ -1,7 +1,7 @@
+ import React from 'react'
+ import { Primitive } from '../types'
+ 
+-function PrimitiveBlock(props: { primitive: Primitive; scale: number }) {
++function PrimitiveBlock(props: { primitive: Primitive; scale?: number }) {
+     const {
+         primitiveType,
+         outlineColor,
+@@ -11,7 +11,7 @@
+         height,
+     } = props.primitive
+ 
+-    const scalePercent = props.scale / 100
++    const scalePercent = (props.scale || 100) / 100
+ 
+     let shapeElement = null
+ 
