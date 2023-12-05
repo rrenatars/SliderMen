@@ -4,182 +4,184 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5be30620-a44a-49ff-bc6b-50baf802d2b1" name="Changes" comment="масштаб примитивов + замена на свг">
+    <list default="true" id="5be30620-a44a-49ff-bc6b-50baf802d2b1" name="Changes" comment="Реализован клик на объект">
+      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/ObjectMenuButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Toolbar/ObjectToolbarButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_11_2023_14_35__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_11_2023_14_35__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_07_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_07__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_08_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_08__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_09_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_09__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_09__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_11_2023_3_09__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_01_12_2023_1_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_01_12_2023_1_08__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ansi-styles/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ansi-styles/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ansi-styles/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ansi-styles/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ansi-styles/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ansi-styles/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/argparse/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/argparse/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/argparse/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/argparse/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/argparse/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/argparse/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/argparse/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/argparse/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/chalk/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/chalk/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/chalk/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/chalk/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/conversions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/color-convert/conversions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/color-convert/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/color-convert/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/color-convert/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/color-convert/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/color-name/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/color-name/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/data/patch.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/data/patch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/dist/csstree.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/dist/csstree.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/convertor/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/convertor/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/convertor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/convertor/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/SyntaxError.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/SyntaxError.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/generate.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/generate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/tokenizer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/tokenizer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/walk.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/definition-syntax/walk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/generator/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/generator/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/generator/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/generator/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/generator/sourceMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/generator/sourceMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/Lexer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/Lexer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/error.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/error.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/generic-an-plus-b.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/generic-an-plus-b.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/generic-urange.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/generic-urange.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/generic.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/generic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/match-graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/match-graph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/match.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/match.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/prepare-tokens.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/prepare-tokens.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/structure.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/structure.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/trace.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/lexer/trace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/parser/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/parser/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/parser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/parser/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/parser/sequence.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/parser/sequence.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/font-face.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/font-face.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/import.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/import.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/media.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/media.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/supports.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/atrule/supports.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/lexer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/lexer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/mix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/parser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/walker.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/config/walker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/function/expression.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/function/expression.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/function/var.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/function/var.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/AnPlusB.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/AnPlusB.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Atrule.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Atrule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/AtrulePrelude.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/AtrulePrelude.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/AttributeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/AttributeSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Block.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Block.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Brackets.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Brackets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/CDC.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/CDC.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/CDO.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/CDO.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/ClassSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/ClassSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Combinator.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Combinator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Comment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Declaration.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Declaration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/DeclarationList.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/DeclarationList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Dimension.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Dimension.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Function.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/IdSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/IdSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Identifier.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Identifier.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/MediaFeature.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/MediaFeature.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/MediaQuery.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/MediaQuery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/MediaQueryList.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/MediaQueryList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Nth.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Nth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Number.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Number.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Operator.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Operator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Parentheses.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Parentheses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Percentage.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Percentage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/PseudoClassSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/PseudoClassSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/PseudoElementSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/PseudoElementSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Ratio.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Ratio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Raw.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Raw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Rule.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Rule.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Selector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/SelectorList.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/SelectorList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/String.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/String.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/StyleSheet.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/StyleSheet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/TypeSelector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/TypeSelector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/UnicodeRange.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/UnicodeRange.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Url.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Url.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Value.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/Value.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/WhiteSpace.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/WhiteSpace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/node/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/pseudo/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/pseudo/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/atrulePrelude.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/atrulePrelude.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/selector.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/selector.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/value.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/syntax/scope/value.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/tokenizer/char-code-definitions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/tokenizer/char-code-definitions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/tokenizer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/tokenizer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/tokenizer/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/tokenizer/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/utils/clone.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/utils/clone.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/utils/names.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/utils/names.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/walker/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/walker/create.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/lib/walker/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/lib/walker/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-tree/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-tree/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/escape-string-regexp/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/escape-string-regexp/license" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/escape-string-regexp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/escape-string-regexp/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/escape-string-regexp/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/globals/globals.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/globals/globals.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/globals/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/globals/license" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/globals/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/globals/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/globals/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/globals/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/has-flag/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/has-flag/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/has-flag/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/has-flag/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/has-flag/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/has-flag/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/internal-slot/.eslintignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-core-module/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-core-module/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-core-module/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-core-module/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-core-module/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/is-core-module/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-plain-obj/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-plain-obj/license" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-plain-obj/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/is-plain-obj/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/js-yaml/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/js-yaml/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/js-yaml/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/js-yaml/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/js-yaml/bin/js-yaml.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/js-yaml/bin/js-yaml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/js-yaml/dist/js-yaml.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/js-yaml/dist/js-yaml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/js-yaml/dist/js-yaml.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/js-yaml/dist/js-yaml.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/js-yaml/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/js-yaml/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/js-yaml/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/js-yaml/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/api/inheritance.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/api/inheritance.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/at-rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/at-rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/at-rules.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/at-rules.schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/definitions.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/definitions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/properties.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/properties.schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/properties.schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/selectors.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/selectors.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/syntaxes.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/syntaxes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/css/units.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/css/units.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/l10n/css.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/l10n/css.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mdn-data/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mdn-data/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/resolve-from/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/resolve-from/license" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/resolve-from/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/resolve-from/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/supports-color/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/supports-color/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/supports-color/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/supports-color/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/supports-hyperlinks/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/supports-hyperlinks/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/supports-hyperlinks/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/supports-hyperlinks/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Objects/ImageBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Objects/ImageBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Objects/PrimitiveBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Objects/PrimitiveBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Objects/SlideTextBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Objects/SlideTextBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PresentationView.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PresentationView.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PresentationView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PresentationView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SlideView.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SlideView.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SlideView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SlideView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Toolbar/Toolbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Toolbar/Toolbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.mjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/index.mjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@eslint-community/regexpp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@eslint/js/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@eslint/js/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@humanwhocodes/config-array/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@humanwhocodes/config-array/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/src/object-schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/src/object-schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/tests/object-schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@humanwhocodes/object-schema/tests/object-schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/.nycrc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/.nycrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/test/callBound.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/test/callBound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/call-bind/test/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/call-bind/test/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2015/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2015/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2016/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2016/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2017/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2017/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/QuoteJSONString.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/QuoteJSONString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2018/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2018/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/QuoteJSONString.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/QuoteJSONString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2019/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2019/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/QuoteJSONString.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/QuoteJSONString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2020/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2020/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/QuoteJSONString.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/QuoteJSONString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2021/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2021/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/QuoteJSONString.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/QuoteJSONString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2022/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2022/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/Canonicalize.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/Canonicalize.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/CompletePropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/CompletePropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/GetSubstitution.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/GetSubstitution.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/HasOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/HasOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/OrdinaryGetOwnProperty.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/OrdinaryGetOwnProperty.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/QuoteJSONString.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/QuoteJSONString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/SetFunctionName.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/SetFunctionName.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/SetValueInBuffer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/SetValueInBuffer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/2023/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/2023/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/5/IsAccessorDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/5/IsAccessorDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/5/IsDataDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/5/IsDataDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/5/ToPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/5/ToPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/helpers/assertRecord.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/helpers/assertRecord.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/helpers/assign.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/helpers/assign.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/helpers/isMatchRecord.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/helpers/isMatchRecord.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/helpers/isPropertyDescriptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/helpers/isPropertyDescriptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/helpers/isStringOrHole.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/helpers/isStringOrHole.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-abstract/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-abstract/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-set-tostringtag/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-set-tostringtag/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-set-tostringtag/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-set-tostringtag/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-set-tostringtag/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-set-tostringtag/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-shim-unscopables/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-shim-unscopables/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-shim-unscopables/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-shim-unscopables/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-shim-unscopables/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-shim-unscopables/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/es-shim-unscopables/test/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/es-shim-unscopables/test/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/conf/rule-type-list.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/conf/rule-type-list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/lib/cli.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/lib/cli.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/lib/config/flat-config-schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/lib/config/flat-config-schema.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/lib/linter/apply-disable-directives.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/lib/linter/apply-disable-directives.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/lib/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/lib/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/lib/rules/no-object-constructor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/lib/rules/no-object-constructor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eslint/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eslint/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/get-intrinsic/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/get-intrinsic/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/get-intrinsic/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/get-intrinsic/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/get-intrinsic/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/get-intrinsic/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/has-property-descriptors/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/has-property-descriptors/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/has-property-descriptors/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/has-property-descriptors/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/internal-slot/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/internal-slot/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/internal-slot/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/internal-slot/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/internal-slot/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/internal-slot/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-inspect/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-inspect/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-inspect/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-inspect/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-inspect/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-inspect/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/type-fest/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/type-fest/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which-typed-array/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/which-typed-array/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which-typed-array/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/which-typed-array/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/which-typed-array/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/which-typed-array/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Toolbar/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Toolbar/Menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Toolbar/Toolbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Toolbar/Toolbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testData2.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/testData2.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testData3.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/testData3.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/types.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,6 +201,7 @@
         <option value="com.haulmont.rcb.index" />
         <option value="com.haulmont.rcb.useInitial" />
         <option value="com.haulmont.rcb.README" />
+        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -225,26 +228,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "C:/code/react/notes",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "C:\\frontendProject\\slider-men\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/code/react/notes&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\code\\react\\slider-men\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\code\\react\\slider-men\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -259,7 +263,17 @@
       <recent name="C:\code\react\slider-men\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.Lint and Start">
+    <configuration name="Lint and Start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="Lint and Start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -272,6 +286,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.Lint and Start" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.lint" />
       </list>
@@ -304,6 +319,10 @@
       <workItem from="1700736164942" duration="8821000" />
       <workItem from="1700775091928" duration="9429000" />
       <workItem from="1701380816042" duration="8059000" />
+      <workItem from="1701434006085" duration="152000" />
+      <workItem from="1701448503952" duration="2768000" />
+      <workItem from="1701677924203" duration="1181000" />
+      <workItem from="1701754855177" duration="3249000" />
     </task>
     <task id="LOCAL-00001" summary="масштаб примитивов + замена на свг">
       <option name="closed" value="true" />
@@ -313,7 +332,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700784881779</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Фикс верстки SlideView после мержа">
+      <option name="closed" value="true" />
+      <created>1701433866907</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701433866907</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Реализован клик на объект">
+      <option name="closed" value="true" />
+      <created>1701755090051</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701755090051</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,6 +367,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="масштаб примитивов + замена на свг" />
-    <option name="LAST_COMMIT_MESSAGE" value="масштаб примитивов + замена на свг" />
+    <MESSAGE value="Фикс верстки SlideView после мержа" />
+    <MESSAGE value="Реализован клик на объект" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализован клик на объект" />
   </component>
 </project>

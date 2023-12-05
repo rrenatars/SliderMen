@@ -1,6 +1,7 @@
 import styles from './Menu.module.css'
 import React from 'react'
-import { Image, ObjectType, Primitive, TextBlock } from '../../types'
+import { Image, Primitive, TextBlock } from '../../types'
+import { ObjectMenuButton } from './ObjectMenuButton'
 
 function Menu(props: {
     selectedObjectId?: string
@@ -16,16 +17,11 @@ function Menu(props: {
         <div className={styles.menu}>
             <p>Файл</p>
             <p>Главная</p>
-            {(() => {
-                switch (selectedObjectType) {
-                    case ObjectType.PRIMITIVE:
-                        return <p>Фигура</p>
-                    case ObjectType.IMAGE:
-                        return <p>Рисунок</p>
-                    case ObjectType.TEXTBLOCK:
-                        return <p>Текст</p>
-                }
-            })()}
+            {selectedObjectType && (
+                <ObjectMenuButton
+                    selectedObjectType={selectedObjectType}
+                ></ObjectMenuButton>
+            )}
         </div>
     )
 }
