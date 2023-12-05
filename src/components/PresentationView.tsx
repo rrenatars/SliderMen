@@ -19,7 +19,11 @@ function PresentationView(props: { presentationData: Presentation }) {
     )
 
     function handleObjectClick(clickedObjectId: string): void {
-        setSelectedObjectId(clickedObjectId)
+        if (clickedObjectId === selectedObjectId) {
+            setSelectedObjectId(undefined)
+        } else {
+            setSelectedObjectId(clickedObjectId)
+        }
     }
 
     const selectedSlide = slides.find((slide) => slide.id === selectedSlideId)
