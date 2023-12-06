@@ -18,7 +18,7 @@ function ImageBlock(props: {
                 width: width * scalePercent,
                 height: height * scalePercent,
                 top: coordinates.y * scalePercent,
-                left: coordinates.y * scalePercent,
+                left: coordinates.x * scalePercent,
                 position: 'absolute',
                 border: props.isSelected ? '2px solid blue' : 'none',
             }}

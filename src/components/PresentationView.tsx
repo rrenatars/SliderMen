@@ -34,6 +34,7 @@ function PresentationView(props: { presentationData: Presentation }) {
             <Bars
                 selectedObjectId={selectedObjectId}
                 objects={selectedSlide?.objects}
+                presentationData={props.presentationData}
             ></Bars>
             <div className={styles.workfield}>
                 <SideSlides
