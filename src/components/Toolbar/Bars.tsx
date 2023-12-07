@@ -8,8 +8,6 @@ function Bars(props: {
     objects?: Array<Primitive | Image | TextBlock>
     presentationData: Presentation
 }) {
-    console.log('selectedObjectId: ', props.selectedObjectId)
-
     return (
         <div>
             <Menu
