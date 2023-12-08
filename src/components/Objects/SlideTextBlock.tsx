@@ -1,5 +1,5 @@
 import { TextBlock } from '../../types'
-import React from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
 function SlideTextBlock(props: {
     textBlockData: TextBlock
@@ -12,9 +12,27 @@ function SlideTextBlock(props: {
 
     const scalePercent = props.scale / 100
 
+    const [isEditing, setIsEditing] = useState(false)
+    const [editedValue, setEditedValue] = useState(value)
+
+    const handleClick = () => {
+        setIsEditing(!isEditing)
+    }
+
+    const handleBlur = (e: ChangeEvent<HTMLDivElement>) => {
+        setIsEditing(false)
+        const newTextContent = e.target.textContent
+        if (newTextContent !== null) {
+            setEditedValue(newTextContent)
+        }
+    }
+
     return (
         <div
             onClick={props.onClick}
+            onDoubleClick={handleClick}
+            contentEditable={isEditing}
+            onBlur={handleBlur}
             style={{
                 position: 'absolute',
                 color: color.hex,
@@ -26,10 +44,11 @@ function SlideTextBlock(props: {
                 top: coordinates.y * scalePercent,
                 left: coordinates.x * scalePercent,
                 opacity: color.opacity,
-                border: props.isSelected ? '2px solid blue' : 'none',
+                outline:
+                    isEditing || props.isSelected ? '2px solid blue' : 'none',
             }}
         >
-            {value}
+            {editedValue}
         </div>
     )
 }

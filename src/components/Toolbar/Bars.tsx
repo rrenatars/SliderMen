@@ -5,8 +5,11 @@ import { Primitive, TextBlock, Image, Presentation } from '../../types'
 
 function Bars(props: {
     selectedObjectId?: string
+    selectedSlideId?: string
     objects?: Array<Primitive | Image | TextBlock>
     presentationData: Presentation
+    onAddSlide: () => void
+    onRemoveSlide: (slideId: string) => void
 }) {
     return (
         <div>
@@ -17,7 +20,10 @@ function Bars(props: {
             ></Menu>
             <Toolbar
                 selectedObjectId={props.selectedObjectId}
+                selectedSlideId={props.selectedSlideId}
                 objects={props.objects}
+                onAddSlide={props.onAddSlide}
+                onRemoveSlide={props.onRemoveSlide}
             ></Toolbar>
         </div>
     )

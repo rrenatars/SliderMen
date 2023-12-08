@@ -9,13 +9,15 @@ function SlideEditor(props: {
     onObjectClick: (objectId: string) => void
 }) {
     return (
-        <SlideView
-            selectionSlideClass={styles.selectionSlide}
-            slideData={props.selectedSlide}
-            key={props.selectedSlide.id}
-            selectedObjectId={props.selectedObjectId}
-            onObjectClick={props.onObjectClick}
-        ></SlideView>
+        <div>
+            <SlideView
+                selectionSlideClass={styles.selectionSlide}
+                slideData={props.selectedSlide}
+                key={props.selectedSlide.id}
+                selectedObjectId={props.selectedObjectId}
+                onObjectClick={props.onObjectClick}
+            ></SlideView>
+        </div>
     )
 }
 
