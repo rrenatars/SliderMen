@@ -1,22 +1,24 @@
 import styles from './Menu.module.css'
 import React from 'react'
-import { Image, Presentation, Primitive, TextBlock } from '../../types'
+import { Image, Primitive, TextBlock } from '../../types'
 import { ObjectMenuButton } from './ObjectMenuButton'
-import { exportPresentationToJson } from './export'
+import { useExportPresentationToJson } from './export'
+import { usePresentationDataContext } from '../PresentationDataContext'
+import { presentation } from '../../testData3'
 
 function Menu(props: {
     selectedObjectId?: string
     objects?: Array<Primitive | Image | TextBlock>
-    presentationData: Presentation
 }) {
+    const { presentationData, setPresentationData } =
+        usePresentationDataContext()
+
     const selectedObjectType =
         props.objects?.find((object) => object.id === props.selectedObjectId)
             ?.type || null
 
     function handleClickExport() {
-        if (props.presentationData) {
-            exportPresentationToJson(props.presentationData)
-        }
+        useExportPresentationToJson(presentationData)
     }
 
     return (

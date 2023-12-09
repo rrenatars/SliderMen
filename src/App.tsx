@@ -1,25 +1,8 @@
 import React from 'react'
-import { PresentationView } from './components/PresentationView'
-import { useImportFileHandler } from './hooks/useImportFileHandler'
+import { InitPresentation } from './components/InitPresentation'
 
 function App() {
-    const { parsedPresentation, error, handleFileChange } =
-        useImportFileHandler()
-
-    return (
-        <div>
-            {!parsedPresentation ? (
-                <div>
-                    <input type="file" onChange={handleFileChange} />
-                    {error && <p>{error}</p>}
-                </div>
-            ) : (
-                <PresentationView
-                    presentationData={parsedPresentation}
-                ></PresentationView>
-            )}
-        </div>
-    )
+    return <InitPresentation></InitPresentation>
 }
 
 export default App

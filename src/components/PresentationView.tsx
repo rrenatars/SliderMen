@@ -1,37 +1,61 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Presentation } from '../types'
 import { Bars } from './Toolbar/Bars'
 import { SideSlides } from './SideSlides'
 import styles from './PresentationView.module.css'
 import { SlideEditor } from './SlideEditor'
-import { background3 } from '../testData3'
+import { background3, presentation } from '../testData3'
+import { PresentationName } from './PresentationName'
+import { generateUniqueId } from '../tools'
+import { usePresentationDataContext } from './PresentationDataContext'
 
-function generateUniqueId(): string {
-    return Math.random().toString(36).substring(7)
-}
+function PresentationView() {
+    // const initialPresentationData = usePresentationDataContext()
+    // const [presentationData, setPresentationData] = useState(
+    //     initialPresentationData,
+    // )
 
-function PresentationView(props: { presentationData: Presentation }) {
-    const { name, slides, selection } = props.presentationData
+    const { presentationData, setPresentationData } =
+        usePresentationDataContext()
 
-    const [selectedSlideId, setSelectedSlideId] = useState(selection?.slideId)
+    const { name, slides, selection } = presentationData
+
+    const [selectedSlideId, setSelectedSlideId] = useState(
+        presentationData.selection?.slideId,
+    )
 
     function handleSlideClick(clickedSlideId: string): void {
         setSelectedSlideId(clickedSlideId)
+
+        const updatedPresentationData = {
+            ...presentationData,
+            selection: {
+                ...presentationData.selection,
+                slideId: clickedSlideId,
+            },
+        }
+
+        setPresentationData(updatedPresentationData)
     }
 
-    const [slidesState, setSlidesState] = useState(slides)
+    const [slidesState, setSlidesState] = useState(presentationData.slides)
 
     function handleAddSlide(): void {
         const newSlideId = generateUniqueId()
 
-        setSlidesState((prevSlides) => [
-            ...prevSlides,
-            {
-                id: newSlideId,
-                objects: [],
-                background: background3,
-            },
-        ])
+        const newSlide = {
+            id: newSlideId,
+            objects: [],
+            background: background3,
+        }
+
+        setSlidesState((prevSlides) => [...prevSlides, newSlide])
+        const updatedPresentationData = {
+            ...presentationData,
+            slides: [...slides, newSlide],
+        }
+
+        setPresentationData(updatedPresentationData)
 
         setSelectedSlideId(newSlideId)
     }
@@ -64,18 +88,25 @@ function PresentationView(props: { presentationData: Presentation }) {
         }
     }
 
-    const selectedSlide = slidesState.find(
+    console.log('presentationData: ', presentationData)
+    const selectedSlide = presentationData.slides.find(
         (slide) => slide.id === selectedSlideId,
     )
 
+    const handlePresentationNameChange = (newName: string) => {
+        presentationData.name = newName
+    }
+
     return (
         <div>
-            <h1 className={styles.presentationName}>{name}</h1>
+            <PresentationName
+                name={name}
+                onChange={handlePresentationNameChange}
+            ></PresentationName>
             <Bars
                 selectedObjectId={selectedObjectId}
                 selectedSlideId={selectedSlideId}
                 objects={selectedSlide?.objects}
-                presentationData={props.presentationData}
                 onAddSlide={handleAddSlide}
                 onRemoveSlide={handleRemoveSlide}
             ></Bars>

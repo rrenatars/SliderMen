@@ -1,9 +1,7 @@
 import React from 'react'
-import { ObjectType, Slide } from '../types'
-import { SlideTextBlock } from './Objects/SlideTextBlock'
-import { ImageBlock } from './Objects/ImageBlock'
+import { Slide } from '../types'
 import styles from './SlideView.module.css'
-import { PrimitiveBlock } from './Objects/PrimitiveBlock'
+import { ObjectBlock } from './Objects/ObjectBlock'
 
 function SlideView(props: {
     slideData: Slide
@@ -31,57 +29,18 @@ function SlideView(props: {
                 }}
                 onClick={props.onClick}
             >
-                {objects.map((object) => {
-                    switch (object.type) {
-                        case ObjectType.TEXTBLOCK:
-                            return (
-                                <SlideTextBlock
-                                    textBlockData={object}
-                                    key={object.id}
-                                    scale={props.scale || 100}
-                                    isSelected={
-                                        object.id === props.selectedObjectId
-                                    }
-                                    onClick={() =>
-                                        props.onObjectClick &&
-                                        props.onObjectClick(object.id)
-                                    }
-                                ></SlideTextBlock>
-                            )
-                        case ObjectType.IMAGE:
-                            return (
-                                <ImageBlock
-                                    imageBlockData={object}
-                                    key={object.id}
-                                    scale={props.scale || 100}
-                                    isSelected={
-                                        object.id === props.selectedObjectId
-                                    }
-                                    onClick={() =>
-                                        props.onObjectClick &&
-                                        props.onObjectClick(object.id)
-                                    }
-                                ></ImageBlock>
-                            )
-                        case ObjectType.PRIMITIVE:
-                            return (
-                                <PrimitiveBlock
-                                    primitiveBlockData={object}
-                                    key={object.id}
-                                    scale={props.scale || 100}
-                                    isSelected={
-                                        object.id === props.selectedObjectId
-                                    }
-                                    onClick={() =>
-                                        props.onObjectClick &&
-                                        props.onObjectClick(object.id)
-                                    }
-                                ></PrimitiveBlock>
-                            )
-                        default:
-                            return null
-                    }
-                })}
+                {objects.map((object) => (
+                    <ObjectBlock
+                        key={object.id}
+                        objectData={object}
+                        scale={props.scale || 100}
+                        isSelected={object.id === props.selectedObjectId}
+                        onClick={() =>
+                            props.onObjectClick &&
+                            props.onObjectClick(object.id)
+                        }
+                    />
+                ))}
             </div>
         </div>
     )

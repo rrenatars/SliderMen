@@ -2,7 +2,7 @@ import { Presentation } from '../types'
 import React, { useState } from 'react'
 
 function useImportFileHandler() {
-    const [parsedPresentation, setParsedPresentation] =
+    const [presentationData, setPresentationData] =
         useState<Presentation | null>(null)
     const [error, setError] = useState<string | null>(null)
 
@@ -16,10 +16,10 @@ function useImportFileHandler() {
                 try {
                     const jsonData = e.target?.result as string
                     const parsedData: Presentation = JSON.parse(jsonData)
-                    setParsedPresentation(parsedData)
+                    setPresentationData(parsedData)
                     setError(null)
                 } catch (error) {
-                    setParsedPresentation(null)
+                    setPresentationData(null)
                     setError('Плохой файл')
                 }
             }
@@ -28,7 +28,7 @@ function useImportFileHandler() {
         }
     }
 
-    return { parsedPresentation, error, handleFileChange }
+    return { presentationData, error, handleFileChange, setPresentationData }
 }
 
 export { useImportFileHandler }

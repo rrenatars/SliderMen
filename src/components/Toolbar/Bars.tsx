@@ -2,12 +2,12 @@ import { Menu } from './Menu'
 import { Toolbar } from './Toolbar'
 import React from 'react'
 import { Primitive, TextBlock, Image, Presentation } from '../../types'
+import { usePresentationDataContext } from '../PresentationDataContext'
 
 function Bars(props: {
     selectedObjectId?: string
     selectedSlideId?: string
     objects?: Array<Primitive | Image | TextBlock>
-    presentationData: Presentation
     onAddSlide: () => void
     onRemoveSlide: (slideId: string) => void
 }) {
@@ -16,7 +16,6 @@ function Bars(props: {
             <Menu
                 selectedObjectId={props.selectedObjectId}
                 objects={props.objects}
-                presentationData={props.presentationData}
             ></Menu>
             <Toolbar
                 selectedObjectId={props.selectedObjectId}
