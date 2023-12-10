@@ -4,7 +4,6 @@ import { Image, Primitive, TextBlock } from '../../types'
 import { ObjectMenuButton } from './ObjectMenuButton'
 import { useExportPresentationToJson } from './export'
 import { usePresentationDataContext } from '../PresentationDataContext'
-import { presentation } from '../../testData3'
 
 function Menu(props: {
     selectedObjectId?: string
@@ -25,7 +24,9 @@ function Menu(props: {
         <div className={styles.menu}>
             <p>Файл</p>
             <p>Главная</p>
-            <button onClick={handleClickExport}>Экспорт</button>
+            <button className={styles.exportButton} onClick={handleClickExport}>
+                Экспорт
+            </button>
             {selectedObjectType && (
                 <ObjectMenuButton
                     selectedObjectType={selectedObjectType}

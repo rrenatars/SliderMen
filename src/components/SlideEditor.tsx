@@ -7,6 +7,7 @@ function SlideEditor(props: {
     selectedSlide: Slide
     selectedObjectId?: string
     onObjectClick: (objectId: string) => void
+    isAddingText: boolean
 }) {
     return (
         <div>
@@ -16,6 +17,7 @@ function SlideEditor(props: {
                 key={props.selectedSlide.id}
                 selectedObjectId={props.selectedObjectId}
                 onObjectClick={props.onObjectClick}
+                isAddingText={props.isAddingText}
             ></SlideView>
         </div>
     )

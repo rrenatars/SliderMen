@@ -61,7 +61,7 @@ type History = {
 }
 
 type Selection = {
-    slideId: string
+    slideId?: string
     objectId?: string
 }
 

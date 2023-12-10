@@ -9,12 +9,12 @@ function PresentationName(props: {
     const [editedValue, setEditedValue] = useState(props.name)
 
     const handleClick = () => {
-        setIsEditing(!isEditing)
+        setIsEditing(true)
     }
 
     const handleBlur = (e: ChangeEvent<HTMLDivElement>) => {
         setIsEditing(false)
-        const newTextContent = e.target.textContent
+        const newTextContent = e.currentTarget.textContent
         if (newTextContent !== null) {
             setEditedValue(newTextContent)
             props.onChange(newTextContent)
@@ -24,7 +24,7 @@ function PresentationName(props: {
     return (
         <div
             contentEditable={isEditing}
-            onDoubleClick={handleClick}
+            onClick={handleClick}
             onBlur={handleBlur}
             className={styles.name}
         >

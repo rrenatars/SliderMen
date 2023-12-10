@@ -6,6 +6,7 @@ import { PrimitiveBlock } from './PrimitiveBlock'
 
 function ObjectBlock(props: {
     objectData: Primitive | Image | TextBlock
+    selectedSlideId: string
     scale: number
     isSelected: boolean
     onClick: () => void
@@ -15,6 +16,7 @@ function ObjectBlock(props: {
             return (
                 <SlideTextBlock
                     textBlockData={props.objectData}
+                    selectedSlideId={props.selectedSlideId}
                     scale={props.scale}
                     isSelected={props.isSelected}
                     onClick={props.onClick}

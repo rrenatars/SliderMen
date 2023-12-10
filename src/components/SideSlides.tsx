@@ -1,16 +1,18 @@
 import styles from './PresentationView.module.css'
 import { SlideView } from './SlideView'
-import { Slide } from '../types'
+import { Presentation, Slide } from '../types'
 import React from 'react'
+import { presentation } from '../testData3'
+import { usePresentationDataContext } from './PresentationDataContext'
 
 function SideSlides(props: {
-    slides: Slide[]
+    presentationData: Presentation
     selectedSlideId?: string
     onSlideClick: (slideId: string) => void
 }) {
     return (
         <div className={styles.slides}>
-            {props.slides.map((slide, index) => (
+            {props.presentationData.slides.map((slide, index) => (
                 <SlideView
                     slideData={slide}
                     key={slide.id}

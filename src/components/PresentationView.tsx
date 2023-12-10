@@ -1,58 +1,46 @@
 import React, { useEffect, useState } from 'react'
-import { Presentation } from '../types'
 import { Bars } from './Toolbar/Bars'
 import { SideSlides } from './SideSlides'
 import styles from './PresentationView.module.css'
 import { SlideEditor } from './SlideEditor'
-import { background3, presentation } from '../testData3'
+import { emptySlide, newSlideTextBlock, presentation } from '../testData3'
 import { PresentationName } from './PresentationName'
 import { generateUniqueId } from '../tools'
 import { usePresentationDataContext } from './PresentationDataContext'
 
 function PresentationView() {
-    // const initialPresentationData = usePresentationDataContext()
-    // const [presentationData, setPresentationData] = useState(
-    //     initialPresentationData,
-    // )
-
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
-
     const { name, slides, selection } = presentationData
 
     const [selectedSlideId, setSelectedSlideId] = useState(
         presentationData.selection?.slideId,
     )
+    const [selectedObjectId, setSelectedObjectId] = useState(
+        selection?.objectId,
+    )
+    const [slidesState, setSlidesState] = useState(presentationData.slides)
+    const [isAddingText, setIsAddingText] = useState(false)
 
     function handleSlideClick(clickedSlideId: string): void {
         setSelectedSlideId(clickedSlideId)
-
-        const updatedPresentationData = {
-            ...presentationData,
-            selection: {
-                ...presentationData.selection,
-                slideId: clickedSlideId,
-            },
-        }
-
-        setPresentationData(updatedPresentationData)
     }
-
-    const [slidesState, setSlidesState] = useState(presentationData.slides)
 
     function handleAddSlide(): void {
         const newSlideId = generateUniqueId()
-
         const newSlide = {
+            ...emptySlide,
             id: newSlideId,
-            objects: [],
-            background: background3,
+            objects: [newSlideTextBlock],
         }
 
         setSlidesState((prevSlides) => [...prevSlides, newSlide])
         const updatedPresentationData = {
             ...presentationData,
             slides: [...slides, newSlide],
+            selection: {
+                slideId: newSlideId,
+            },
         }
 
         setPresentationData(updatedPresentationData)
@@ -72,13 +60,21 @@ function PresentationView() {
                 ? slidesState[removedIndex - 1].id
                 : undefined
 
-        setSlidesState(slidesState.filter((slide) => slide.id !== slideId))
+        const newSlidesState = slidesState.filter(
+            (slide) => slide.id !== slideId,
+        )
+
+        setSlidesState(newSlidesState)
+
+        const updatedPresentationData = {
+            ...presentationData,
+            slides: newSlidesState,
+        }
+
+        setPresentationData(updatedPresentationData)
+
         setSelectedSlideId(newSelectedSlideId)
     }
-
-    const [selectedObjectId, setSelectedObjectId] = useState(
-        selection?.objectId,
-    )
 
     function handleObjectClick(clickedObjectId: string): void {
         if (clickedObjectId === selectedObjectId) {
@@ -88,13 +84,12 @@ function PresentationView() {
         }
     }
 
-    console.log('presentationData: ', presentationData)
     const selectedSlide = presentationData.slides.find(
         (slide) => slide.id === selectedSlideId,
     )
 
     const handlePresentationNameChange = (newName: string) => {
-        presentationData.name = newName
+        setPresentationData({ ...presentationData, name: newName })
     }
 
     return (
@@ -109,18 +104,21 @@ function PresentationView() {
                 objects={selectedSlide?.objects}
                 onAddSlide={handleAddSlide}
                 onRemoveSlide={handleRemoveSlide}
+                isAddingText={isAddingText}
+                setIsAddingText={setIsAddingText}
             ></Bars>
             <div className={styles.workfield}>
                 <SideSlides
-                    slides={slidesState}
+                    presentationData={presentationData}
                     selectedSlideId={selectedSlideId}
                     onSlideClick={handleSlideClick}
-                ></SideSlides>
+                />
                 {selectedSlide && (
                     <SlideEditor
                         selectedSlide={selectedSlide}
                         selectedObjectId={selectedObjectId}
                         onObjectClick={handleObjectClick}
+                        isAddingText={isAddingText}
                     ></SlideEditor>
                 )}
             </div>

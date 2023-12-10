@@ -1,8 +1,7 @@
 import { Menu } from './Menu'
 import { Toolbar } from './Toolbar'
 import React from 'react'
-import { Primitive, TextBlock, Image, Presentation } from '../../types'
-import { usePresentationDataContext } from '../PresentationDataContext'
+import { Primitive, TextBlock, Image } from '../../types'
 
 function Bars(props: {
     selectedObjectId?: string
@@ -10,6 +9,8 @@ function Bars(props: {
     objects?: Array<Primitive | Image | TextBlock>
     onAddSlide: () => void
     onRemoveSlide: (slideId: string) => void
+    isAddingText: boolean
+    setIsAddingText: (isAddingText: boolean) => void
 }) {
     return (
         <div>
@@ -23,6 +24,8 @@ function Bars(props: {
                 objects={props.objects}
                 onAddSlide={props.onAddSlide}
                 onRemoveSlide={props.onRemoveSlide}
+                isAddingText={props.isAddingText}
+                setIsAddingText={props.setIsAddingText}
             ></Toolbar>
         </div>
     )

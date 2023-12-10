@@ -1,13 +1,14 @@
 import styles from './InitPresentation.module.css'
 import React, { ChangeEvent } from 'react'
 
-interface UploadPresentationProps {
+interface UploadFileProps {
+    value: string
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
     fileInputRef: React.RefObject<HTMLInputElement>
     onButtonClick: () => void
 }
 
-function UploadPresentation(props: UploadPresentationProps) {
+function UploadFile(props: UploadFileProps) {
     return (
         <div>
             <input
@@ -20,10 +21,10 @@ function UploadPresentation(props: UploadPresentationProps) {
                 onClick={props.onButtonClick}
                 className={styles.uploadButton}
             >
-                Загрузить презентацию
+                {props.value}
             </button>
         </div>
     )
 }
 
-export { UploadPresentation }
+export { UploadFile }

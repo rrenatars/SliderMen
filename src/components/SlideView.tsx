@@ -12,27 +12,33 @@ function SlideView(props: {
     isSlideSelected?: boolean
     selectedObjectId?: string
     onObjectClick?: (objectId: string) => void
+    isAddingText?: boolean
 }) {
     const { objects, background } = props.slideData
+    const slideStyles = {
+        backgroundColor: background.color.hex,
+        cursor: props.isAddingText ? 'crosshair' : 'auto',
+        ...(props.isSlideSelected && {
+            outlineColor: 'blue',
+            outlineWidth: '3px',
+        }),
+    }
 
     return (
         <div className={styles.indexAndSideSlide}>
-            <div className={styles.slideIndex}>{props.index}</div>
+            {props.index && (
+                <div className={styles.slideIndex}>{props.index}</div>
+            )}
             <div
                 className={props.selectionSlideClass || styles.sideSlide}
-                style={{
-                    backgroundColor: background.color.hex,
-                    ...(props.isSlideSelected && {
-                        outlineColor: 'blue',
-                        outlineWidth: '3px',
-                    }),
-                }}
+                style={slideStyles}
                 onClick={props.onClick}
             >
                 {objects.map((object) => (
                     <ObjectBlock
                         key={object.id}
                         objectData={object}
+                        selectedSlideId={props.slideData.id}
                         scale={props.scale || 100}
                         isSelected={object.id === props.selectedObjectId}
                         onClick={() =>

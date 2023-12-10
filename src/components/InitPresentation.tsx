@@ -1,10 +1,10 @@
 import { useImportFileHandler } from '../hooks/useImportFileHandler'
-import { PresentationView } from './PresentationView'
 import React, { useRef } from 'react'
 import styles from './InitPresentation.module.css'
 import { emptyPresentation } from '../testData3'
-import { UploadPresentation } from './UploadPresentation'
+import { UploadFile } from './UploadFile'
 import { ContextInit } from './ContextInit'
+import { generateUniqueId } from '../tools'
 
 function InitPresentation() {
     const { presentationData, error, handleFileChange, setPresentationData } =
@@ -18,18 +18,35 @@ function InitPresentation() {
     }
 
     const handleNewPresentationClick = () => {
-        setPresentationData(emptyPresentation)
+        const startSlideId = generateUniqueId()
+
+        const newPresentation = {
+            ...emptyPresentation,
+            id: generateUniqueId(),
+            slides: [
+                {
+                    ...emptyPresentation.slides[0],
+                    id: startSlideId,
+                },
+            ],
+            selection: {
+                slideId: startSlideId,
+            },
+        }
+
+        setPresentationData(newPresentation)
     }
 
     return (
         <div>
             {!presentationData ? (
                 <div className={styles.entryContainer}>
-                    <UploadPresentation
+                    <UploadFile
+                        value={'Загрузить презентацию'}
                         onChange={handleFileChange}
                         fileInputRef={fileInputRef}
                         onButtonClick={handleButtonClick}
-                    ></UploadPresentation>
+                    ></UploadFile>
                     <button
                         onClick={handleNewPresentationClick}
                         className={styles.newPresentationButton}

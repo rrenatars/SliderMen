@@ -1,12 +1,18 @@
 import { TextBlock } from '../../types'
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { usePresentationDataContext } from '../PresentationDataContext'
+import styles from './SlideTextBlock.module.css'
 
 function SlideTextBlock(props: {
     textBlockData: TextBlock
+    selectedSlideId: string
     scale: number
     isSelected: boolean
     onClick?: React.MouseEventHandler<HTMLDivElement> | undefined
 }) {
+    const { presentationData, setPresentationData } =
+        usePresentationDataContext()
+
     const { value, color, fontSize, fontFamily, coordinates, width, height } =
         props.textBlockData
 
@@ -15,22 +21,53 @@ function SlideTextBlock(props: {
     const [isEditing, setIsEditing] = useState(false)
     const [editedValue, setEditedValue] = useState(value)
 
-    const handleClick = () => {
-        setIsEditing(!isEditing)
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (scalePercent === 1) {
+            setIsEditing(true)
+            if (props.onClick && !props.isSelected) {
+                props.onClick(e)
+            }
+        }
     }
 
-    const handleBlur = (e: ChangeEvent<HTMLDivElement>) => {
+    const handleBlur = (e: React.SyntheticEvent<HTMLDivElement>) => {
         setIsEditing(false)
-        const newTextContent = e.target.textContent
+        const newTextContent = e.currentTarget.textContent
         if (newTextContent !== null) {
             setEditedValue(newTextContent)
+            const updatedPresentationData = {
+                ...presentationData,
+                slides: presentationData.slides.map((slide) =>
+                    slide.id === props.selectedSlideId
+                        ? {
+                              ...slide,
+                              objects: slide.objects.map((object) =>
+                                  object.id === props.textBlockData.id
+                                      ? { ...object, value: newTextContent }
+                                      : object,
+                              ),
+                          }
+                        : slide,
+                ),
+                selection: {
+                    ...presentationData.selection,
+                    slideId: props.selectedSlideId,
+                    objectId: undefined,
+                },
+            }
+
+            setPresentationData(updatedPresentationData)
+        }
+
+        if (props.onClick) {
+            props.onClick(e as React.MouseEvent<HTMLDivElement>)
         }
     }
 
     return (
         <div
-            onClick={props.onClick}
-            onDoubleClick={handleClick}
+            className={styles.textBlock}
+            onClick={handleClick}
             contentEditable={isEditing}
             onBlur={handleBlur}
             style={{
@@ -47,9 +84,10 @@ function SlideTextBlock(props: {
                 outline:
                     isEditing || props.isSelected ? '2px solid blue' : 'none',
             }}
-        >
-            {editedValue}
-        </div>
+            dangerouslySetInnerHTML={{
+                __html: isEditing ? editedValue : editedValue,
+            }}
+        />
     )
 }
 
