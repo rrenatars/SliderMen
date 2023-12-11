@@ -1,20 +1,28 @@
 import { TextBlock } from '../../types'
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import { usePresentationDataContext } from '../PresentationDataContext'
 import styles from './SlideTextBlock.module.css'
+import { useDragAndDrop } from '../../hooks/useDragAndDrop'
 
-function SlideTextBlock(props: {
+interface SlideTextBlockProps {
     textBlockData: TextBlock
     selectedSlideId: string
     scale: number
     isSelected: boolean
     onClick?: React.MouseEventHandler<HTMLDivElement> | undefined
-}) {
+}
+
+const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
 
     const { value, color, fontSize, fontFamily, coordinates, width, height } =
         props.textBlockData
+
+    const ref = useRef<HTMLDivElement>(null)
+    const [pos, setPos] = useState({ x: coordinates.x, y: coordinates.y })
+
+    const { isDragging } = useDragAndDrop(ref, setPos, pos)
 
     const scalePercent = props.scale / 100
 
@@ -66,6 +74,7 @@ function SlideTextBlock(props: {
 
     return (
         <div
+            ref={ref}
             className={styles.textBlock}
             onClick={handleClick}
             contentEditable={isEditing}
@@ -78,11 +87,13 @@ function SlideTextBlock(props: {
                 fontSize: fontSize * scalePercent,
                 fontFamily: fontFamily,
                 lineHeight: (fontSize + 10) * scalePercent + 'px',
-                top: coordinates.y * scalePercent,
-                left: coordinates.x * scalePercent,
+                top: pos.y * scalePercent,
+                left: pos.x * scalePercent,
                 opacity: color.opacity,
                 outline:
                     isEditing || props.isSelected ? '2px solid blue' : 'none',
+                cursor: 'move',
+                resize: 'both',
             }}
             dangerouslySetInnerHTML={{
                 __html: isEditing ? editedValue : editedValue,

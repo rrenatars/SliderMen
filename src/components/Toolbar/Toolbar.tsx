@@ -117,7 +117,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         }
     }, [props.isAddingText])
 
-    const handleContextMenu = (e: React.MouseEvent) => {
+    const handleContextMenuClick = (e: React.MouseEvent) => {
         e.preventDefault()
         setContextMenuPosition({ top: e.clientY + 8, left: e.clientX - 11 })
         setContextMenuVisible(!contextMenuVisible)
@@ -126,6 +126,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     return (
         <div className={styles.toolbar}>
             <div
+                onClick={handleNewTextButton}
                 className={styles.toolbarIconContainer}
                 style={{
                     ...(props.isAddingText && {
@@ -136,13 +137,13 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                 }}
             >
                 <img
-                    onClick={handleNewTextButton}
                     className={styles.toolbarIcon}
                     src={textFieldImage}
                     alt=""
                 />
             </div>
             <div
+                onClick={handleContextMenuClick}
                 className={styles.toolbarIconContainer}
                 style={{
                     ...(contextMenuVisible && {
@@ -152,31 +153,30 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                     }),
                 }}
             >
-                <img
-                    onClick={handleContextMenu}
-                    className={styles.toolbarIcon}
-                    src={iconImage}
-                    alt=""
-                />
+                <img className={styles.toolbarIcon} src={iconImage} alt="" />
             </div>
             <div className={styles.toolbarIconContainer}>
                 <img className={styles.toolbarIcon} src={figureIcon} alt="" />
             </div>
-            <div className={styles.toolbarIconContainer}>
+            <div
+                onClick={props.onAddSlide}
+                className={styles.toolbarIconContainer}
+            >
                 <img
-                    onClick={props.onAddSlide}
                     className={styles.toolbarIcon}
                     src={newSlideButton}
                     alt="Добавить слайд"
                     title="Добавить слайд"
                 />
             </div>
-            <div className={styles.toolbarIconContainer}>
+            <div
+                onClick={() =>
+                    props.selectedSlideId &&
+                    props.onRemoveSlide(props.selectedSlideId)
+                }
+                className={styles.toolbarIconContainer}
+            >
                 <img
-                    onClick={() =>
-                        props.selectedSlideId &&
-                        props.onRemoveSlide(props.selectedSlideId)
-                    }
                     className={styles.toolbarIcon}
                     src={binIcon}
                     alt="Удалить слайд"

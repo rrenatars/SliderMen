@@ -3,7 +3,7 @@ import { Bars } from './Toolbar/Bars'
 import { SideSlides } from './SideSlides'
 import styles from './PresentationView.module.css'
 import { SlideEditor } from './SlideEditor'
-import { emptySlide, newSlideTextBlock, presentation } from '../testData3'
+import { emptySlide, newSlideTextBlock } from '../testData3'
 import { PresentationName } from './PresentationName'
 import { generateUniqueId } from '../tools'
 import { usePresentationDataContext } from './PresentationDataContext'
@@ -49,6 +49,10 @@ function PresentationView() {
     }
 
     function handleRemoveSlide(slideId: string): void {
+        setSlidesState((prevSlidesState) =>
+            prevSlidesState.filter((slide) => slide.id !== slideId),
+        )
+
         const removedIndex = slidesState.findIndex(
             (slide) => slide.id === slideId,
         )
@@ -60,15 +64,9 @@ function PresentationView() {
                 ? slidesState[removedIndex - 1].id
                 : undefined
 
-        const newSlidesState = slidesState.filter(
-            (slide) => slide.id !== slideId,
-        )
-
-        setSlidesState(newSlidesState)
-
         const updatedPresentationData = {
             ...presentationData,
-            slides: newSlidesState,
+            slides: slidesState.filter((slide) => slide.id !== slideId),
         }
 
         setPresentationData(updatedPresentationData)
@@ -92,12 +90,21 @@ function PresentationView() {
         setPresentationData({ ...presentationData, name: newName })
     }
 
+    useEffect(() => {
+        setSlidesState(presentationData.slides)
+    }, [presentationData])
+
     return (
-        <div>
+        <div
+            style={{
+                zIndex: 11,
+            }}
+        >
             <PresentationName
                 name={name}
                 onChange={handlePresentationNameChange}
             ></PresentationName>
+            <div className={styles.icon}></div>
             <Bars
                 selectedObjectId={selectedObjectId}
                 selectedSlideId={selectedSlideId}
@@ -109,7 +116,7 @@ function PresentationView() {
             ></Bars>
             <div className={styles.workfield}>
                 <SideSlides
-                    presentationData={presentationData}
+                    slides={presentationData.slides}
                     selectedSlideId={selectedSlideId}
                     onSlideClick={handleSlideClick}
                 />

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Primitive } from '../../types'
+import { useDragAndDrop } from '../../hooks/useDragAndDrop'
+import { usePresentationDataContext } from '../PresentationDataContext'
 
 function PrimitiveBlock(props: {
     primitiveBlockData: Primitive
@@ -8,6 +10,7 @@ function PrimitiveBlock(props: {
     onClick?: React.MouseEventHandler<SVGSVGElement> | undefined
 }) {
     const {
+        id,
         primitiveType,
         outlineColor,
         fillColor,
@@ -15,6 +18,36 @@ function PrimitiveBlock(props: {
         width,
         height,
     } = props.primitiveBlockData
+
+    const ref = useRef<HTMLDivElement>(null)
+    const [pos, setPos] = useState({ x: coordinates.x, y: coordinates.y })
+
+    const { isDragging } = useDragAndDrop(ref, setPos, pos)
+
+    const { presentationData, setPresentationData } =
+        usePresentationDataContext()
+
+    useEffect(() => {
+        const updatedSlides = presentationData.slides.map((slide) => {
+            return {
+                ...slide,
+                objects: slide.objects.map((obj) => {
+                    if (obj.id === id) {
+                        return {
+                            ...obj,
+                            coordinates: pos,
+                        }
+                    }
+                    return obj
+                }),
+            }
+        })
+
+        setPresentationData({
+            ...presentationData,
+            slides: updatedSlides,
+        })
+    }, [isDragging])
 
     const scalePercent = props.scale / 100
 
@@ -53,19 +86,22 @@ function PrimitiveBlock(props: {
     }
 
     return (
-        <svg
-            onClick={props.onClick}
-            style={{
-                position: 'absolute',
-                left: coordinates.x * scalePercent,
-                top: coordinates.y * scalePercent,
-                width: width * scalePercent,
-                height: height * scalePercent,
-                border: props.isSelected ? '2px solid blue' : 'none',
-            }}
-        >
-            {shapeElement}
-        </svg>
+        <div ref={ref}>
+            <svg
+                onClick={props.onClick}
+                style={{
+                    position: 'absolute',
+                    left: pos.x * scalePercent,
+                    top: pos.y * scalePercent,
+                    width: width * scalePercent,
+                    height: height * scalePercent,
+                    border: props.isSelected ? '2px solid blue' : 'none',
+                    cursor: 'move',
+                }}
+            >
+                {shapeElement}
+            </svg>
+        </div>
     )
 }
 

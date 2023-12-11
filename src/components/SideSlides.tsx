@@ -1,26 +1,50 @@
-import styles from './PresentationView.module.css'
+import styles from './SideSlides.module.css'
 import { SlideView } from './SlideView'
-import { Presentation, Slide } from '../types'
-import React from 'react'
-import { presentation } from '../testData3'
+import React, { useEffect } from 'react'
 import { usePresentationDataContext } from './PresentationDataContext'
+import { useDraggableList } from '../hooks/useDraggableList'
+import { Slide } from '../types'
 
 function SideSlides(props: {
-    presentationData: Presentation
+    slides: Slide[]
     selectedSlideId?: string
     onSlideClick: (slideId: string) => void
 }) {
+    const { presentationData, setPresentationData } =
+        usePresentationDataContext()
+
+    const { dragAndDrop, onDragStart, onDragOver, onDrop, list } =
+        useDraggableList({
+            slides: props.slides,
+        })
+
+    useEffect(() => {
+        setPresentationData({
+            ...presentationData,
+            slides: list,
+        })
+    }, [dragAndDrop])
+
     return (
         <div className={styles.slides}>
-            {props.presentationData.slides.map((slide, index) => (
-                <SlideView
-                    slideData={slide}
+            {list.map((slide, index) => (
+                <div
                     key={slide.id}
-                    scale={20}
-                    index={index + 1}
-                    onClick={() => props.onSlideClick(slide.id)}
-                    isSlideSelected={props.selectedSlideId === slide.id}
-                ></SlideView>
+                    onDrop={onDrop}
+                    onDragOver={onDragOver}
+                    onDragStart={onDragStart}
+                    draggable // Added draggable attribute to make the element draggable
+                    data-position={index} // Added data-position to store the index
+                >
+                    <SlideView
+                        slideData={slide}
+                        // key={slide.id}
+                        scale={20}
+                        index={index + 1}
+                        onClick={() => props.onSlideClick(slide.id)}
+                        isSlideSelected={props.selectedSlideId === slide.id}
+                    ></SlideView>
+                </div>
             ))}
         </div>
     )

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Slide } from '../types'
 import styles from './SlideView.module.css'
 import { ObjectBlock } from './Objects/ObjectBlock'
+import { useDraggableList } from '../hooks/useDraggableList'
 
 function SlideView(props: {
     slideData: Slide
@@ -15,6 +16,7 @@ function SlideView(props: {
     isAddingText?: boolean
 }) {
     const { objects, background } = props.slideData
+
     const slideStyles = {
         backgroundColor: background.color.hex,
         cursor: props.isAddingText ? 'crosshair' : 'auto',

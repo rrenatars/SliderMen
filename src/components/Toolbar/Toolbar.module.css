@@ -15,10 +15,10 @@
 .toolbarIconContainer:hover {
     background: #d9dcea;
     padding: 8px;
+    cursor: pointer;
 }
 
 .toolbarIcon {
     width: 20px;
     height: 20px;
-    cursor: pointer;
 }
