@@ -65,7 +65,6 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
                 style={{
                     width: width * scalePercent,
                     height: height * scalePercent,
-                    resize: 'both',
                 }}
             />
         </div>

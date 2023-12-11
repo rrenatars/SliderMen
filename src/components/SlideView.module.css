@@ -1,20 +1,20 @@
 .sideSlide {
-  position: relative;
-  width: 200px;
-  height: 100px;
-  outline: 2px solid #c4c7c5;
-  border-radius: 10px;
-  cursor: default;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    outline: 2px solid #c4c7c5;
+    border-radius: 10px;
+    cursor: default;
 }
 
 .dragging {
-  /* Define the styles for the dragged element */
-  border: 2px dashed #333; /* For example, you can use a dashed border */
-  opacity: 0.7; /* Adjust the opacity for a semi-transparent look */
+    /* Define the styles for the dragged element */
+    border: 2px dashed #333; /* For example, you can use a dashed border */
+    opacity: 0.7; /* Adjust the opacity for a semi-transparent look */
 }
 
 .indexAndSideSlide {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
 }

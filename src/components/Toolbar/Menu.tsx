@@ -2,7 +2,7 @@ import styles from './Menu.module.css'
 import React from 'react'
 import { Image, Primitive, TextBlock } from '../../types'
 import { ObjectMenuButton } from './ObjectMenuButton'
-import { useExportPresentationToJson } from './export'
+import { useExportPresentationToJSON } from '../../hooks/useExportPresentationToJSON'
 import { usePresentationDataContext } from '../PresentationDataContext'
 
 function Menu(props: {
@@ -17,7 +17,7 @@ function Menu(props: {
             ?.type || null
 
     function handleClickExport() {
-        useExportPresentationToJson(presentationData)
+        useExportPresentationToJSON(presentationData)
     }
 
     return (

@@ -11,6 +11,7 @@ import { usePresentationDataContext } from './PresentationDataContext'
 function PresentationView() {
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
+
     const { name, slides, selection } = presentationData
 
     const [selectedSlideId, setSelectedSlideId] = useState(

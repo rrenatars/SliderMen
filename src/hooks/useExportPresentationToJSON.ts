@@ -1,6 +1,6 @@
-import { Presentation } from '../../types'
+import { Presentation } from '../types'
 
-function useExportPresentationToJson(presentationData: Presentation) {
+function useExportPresentationToJSON(presentationData: Presentation) {
     const text = JSON.stringify(presentationData)
     const name = presentationData.name + '.json'
     const type = 'text/plain'
@@ -14,4 +14,4 @@ function useExportPresentationToJson(presentationData: Presentation) {
     a.remove()
 }
 
-export { useExportPresentationToJson }
+export { useExportPresentationToJSON }

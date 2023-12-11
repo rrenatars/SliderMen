@@ -93,7 +93,6 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                 outline:
                     isEditing || props.isSelected ? '2px solid blue' : 'none',
                 cursor: 'move',
-                resize: 'both',
             }}
             dangerouslySetInnerHTML={{
                 __html: isEditing ? editedValue : editedValue,
