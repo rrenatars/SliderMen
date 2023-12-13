@@ -104,30 +104,30 @@ const textBlock4: TextBlock = {
 const newStartSlideTextBlock: TextBlock = {
     id: generateUniqueId(),
     coordinates: {
-        x: 250,
-        y: 200,
+        x: 200,
+        y: 125,
     },
     width: 600,
     height: 150,
     value: 'Введите заголовок',
     color: blackColor,
     fontSize: 52,
-    fontFamily: 'Consolas',
+    fontFamily: 'Arial',
     type: ObjectType.TEXTBLOCK,
 }
 
 const newSlideTextBlock: TextBlock = {
     id: generateUniqueId(),
     coordinates: {
-        x: 50,
-        y: 50,
+        x: 30,
+        y: 40,
     },
     width: 300,
-    height: 75,
+    height: 50,
     value: 'Введите заголовок',
     color: blackColor,
     fontSize: 25,
-    fontFamily: 'Consolas',
+    fontFamily: 'Arial',
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -135,11 +135,11 @@ const newTextBlock: TextBlock = {
     id: generateUniqueId(),
     value: 'Новый текст',
     coordinates: { x: 100, y: 200 },
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 50,
     color: blackColor,
-    fontSize: 14,
-    fontFamily: 'Consolas',
+    fontSize: 20,
+    fontFamily: 'Arial',
     type: ObjectType.TEXTBLOCK,
 }
 

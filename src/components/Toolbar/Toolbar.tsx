@@ -18,6 +18,7 @@ import { generateUniqueId } from '../../tools'
 import { usePresentationDataContext } from '../PresentationDataContext'
 import { UploadFile } from '../UploadFile'
 import { ContextMenu } from '../ContextMenu'
+import { LinkInput } from './LinkInput'
 
 interface ToolbarProps {
     selectedObjectId?: string
@@ -38,14 +39,13 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         top: 0,
         left: 0,
     })
-    // const [isAddingText, setIsAddingText] = useState(props.isAddingText)
+    const [linkPopupVisible, setLinkPopupVisible] = useState(false)
 
     const selectedObjectType =
         props.objects?.find((object) => object.id === props.selectedObjectId)
             ?.type || null
 
     const handleNewTextButton = () => {
-        // Изменение стиля курсора при первом клике
         props.setIsAddingText(true)
     }
 
@@ -183,17 +183,25 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                     title="Удалить слайд"
                 />
             </div>
-            {contextMenuVisible && (
+            {props.selectedSlideId && contextMenuVisible && (
                 <ContextMenu
                     setContextMenuVisible={setContextMenuVisible}
+                    setLinkPopupVisible={setLinkPopupVisible}
                     contextMenuPosition={contextMenuPosition}
                     selectedSlideId={props.selectedSlideId}
                 />
             )}
+
             {selectedObjectType && (
                 <ObjectToolbarButton
                     selectedObjectType={selectedObjectType}
                 ></ObjectToolbarButton>
+            )}
+            {props.selectedSlideId && linkPopupVisible && (
+                <LinkInput
+                    selectedSlideId={props.selectedSlideId}
+                    setLinkPopupVisible={setLinkPopupVisible}
+                ></LinkInput>
             )}
         </div>
     )

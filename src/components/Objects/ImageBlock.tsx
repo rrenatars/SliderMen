@@ -11,12 +11,32 @@ interface ImageBlockProps {
 }
 
 const ImageBlock: React.FC<ImageBlockProps> = (props) => {
-    const { id, coordinates, width, height, base64 } = props.imageBlockData
+    const { id, coordinates, width, height, base64, url } = props.imageBlockData
 
-    const ref = useRef<HTMLDivElement>(null)
-    const [pos, setPos] = useState({ x: coordinates.x, y: coordinates.y })
+    const refBlock = useRef<HTMLDivElement>(null)
+    const refSize = useRef<HTMLDivElement>(null)
+    const [posBlock, setPosBlock] = useState({
+        x: coordinates.x,
+        y: coordinates.y,
+    })
 
-    const { isDragging } = useDragAndDrop(ref, setPos, pos)
+    const [posSize, setPosSize] = useState({
+        x: width,
+        y: height,
+    })
+
+    const { isDragging } = useDragAndDrop(
+        refBlock,
+        setPosBlock,
+        posBlock,
+        'pos',
+    )
+    const { isDragging: isDraggingSize } = useDragAndDrop(
+        refSize,
+        setPosSize,
+        posSize,
+        'size',
+    )
 
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
@@ -29,7 +49,9 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
                     if (obj.id === id) {
                         return {
                             ...obj,
-                            coordinates: pos,
+                            coordinates: posBlock,
+                            width: posSize.x,
+                            height: posSize.y,
                         }
                     }
                     return obj
@@ -45,28 +67,46 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
 
     const scalePercent = props.scale / 100
 
+    console.log('base 64: ', base64 ? base64 : url)
+
     return (
-        <div
-            ref={ref}
-            onClick={props.onClick}
-            style={{
-                width: width * scalePercent,
-                height: height * scalePercent,
-                top: pos.y * scalePercent,
-                left: pos.x * scalePercent,
-                position: 'absolute',
-                border: props.isSelected ? '2px solid blue' : 'none',
-                cursor: 'move',
-            }}
-        >
-            <img
-                src={base64}
-                alt=""
+        <div>
+            <div
+                ref={refBlock}
+                onClick={props.onClick}
                 style={{
-                    width: width * scalePercent,
-                    height: height * scalePercent,
+                    width: posSize.x * scalePercent,
+                    height: posSize.y * scalePercent,
+                    top: posBlock.y * scalePercent,
+                    left: posBlock.x * scalePercent,
+                    position: 'absolute',
+                    border: props.isSelected ? '2px solid blue' : 'none',
+                    cursor: isDragging ? 'grabbing' : 'grab',
                 }}
-            />
+            >
+                <img
+                    src={base64 ? base64 : url}
+                    alt=""
+                    style={{
+                        width: posSize.x * scalePercent,
+                        height: posSize.y * scalePercent,
+                    }}
+                />
+            </div>
+            <div
+                ref={refSize}
+                style={{
+                    position: 'absolute',
+                    width: '10px',
+                    height: '10px',
+                    top: posBlock.y * scalePercent - 7,
+                    left: posBlock.x * scalePercent - 8,
+                    background: 'blue',
+                    cursor: 'nwse-resize',
+                    border: '1px solid white',
+                    visibility: props.isSelected ? 'visible' : 'hidden',
+                }}
+            ></div>
         </div>
     )
 }

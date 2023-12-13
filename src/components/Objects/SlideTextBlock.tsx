@@ -16,13 +16,41 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
 
-    const { value, color, fontSize, fontFamily, coordinates, width, height } =
-        props.textBlockData
+    const {
+        id,
+        value,
+        color,
+        fontSize,
+        fontFamily,
+        coordinates,
+        width,
+        height,
+    } = props.textBlockData
 
-    const ref = useRef<HTMLDivElement>(null)
-    const [pos, setPos] = useState({ x: coordinates.x, y: coordinates.y })
+    const refBlock = useRef<HTMLDivElement>(null)
+    const refSize = useRef<HTMLDivElement>(null)
+    const [posBlock, setPosBlock] = useState({
+        x: coordinates.x,
+        y: coordinates.y,
+    })
 
-    const { isDragging } = useDragAndDrop(ref, setPos, pos)
+    const [posSize, setPosSize] = useState({
+        x: width,
+        y: height,
+    })
+
+    const { isDragging } = useDragAndDrop(
+        refBlock,
+        setPosBlock,
+        posBlock,
+        'pos',
+    )
+    const { isDragging: isDraggingSize } = useDragAndDrop(
+        refSize,
+        setPosSize,
+        posSize,
+        'size',
+    )
 
     const scalePercent = props.scale / 100
 
@@ -39,65 +67,138 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
     }
 
     const handleBlur = (e: React.SyntheticEvent<HTMLDivElement>) => {
-        setIsEditing(false)
-        const newTextContent = e.currentTarget.textContent
-        if (newTextContent !== null) {
-            setEditedValue(newTextContent)
-            const updatedPresentationData = {
-                ...presentationData,
-                slides: presentationData.slides.map((slide) =>
-                    slide.id === props.selectedSlideId
-                        ? {
-                              ...slide,
-                              objects: slide.objects.map((object) =>
-                                  object.id === props.textBlockData.id
-                                      ? { ...object, value: newTextContent }
-                                      : object,
-                              ),
-                          }
-                        : slide,
-                ),
-                selection: {
-                    ...presentationData.selection,
-                    slideId: props.selectedSlideId,
-                    objectId: undefined,
-                },
+        if (!isDragging) {
+            setIsEditing(false)
+            const newTextContent = e.currentTarget.textContent
+            if (newTextContent !== null) {
+                setEditedValue(newTextContent)
+                // const updatedPresentationData = {
+                //     ...presentationData,
+                //     slides: presentationData.slides.map((slide) =>
+                //         slide.id === props.selectedSlideId
+                //             ? {
+                //                   ...slide,
+                //                   objects: slide.objects.map((object) =>
+                //                       object.id === props.textBlockData.id
+                //                           ? {
+                //                                 ...object,
+                //                                 value: newTextContent,
+                //                                 coordinates: posBlock,
+                //                                 width: posSize.x,
+                //                                 height: posSize.y,
+                //                             }
+                //                           : object,
+                //                   ),
+                //               }
+                //             : slide,
+                //     ),
+                //     selection: {
+                //         ...presentationData.selection,
+                //         slideId: props.selectedSlideId,
+                //         objectId: undefined,
+                //     },
+                // }
+
+                const updatedSlides = presentationData.slides.map((slide) => {
+                    return {
+                        ...slide,
+                        objects: slide.objects.map((obj) => {
+                            if (obj.id === id) {
+                                return {
+                                    ...obj,
+                                    value: newTextContent,
+                                    coordinates: posBlock,
+                                    width: posSize.x,
+                                    height: posSize.y,
+                                }
+                            }
+                            return obj
+                        }),
+                    }
+                })
+
+                // setPresentationData(updatedPresentationData)
+
+                setPresentationData({
+                    ...presentationData,
+                    slides: updatedSlides,
+                    selection: {
+                        ...presentationData.selection,
+                        slideId: props.selectedSlideId,
+                        objectId: undefined,
+                    },
+                })
             }
 
-            setPresentationData(updatedPresentationData)
-        }
-
-        if (props.onClick) {
-            props.onClick(e as React.MouseEvent<HTMLDivElement>)
+            if (props.onClick) {
+                props.onClick(e as React.MouseEvent<HTMLDivElement>)
+            }
         }
     }
 
     return (
-        <div
-            ref={ref}
-            className={styles.textBlock}
-            onClick={handleClick}
-            contentEditable={isEditing}
-            onBlur={handleBlur}
-            style={{
-                position: 'absolute',
-                color: color.hex,
-                width: width * scalePercent,
-                height: height * scalePercent,
-                fontSize: fontSize * scalePercent,
-                fontFamily: fontFamily,
-                lineHeight: (fontSize + 10) * scalePercent + 'px',
-                top: pos.y * scalePercent,
-                left: pos.x * scalePercent,
-                opacity: color.opacity,
-                outline:
-                    isEditing || props.isSelected ? '2px solid blue' : 'none',
-                cursor: 'move',
-            }}
-            dangerouslySetInnerHTML={{
-                __html: isEditing ? editedValue : editedValue,
-            }}
-        />
+        <div>
+            <div
+                ref={refBlock}
+                style={{
+                    position: 'absolute',
+                    width: posSize.x * scalePercent + 4,
+                    height: posSize.y * scalePercent + 2,
+                    top: posBlock.y * scalePercent - 4,
+                    left: posBlock.x * scalePercent - 5,
+                    border: '4px solid blue',
+                    cursor: isDragging ? 'grabbing' : 'grab',
+                    visibility: isEditing ? 'visible' : 'hidden',
+                }}
+            ></div>
+            <div
+                ref={refSize}
+                style={{
+                    position: 'absolute',
+                    width: '10px',
+                    height: '10px',
+                    top: posBlock.y * scalePercent - 7,
+                    left: posBlock.x * scalePercent - 8,
+                    background: 'blue',
+                    cursor: 'nwse-resize',
+                    border: '1px solid white',
+                    visibility: isEditing ? 'visible' : 'hidden',
+                }}
+            ></div>
+            {/*{isEditing && (*/}
+            {/*    <div*/}
+            {/*        style={{*/}
+            {/*            width: posSize.x * scalePercent + 4,*/}
+            {/*            height: posSize.y * scalePercent + 2,*/}
+            {/*            position: 'absolute',*/}
+            {/*            border: '1px solid black',*/}
+            {/*            top: posBlock.y * scalePercent,*/}
+            {/*            left: posBlock.x * scalePercent - 5,*/}
+            {/*        }}*/}
+            {/*    ></div>*/}
+            {/*)}*/}
+            <div
+                className={styles.textBlock}
+                onClick={handleClick}
+                contentEditable={isEditing}
+                onBlur={handleBlur}
+                suppressContentEditableWarning={true}
+                style={{
+                    position: 'absolute',
+                    color: color.hex,
+                    width: posSize.x * scalePercent + 4,
+                    height: posSize.y * scalePercent + 2,
+                    fontSize: fontSize * scalePercent,
+                    fontFamily: fontFamily,
+                    lineHeight: (fontSize + 10) * scalePercent + 'px',
+                    top: posBlock.y * scalePercent,
+                    left: posBlock.x * scalePercent,
+                    opacity: color.opacity,
+                }}
+            >
+                {editedValue}
+            </div>
+        </div>
     )
 }
 

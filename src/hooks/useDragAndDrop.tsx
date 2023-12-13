@@ -9,6 +9,7 @@ const useDragAndDrop = (
     ref: React.RefObject<HTMLElement>,
     setPos: React.Dispatch<React.SetStateAction<Position>>,
     initialPos: Position,
+    type: string,
 ) => {
     const [isDragging, setIsDragging] = useState(false)
     const startPos = useRef<Position | null>(null)
@@ -20,11 +21,13 @@ const useDragAndDrop = (
                     x: e.pageX - startPos.current.x,
                     y: e.pageY - startPos.current.y,
                 }
-                const newPos = {
-                    x: initialPos.x + delta.x,
-                    y: initialPos.y + delta.y,
+                const newSize = {
+                    x: initialPos.x + delta.x * (type === 'size' ? -1 : 1),
+                    y: initialPos.y + delta.y * (type === 'size' ? -1 : 1),
                 }
-                setPos(newPos)
+
+                // Update the size
+                setPos(newSize)
             }
         }
 
@@ -48,6 +51,8 @@ const useDragAndDrop = (
 
         if (ref.current) {
             ref.current.addEventListener('mousedown', handleMouseDown)
+            document.addEventListener('mouseup', handleMouseUp)
+            document.addEventListener('mousemove', handleMouseMove)
         }
 
         return () => {
@@ -55,7 +60,7 @@ const useDragAndDrop = (
                 ref.current.removeEventListener('mousedown', handleMouseDown)
             }
         }
-    }, [ref, isDragging, setPos, initialPos])
+    }, [ref, isDragging])
 
     return { isDragging }
 }

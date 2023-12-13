@@ -1,3 +1,6 @@
 .textBlock {
+    display: flex;
+    justify-content: center;
+    align-items: end;
     word-break: break-word;
 }

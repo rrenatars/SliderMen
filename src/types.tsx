@@ -42,7 +42,8 @@ type Primitive = SlideObject & {
 
 type Image = SlideObject & {
     type: ObjectType.IMAGE
-    base64: string
+    url?: string
+    base64?: string
 }
 
 type Background = {

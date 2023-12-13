@@ -22,7 +22,7 @@ function PrimitiveBlock(props: {
     const ref = useRef<HTMLDivElement>(null)
     const [pos, setPos] = useState({ x: coordinates.x, y: coordinates.y })
 
-    const { isDragging } = useDragAndDrop(ref, setPos, pos)
+    const { isDragging } = useDragAndDrop(ref, setPos, pos, 'pos')
 
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
