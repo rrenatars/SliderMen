@@ -62,32 +62,38 @@ const LinkInput: React.FC<LinkInputProps> = (props) => {
     }
 
     return (
-        <div className={styles.popup}>
-            <div className={styles.popupContainer}>
-                <p className={styles.popupText}>Вставка изображения</p>
-                <input
-                    className={styles.input}
-                    type="text"
-                    placeholder="Введите ссылку"
-                    value={imageUrl}
-                    autoFocus={true}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                />
-                <div className={styles.buttonContainer}>
-                    <button className={styles.button} onClick={handleCancel}>
-                        Отмена
-                    </button>
-                    <button
-                        className={styles.button}
-                        onClick={handleInsertImage}
-                        disabled={!imageUrl}
-                        style={{
-                            background: !imageUrl ? '#6a92b2' : '#3498db',
-                            cursor: !imageUrl ? 'auto' : 'pointer',
-                        }}
-                    >
-                        Вставить изображение
-                    </button>
+        <div>
+            <div className={styles.overlay} />
+            <div className={styles.popup}>
+                <div className={styles.popupContainer}>
+                    <p className={styles.popupText}>Вставка изображения</p>
+                    <input
+                        className={styles.input}
+                        type="text"
+                        placeholder="Введите ссылку"
+                        value={imageUrl}
+                        autoFocus={true}
+                        onChange={(e) => setImageUrl(e.target.value)}
+                    />
+                    <div className={styles.buttonContainer}>
+                        <button
+                            className={styles.button}
+                            onClick={handleCancel}
+                        >
+                            Отмена
+                        </button>
+                        <button
+                            className={styles.button}
+                            onClick={handleInsertImage}
+                            disabled={!imageUrl}
+                            style={{
+                                background: !imageUrl ? '#6a92b2' : '#3498db',
+                                cursor: !imageUrl ? 'auto' : 'pointer',
+                            }}
+                        >
+                            Вставить изображение
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

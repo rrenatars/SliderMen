@@ -119,7 +119,13 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 
     const handleContextMenuClick = (e: React.MouseEvent) => {
         e.preventDefault()
-        setContextMenuPosition({ top: e.clientY + 8, left: e.clientX - 11 })
+
+        const clickedElement = e.currentTarget
+        const rect = clickedElement.getBoundingClientRect()
+        const top = rect.top + window.scrollY
+        const left = rect.left + window.scrollX
+
+        setContextMenuPosition({ top: top + 38, left: left })
         setContextMenuVisible(!contextMenuVisible)
     }
 
