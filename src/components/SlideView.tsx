@@ -1,8 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import { Slide } from '../types'
 import styles from './SlideView.module.css'
 import { ObjectBlock } from './Objects/ObjectBlock'
-import { useDraggableList } from '../hooks/useDraggableList'
 
 function SlideView(props: {
     slideData: Slide

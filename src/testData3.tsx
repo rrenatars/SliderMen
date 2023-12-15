@@ -112,7 +112,7 @@ const newStartSlideTextBlock: TextBlock = {
     value: 'Введите заголовок',
     color: blackColor,
     fontSize: 52,
-    fontFamily: 'Arial',
+    fontFamily: 'Consolas',
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -127,7 +127,7 @@ const newSlideTextBlock: TextBlock = {
     value: 'Введите заголовок',
     color: blackColor,
     fontSize: 25,
-    fontFamily: 'Arial',
+    fontFamily: 'Consolas',
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -139,7 +139,7 @@ const newTextBlock: TextBlock = {
     height: 50,
     color: blackColor,
     fontSize: 20,
-    fontFamily: 'Arial',
+    fontFamily: 'Consolas',
     type: ObjectType.TEXTBLOCK,
 }
 

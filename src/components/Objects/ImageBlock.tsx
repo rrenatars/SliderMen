@@ -67,8 +67,6 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
 
     const scalePercent = props.scale / 100
 
-    console.log('base 64: ', base64 ? base64 : url)
-
     return (
         <div>
             <div

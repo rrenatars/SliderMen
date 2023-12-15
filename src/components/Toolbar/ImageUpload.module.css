@@ -1,0 +1,15 @@
+.contextMenuItem {
+  border: none;
+  background: none;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contextMenuItem:hover {
+  background-color: #f0f0f0;
+}
+
+.entry {
+  display: none;
+}

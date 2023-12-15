@@ -45,12 +45,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
         posBlock,
         'pos',
     )
-    const { isDragging: isDraggingSize } = useDragAndDrop(
-        refSize,
-        setPosSize,
-        posSize,
-        'size',
-    )
+    useDragAndDrop(refSize, setPosSize, posSize, 'size')
 
     const scalePercent = props.scale / 100
 
@@ -72,32 +67,6 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
             const newTextContent = e.currentTarget.textContent
             if (newTextContent !== null) {
                 setEditedValue(newTextContent)
-                // const updatedPresentationData = {
-                //     ...presentationData,
-                //     slides: presentationData.slides.map((slide) =>
-                //         slide.id === props.selectedSlideId
-                //             ? {
-                //                   ...slide,
-                //                   objects: slide.objects.map((object) =>
-                //                       object.id === props.textBlockData.id
-                //                           ? {
-                //                                 ...object,
-                //                                 value: newTextContent,
-                //                                 coordinates: posBlock,
-                //                                 width: posSize.x,
-                //                                 height: posSize.y,
-                //                             }
-                //                           : object,
-                //                   ),
-                //               }
-                //             : slide,
-                //     ),
-                //     selection: {
-                //         ...presentationData.selection,
-                //         slideId: props.selectedSlideId,
-                //         objectId: undefined,
-                //     },
-                // }
 
                 const updatedSlides = presentationData.slides.map((slide) => {
                     return {
@@ -117,8 +86,6 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                     }
                 })
 
-                // setPresentationData(updatedPresentationData)
-
                 setPresentationData({
                     ...presentationData,
                     slides: updatedSlides,
@@ -135,6 +102,12 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
             }
         }
     }
+
+    useEffect(() => {
+        if (!props.isSelected) {
+            setIsEditing(false)
+        }
+    }, [props.isSelected])
 
     return (
         <div>

@@ -33,12 +33,12 @@ function SideSlides(props: {
                     onDrop={onDrop}
                     onDragOver={onDragOver}
                     onDragStart={onDragStart}
-                    draggable // Added draggable attribute to make the element draggable
-                    data-position={index} // Added data-position to store the index
+                    draggable
+                    data-position={index}
                 >
                     <SlideView
                         slideData={slide}
-                        // key={slide.id}
+                        key={slide.id}
                         scale={20}
                         index={index + 1}
                         onClick={() => props.onSlideClick(slide.id)}

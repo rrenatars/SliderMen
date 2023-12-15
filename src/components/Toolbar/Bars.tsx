@@ -9,8 +9,8 @@ function Bars(props: {
     objects?: Array<Primitive | Image | TextBlock>
     onAddSlide: () => void
     onRemoveSlide: (slideId: string) => void
-    isAddingText: boolean
-    setIsAddingText: (isAddingText: boolean) => void
+    isAddingTextBlock: boolean
+    setIsAddingTextBlock: (isAddingText: boolean) => void
 }) {
     return (
         <div>
@@ -24,8 +24,8 @@ function Bars(props: {
                 objects={props.objects}
                 onAddSlide={props.onAddSlide}
                 onRemoveSlide={props.onRemoveSlide}
-                isAddingText={props.isAddingText}
-                setIsAddingText={props.setIsAddingText}
+                isAddingTextBlock={props.isAddingTextBlock}
+                setIsAddingTextBlock={props.setIsAddingTextBlock}
             ></Toolbar>
         </div>
     )

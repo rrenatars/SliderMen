@@ -21,7 +21,7 @@ function PresentationView() {
         selection?.objectId,
     )
     const [slidesState, setSlidesState] = useState(presentationData.slides)
-    const [isAddingText, setIsAddingText] = useState(false)
+    const [isAddingTextBlock, setIsAddingTextBlock] = useState(false)
 
     function handleSlideClick(clickedSlideId: string): void {
         setSelectedSlideId(clickedSlideId)
@@ -112,8 +112,8 @@ function PresentationView() {
                 objects={selectedSlide?.objects}
                 onAddSlide={handleAddSlide}
                 onRemoveSlide={handleRemoveSlide}
-                isAddingText={isAddingText}
-                setIsAddingText={setIsAddingText}
+                isAddingTextBlock={isAddingTextBlock}
+                setIsAddingTextBlock={setIsAddingTextBlock}
             ></Bars>
             <div className={styles.workfield}>
                 <SideSlides
@@ -126,7 +126,7 @@ function PresentationView() {
                         selectedSlide={selectedSlide}
                         selectedObjectId={selectedObjectId}
                         onObjectClick={handleObjectClick}
-                        isAddingText={isAddingText}
+                        isAddingText={isAddingTextBlock}
                     ></SlideEditor>
                 )}
             </div>

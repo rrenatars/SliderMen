@@ -4,19 +4,12 @@ import iconImage from '../../images/toolbar/icon-image.png'
 import figureIcon from '../../images/toolbar/figure-icon.png'
 import newSlideButton from '../../images/toolbar/new-slide-button.png'
 import binIcon from '../../images/toolbar/bin-icon.png'
-import React, { useEffect, useRef, useState } from 'react'
-import {
-    Image,
-    ObjectType,
-    Presentation,
-    Primitive,
-    TextBlock,
-} from '../../types'
+import React, { useEffect, useState } from 'react'
+import { Image, Primitive, TextBlock } from '../../types'
 import { ObjectToolbarButton } from './ObjectToolbarButton'
-import { blackColor, newTextBlock } from '../../testData3'
+import { newTextBlock } from '../../testData3'
 import { generateUniqueId } from '../../tools'
 import { usePresentationDataContext } from '../PresentationDataContext'
-import { UploadFile } from '../UploadFile'
 import { ContextMenu } from '../ContextMenu'
 import { LinkInput } from './LinkInput'
 
@@ -26,8 +19,8 @@ interface ToolbarProps {
     objects?: Array<Primitive | Image | TextBlock>
     onAddSlide: () => void
     onRemoveSlide: (slideId: string) => void
-    isAddingText: boolean
-    setIsAddingText: (isAddingText: boolean) => void
+    isAddingTextBlock: boolean
+    setIsAddingTextBlock: (isAddingText: boolean) => void
 }
 
 const Toolbar: React.FC<ToolbarProps> = (props) => {
@@ -41,38 +34,32 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     })
     const [linkPopupVisible, setLinkPopupVisible] = useState(false)
 
-    const selectedObjectType =
-        props.objects?.find((object) => object.id === props.selectedObjectId)
-            ?.type || null
+    const selectedObject = props.objects?.find(
+        (object) => object.id === props.selectedObjectId,
+    )
 
     const handleNewTextButton = () => {
-        props.setIsAddingText(true)
+        props.setIsAddingTextBlock(true)
+        console.log('new text00')
     }
 
     useEffect(() => {
         const handleDocumentClick = (e: MouseEvent) => {
-            if (props.isAddingText) {
-                // Check if the click occurred on the toolbar icon
-                const toolbarIcon = document.querySelector(
-                    `.${styles.toolbarIconContainer}`,
-                )
-                if (toolbarIcon && toolbarIcon.contains(e.target as Node)) {
-                    // Clicked on the toolbar icon, prevent adding text
-                    return
-                }
+            const isToolbarIcon = (e.target as HTMLElement).closest(
+                `.${styles.toolbarIconContainer}`,
+            )
+            const isToolbar = (e.target as HTMLElement).closest(
+                `.${styles.toolbar}`,
+            )
 
+            if (props.isAddingTextBlock && !isToolbarIcon && !isToolbar) {
                 const clickedElement = e.target as HTMLElement
-
-                // Get the parent container of the clicked element
                 const container = clickedElement.parentNode as HTMLElement
 
                 if (container) {
-                    // Calculate the offset within the container
                     const containerRect = container.getBoundingClientRect()
                     const offsetX = e.clientX - containerRect.left - 5
                     const offsetY = e.clientY - containerRect.top - 5
-
-                    // ... rest of your logic
 
                     const updatedSlides = presentationData.slides.map(
                         (slide) => {
@@ -102,20 +89,19 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                     }
 
                     setPresentationData(updatedPresentationData)
-                    // Reset the flag after adding text
-                    props.setIsAddingText(false)
+                    props.setIsAddingTextBlock(false)
                 }
             }
         }
 
-        if (props.isAddingText) {
+        if (props.isAddingTextBlock) {
             document.addEventListener('click', handleDocumentClick)
         }
 
         return () => {
             document.removeEventListener('click', handleDocumentClick)
         }
-    }, [props.isAddingText])
+    }, [props.isAddingTextBlock])
 
     const handleContextMenuClick = (e: React.MouseEvent) => {
         e.preventDefault()
@@ -132,10 +118,45 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     return (
         <div className={styles.toolbar}>
             <div
+                onClick={props.onAddSlide}
+                className={styles.toolbarIconContainer}
+            >
+                <img
+                    className={styles.toolbarIcon}
+                    src={newSlideButton}
+                    alt="Добавить слайд"
+                    title="Добавить слайд"
+                />
+            </div>
+            <div
+                onClick={() =>
+                    props.selectedSlideId &&
+                    props.onRemoveSlide(props.selectedSlideId)
+                }
+                className={styles.toolbarIconContainer}
+            >
+                <img
+                    className={styles.toolbarIcon}
+                    src={binIcon}
+                    alt="Удалить слайд"
+                    title="Удалить слайд"
+                />
+            </div>
+            {selectedObject && props.selectedSlideId && (
+                <ObjectToolbarButton
+                    selectedObject={selectedObject}
+                    contextMenuVisible={contextMenuVisible}
+                    setContextMenuVisible={setContextMenuVisible}
+                    contextMenuPosition={contextMenuPosition}
+                    setContextMenuPosition={setContextMenuPosition}
+                    selectedSlideId={props.selectedSlideId}
+                ></ObjectToolbarButton>
+            )}
+            <div
                 onClick={handleNewTextButton}
                 className={styles.toolbarIconContainer}
                 style={{
-                    ...(props.isAddingText && {
+                    ...(props.isAddingTextBlock && {
                         background: '#A1C5FF',
                         borderRadius: '5px',
                         padding: '8px',
@@ -164,44 +185,14 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             <div className={styles.toolbarIconContainer}>
                 <img className={styles.toolbarIcon} src={figureIcon} alt="" />
             </div>
-            <div
-                onClick={props.onAddSlide}
-                className={styles.toolbarIconContainer}
-            >
-                <img
-                    className={styles.toolbarIcon}
-                    src={newSlideButton}
-                    alt="Добавить слайд"
-                    title="Добавить слайд"
-                />
-            </div>
-            <div
-                onClick={() =>
-                    props.selectedSlideId &&
-                    props.onRemoveSlide(props.selectedSlideId)
-                }
-                className={styles.toolbarIconContainer}
-            >
-                <img
-                    className={styles.toolbarIcon}
-                    src={binIcon}
-                    alt="Удалить слайд"
-                    title="Удалить слайд"
-                />
-            </div>
             {props.selectedSlideId && contextMenuVisible && (
                 <ContextMenu
+                    type={'image'}
                     setContextMenuVisible={setContextMenuVisible}
                     setLinkPopupVisible={setLinkPopupVisible}
                     contextMenuPosition={contextMenuPosition}
                     selectedSlideId={props.selectedSlideId}
                 />
-            )}
-
-            {selectedObjectType && (
-                <ObjectToolbarButton
-                    selectedObjectType={selectedObjectType}
-                ></ObjectToolbarButton>
             )}
             {props.selectedSlideId && linkPopupVisible && (
                 <LinkInput
