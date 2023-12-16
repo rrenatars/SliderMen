@@ -31,6 +31,7 @@ type TextBlock = SlideObject & {
     fontSize: number
     fontFamily: string
     bold: boolean
+    italic: boolean
     type: ObjectType.TEXTBLOCK
 }
 

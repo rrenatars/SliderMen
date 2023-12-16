@@ -5,6 +5,7 @@ import { Image, Primitive, TextBlock } from '../../types'
 import { ContextMenu } from '../ContextMenu'
 import dropDownListIcon from '../../images/toolbar/drop-down-list-icon.png'
 import boldIcon from '../../images/toolbar/bold-icon.png'
+import italicIcon from '../../images/toolbar/italic-text-icon.png'
 
 interface TextSettingsProps {
     selectedObject: TextBlock
@@ -23,10 +24,13 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
 
     const initialFont = props.selectedObject.fontFamily
     const initialFontSize = props.selectedObject.fontSize
+    const inititalIsBold = props.selectedObject.bold
+    const inititalIsItalic = props.selectedObject.italic
 
     const [selectedFont, setSelectedFont] = useState(initialFont)
     const [selectedFontSize, setSelectedFontSize] = useState(initialFontSize)
-    const [isBold, setIsBold] = useState(props.selectedObject.bold)
+    const [isBold, setIsBold] = useState(inititalIsBold)
+    const [isItalic, setIsItalic] = useState(inititalIsItalic)
 
     const handleFontChange = (font: string) => {
         setSelectedFont(font)
@@ -38,6 +42,10 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
 
     const handleSetBold = () => {
         setIsBold(!isBold)
+    }
+
+    const handleSetItalic = () => {
+        setIsItalic(!isItalic)
     }
 
     const handleCustomFontSizeChange = (
@@ -70,6 +78,7 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                             fontFamily: selectedFont,
                             fontSize: selectedFontSize,
                             bold: isBold,
+                            italic: isItalic,
                         }
                     }
                     return obj
@@ -87,7 +96,7 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
             ...presentationData,
             slides: updatedSlides,
         })
-    }, [selectedFont, selectedFontSize, isBold])
+    }, [selectedFont, selectedFontSize, isBold, isItalic])
 
     return (
         <div className={styles.textSettings}>
@@ -147,6 +156,24 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                     src={boldIcon}
                     alt="Полужирный текст"
                     title="Полужирный текст"
+                />
+            </div>
+            <div
+                className={styles.iconContainer}
+                onClick={handleSetItalic}
+                style={{
+                    ...(isItalic && {
+                        background: '#b4cfff',
+                        borderRadius: '5px',
+                        padding: '8px',
+                    }),
+                }}
+            >
+                <img
+                    className={styles.icon}
+                    src={italicIcon}
+                    alt="Итальянский текст"
+                    title="Итальянский текст"
                 />
             </div>
         </div>
