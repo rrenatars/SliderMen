@@ -30,6 +30,7 @@ type TextBlock = SlideObject & {
     color: Color
     fontSize: number
     fontFamily: string
+    bold: boolean
     type: ObjectType.TEXTBLOCK
 }
 

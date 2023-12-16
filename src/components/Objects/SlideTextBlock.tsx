@@ -25,6 +25,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
         coordinates,
         width,
         height,
+        bold,
     } = props.textBlockData
 
     const refBlock = useRef<HTMLDivElement>(null)
@@ -138,18 +139,6 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                     visibility: isEditing ? 'visible' : 'hidden',
                 }}
             ></div>
-            {/*{isEditing && (*/}
-            {/*    <div*/}
-            {/*        style={{*/}
-            {/*            width: posSize.x * scalePercent + 4,*/}
-            {/*            height: posSize.y * scalePercent + 2,*/}
-            {/*            position: 'absolute',*/}
-            {/*            border: '1px solid black',*/}
-            {/*            top: posBlock.y * scalePercent,*/}
-            {/*            left: posBlock.x * scalePercent - 5,*/}
-            {/*        }}*/}
-            {/*    ></div>*/}
-            {/*)}*/}
             <div
                 className={styles.textBlock}
                 onClick={handleClick}
@@ -163,6 +152,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                     height: posSize.y * scalePercent + 2,
                     fontSize: fontSize * scalePercent,
                     fontFamily: fontFamily,
+                    fontWeight: bold ? 'bold' : 'normal',
                     lineHeight: (fontSize + 10) * scalePercent + 'px',
                     top: posBlock.y * scalePercent,
                     left: posBlock.x * scalePercent,

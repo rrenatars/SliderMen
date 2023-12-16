@@ -4,6 +4,7 @@ import { usePresentationDataContext } from '../PresentationDataContext'
 import { Image, Primitive, TextBlock } from '../../types'
 import { ContextMenu } from '../ContextMenu'
 import dropDownListIcon from '../../images/toolbar/drop-down-list-icon.png'
+import boldIcon from '../../images/toolbar/bold-icon.png'
 
 interface TextSettingsProps {
     selectedObject: TextBlock
@@ -25,6 +26,7 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
 
     const [selectedFont, setSelectedFont] = useState(initialFont)
     const [selectedFontSize, setSelectedFontSize] = useState(initialFontSize)
+    const [isBold, setIsBold] = useState(props.selectedObject.bold)
 
     const handleFontChange = (font: string) => {
         setSelectedFont(font)
@@ -32,6 +34,10 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
 
     const handleFontSizeChange = (fontSize: number) => {
         setSelectedFontSize(fontSize)
+    }
+
+    const handleSetBold = () => {
+        setIsBold(!isBold)
     }
 
     const handleCustomFontSizeChange = (
@@ -63,6 +69,7 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                             ...obj,
                             fontFamily: selectedFont,
                             fontSize: selectedFontSize,
+                            bold: isBold,
                         }
                     }
                     return obj
@@ -80,48 +87,68 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
             ...presentationData,
             slides: updatedSlides,
         })
-    }, [selectedFont, selectedFontSize])
+    }, [selectedFont, selectedFontSize, isBold])
 
     return (
         <div className={styles.textSettings}>
-            <select
-                className={styles.fontChangeSelect}
-                value={selectedFont}
-                onChange={(e) => handleFontChange(e.target.value)}
-            >
-                <option value="Arial">Arial</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Consolas">Consolas</option>
-            </select>
-            <div className={styles.fontSizeContainer}>
-                <input
-                    type="text"
-                    className={styles.entry}
-                    placeholder="Font Size"
-                    value={selectedFontSize}
-                    onChange={handleCustomFontSizeChange}
-                />
-                <button
-                    className={styles.button}
-                    onClick={handleContextMenuClick}
+            <div className={styles.fontChange}>
+                <select
+                    className={styles.fontChangeSelect}
+                    value={selectedFont}
+                    onChange={(e) => handleFontChange(e.target.value)}
                 >
-                    <img
-                        className={styles.icon}
-                        src={dropDownListIcon}
-                        alt=""
+                    <option value="Arial">Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Consolas">Consolas</option>
+                </select>
+                <div className={styles.fontSizeContainer}>
+                    <input
+                        type="text"
+                        className={styles.entry}
+                        placeholder="Font Size"
+                        value={selectedFontSize}
+                        onChange={handleCustomFontSizeChange}
                     />
-                </button>
+                    <button
+                        className={styles.button}
+                        onClick={handleContextMenuClick}
+                    >
+                        <img
+                            className={styles.icon}
+                            src={dropDownListIcon}
+                            alt=""
+                        />
+                    </button>
+                </div>
+                {textContextMenuVisible && (
+                    <ContextMenu
+                        type={'text'}
+                        contextMenuPosition={props.contextMenuPosition}
+                        setContextMenuVisible={setTextContextMenuVisible}
+                        selectedSlideId={props.selectedSlideId}
+                        handleFontSizeChange={handleFontSizeChange}
+                        selectedFontSize={selectedFontSize}
+                    />
+                )}
             </div>
-            {textContextMenuVisible && (
-                <ContextMenu
-                    type={'text'}
-                    contextMenuPosition={props.contextMenuPosition}
-                    setContextMenuVisible={setTextContextMenuVisible}
-                    selectedSlideId={props.selectedSlideId}
-                    handleFontSizeChange={handleFontSizeChange}
-                    selectedFontSize={selectedFontSize}
+            <div
+                className={styles.iconContainer}
+                onClick={handleSetBold}
+                style={{
+                    ...(isBold && {
+                        background: '#b4cfff',
+                        borderRadius: '5px',
+                        padding: '8px',
+                    }),
+                }}
+            >
+                <img
+                    className={styles.icon}
+                    src={boldIcon}
+                    alt="Полужирный текст"
+                    title="Полужирный текст"
                 />
-            )}
+            </div>
         </div>
     )
 }

@@ -47,6 +47,7 @@ const textBlock: TextBlock = {
     color: color4,
     fontSize: 20,
     fontFamily: 'Monocraft',
+    bold: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -64,6 +65,7 @@ const textBlock2: TextBlock = {
     color: color4,
     fontSize: 24,
     fontFamily: 'Oxygen',
+    bold: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -81,6 +83,7 @@ const textBlock3: TextBlock = {
     color: color4,
     fontSize: 10,
     fontFamily: 'oxygen',
+    bold: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -98,6 +101,7 @@ const textBlock4: TextBlock = {
     color: color2,
     fontSize: 15,
     fontFamily: 'oxygen',
+    bold: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -113,6 +117,7 @@ const newStartSlideTextBlock: TextBlock = {
     color: blackColor,
     fontSize: 52,
     fontFamily: 'Consolas',
+    bold: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -128,6 +133,7 @@ const newSlideTextBlock: TextBlock = {
     color: blackColor,
     fontSize: 25,
     fontFamily: 'Consolas',
+    bold: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -140,6 +146,7 @@ const newTextBlock: TextBlock = {
     color: blackColor,
     fontSize: 20,
     fontFamily: 'Consolas',
+    bold: false,
     type: ObjectType.TEXTBLOCK,
 }
 
