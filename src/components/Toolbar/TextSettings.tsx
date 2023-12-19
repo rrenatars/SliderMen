@@ -24,13 +24,13 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
 
     const initialFont = props.selectedObject.fontFamily
     const initialFontSize = props.selectedObject.fontSize
-    const inititalIsBold = props.selectedObject.bold
-    const inititalIsItalic = props.selectedObject.italic
+    const initialIsBold = props.selectedObject.bold
+    const initialIsItalic = props.selectedObject.italic
 
     const [selectedFont, setSelectedFont] = useState(initialFont)
     const [selectedFontSize, setSelectedFontSize] = useState(initialFontSize)
-    const [isBold, setIsBold] = useState(inititalIsBold)
-    const [isItalic, setIsItalic] = useState(inititalIsItalic)
+    const [isBold, setIsBold] = useState(initialIsBold)
+    const [isItalic, setIsItalic] = useState(initialIsItalic)
 
     const handleFontChange = (font: string) => {
         setSelectedFont(font)

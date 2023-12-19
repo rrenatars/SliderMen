@@ -63,7 +63,7 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
             ...presentationData,
             slides: updatedSlides,
         })
-    }, [isDragging])
+    }, [isDragging, isDraggingSize])
 
     const scalePercent = props.scale / 100
 

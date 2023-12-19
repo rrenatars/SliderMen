@@ -25,6 +25,8 @@ function SideSlides(props: {
         })
     }, [dragAndDrop])
 
+    console.log('slidees: ', props.slides)
+
     return (
         <div className={styles.slides}>
             {list.map((slide, index) => (
