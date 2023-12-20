@@ -1,0 +1,18 @@
+.container {
+    position: fixed;
+    display: flex;
+    border: 1px solid #dddddd;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    padding: 10px;
+    border-radius: 8px;
+    background: #ffffff;
+    z-index: 10000;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: 1px solid #000000;
+    cursor: pointer;
+}

@@ -40,7 +40,6 @@ const useDragAndDrop = (
         }
 
         const handleMouseDown = (e: MouseEvent) => {
-            console.log('click down')
             e.preventDefault()
             startPos.current = { x: e.pageX, y: e.pageY }
             setIsDragging(true)

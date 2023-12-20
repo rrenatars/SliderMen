@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { presentation } from '../testData3'
 import { usePresentationDataContext } from '../components/PresentationDataContext'
 import { generateUniqueId } from '../tools'
 import { Image, ObjectType } from '../types'

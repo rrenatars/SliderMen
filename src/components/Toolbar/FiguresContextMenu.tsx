@@ -17,18 +17,16 @@ function FiguresContextMenu(props: {
     }
     const handleFigureClick = (figureType: Figures) => {
         try {
-            // Создайте объект данных Primitive в зависимости от выбранного типа фигуры
             const primitive: Primitive = {
                 id: generateUniqueId(),
                 primitiveType: figureType,
                 fillColor: color,
                 coordinates: { x: 100, y: 100 },
-                width: 50, // Замените на фактические размеры
+                width: 50,
                 height: 50,
                 type: ObjectType.PRIMITIVE,
             }
 
-            // Обновите состояние слайдов, добавив новый примитив
             setPresentationData((prevData) => {
                 const updatedSlides = prevData.slides.map((slide) =>
                     slide.id === props.selectedSlideId
@@ -50,7 +48,6 @@ function FiguresContextMenu(props: {
                 }
             })
 
-            // Закройте контекстное меню после добавления примитива
             props.setContextMenuFiguresVisible(false)
         } catch (error) {
             console.error('Ошибка при добавлении примитива:', error)

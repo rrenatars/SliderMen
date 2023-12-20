@@ -1,4 +1,3 @@
-// ContextInit.tsx
 import { PresentationContextProvider } from './PresentationDataContext'
 import { PresentationView } from './PresentationView'
 import React from 'react'

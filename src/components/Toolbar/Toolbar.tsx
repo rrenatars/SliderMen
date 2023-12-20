@@ -13,6 +13,7 @@ import { usePresentationDataContext } from '../PresentationDataContext'
 import { LinkInput } from './LinkInput'
 import { FiguresContextMenu } from './FiguresContextMenu'
 import { ImageUploadContextMenu } from './ImageUploadContextMenu'
+import { BackgroundChanger } from './BackgroundChanger'
 
 interface ToolbarProps {
     selectedObjectId?: string
@@ -41,6 +42,8 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             left: 0,
         })
     const [linkPopupVisible, setLinkPopupVisible] = useState(false)
+    const [backgroundChangerVisible, setBackgroundChangerPopupVisible] =
+        useState(false)
 
     const selectedObject = props.objects?.find(
         (object) => object.id === props.selectedObjectId,
@@ -48,7 +51,6 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 
     const handleNewTextButton = () => {
         props.setIsAddingTextBlock(true)
-        console.log('new text00')
     }
 
     useEffect(() => {
@@ -122,6 +124,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         setContextMenuPosition({ top: top + 38, left: left })
         setContextMenuVisible(!contextMenuVisible)
     }
+
     const handleContextMenuFiguresClick = (e: React.MouseEvent) => {
         e.preventDefault()
 
@@ -132,6 +135,10 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
 
         setContextMenuFiguresPosition({ top: top + 38, left: left })
         setContextMenuFiguresVisible(!contextMenuFiguresVisible)
+    }
+
+    const handleBackgroundButtonClick = () => {
+        setBackgroundChangerPopupVisible(true)
     }
 
     return (
@@ -214,6 +221,12 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             >
                 <img className={styles.toolbarIcon} src={figureIcon} alt="" />
             </div>
+            <button
+                className={styles.button}
+                onClick={handleBackgroundButtonClick}
+            >
+                Фон
+            </button>
             {props.selectedSlideId && contextMenuVisible && (
                 <ImageUploadContextMenu
                     setContextMenuVisible={setContextMenuVisible}
@@ -234,6 +247,14 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                     selectedSlideId={props.selectedSlideId}
                     setLinkPopupVisible={setLinkPopupVisible}
                 ></LinkInput>
+            )}
+            {props.selectedSlideId && backgroundChangerVisible && (
+                <BackgroundChanger
+                    selectedSlideId={props.selectedSlideId}
+                    setBackgroundChangerPopupVisible={
+                        setBackgroundChangerPopupVisible
+                    }
+                ></BackgroundChanger>
             )}
         </div>
     )

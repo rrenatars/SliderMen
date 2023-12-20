@@ -10,7 +10,7 @@ interface TextContextMenuProps {
 }
 
 const TextContextMenu: React.FC<TextContextMenuProps> = (props) => {
-    const fontSizes = [12, 14, 16, 18, 20] // Добавьте нужные размеры шрифтов
+    const fontSizes = [12, 14, 16, 18, 20]
 
     const handleMenuItemClick = (value: number) => {
         props.handleFontSizeChange(value)

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { usePresentationDataContext } from '../components/PresentationDataContext'
 
 function useObjectDeletion() {

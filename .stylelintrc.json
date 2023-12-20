@@ -19,6 +19,7 @@
     "color-hex-length": "long",
     "color-no-invalid-hex": true,
     "at-rule-empty-line-before": "always",
+    "font-family-no-missing-generic-family-keyword": null,
     "selector-class-pattern": ["[a-z][A-Za-z0-9]*", {
       "message": "Kebab-case"
     }]

@@ -12,13 +12,10 @@ interface ImageUploadContextMenuProps {
 const ImageUploadContextMenu: React.FC<ImageUploadContextMenuProps> = (
     props,
 ) => {
-    const handleMenuItemClick = (
-        action: 'upload' | 'insertLink' | 'changeFontSize',
-    ) => {
+    const handleMenuItemClick = (action: 'upload' | 'insertLink') => {
         if (action === 'upload') {
             // Handle the upload action
         } else if (action === 'insertLink') {
-            // Handle the insertLink action
             if (props.setLinkPopupVisible) {
                 props.setLinkPopupVisible(true)
             }

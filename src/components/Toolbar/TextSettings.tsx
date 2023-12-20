@@ -1,11 +1,13 @@
 import styles from './TextSettings.module.css'
 import React, { useEffect, useState } from 'react'
 import { usePresentationDataContext } from '../PresentationDataContext'
-import { Image, Primitive, TextBlock } from '../../types'
+import { ObjectType, TextBlock } from '../../types'
 import dropDownListIcon from '../../images/toolbar/drop-down-list-icon.png'
 import boldIcon from '../../images/toolbar/bold-icon.png'
 import italicIcon from '../../images/toolbar/italic-text-icon.png'
+import textColorIcon from '../../images/toolbar/text-color.png'
 import { TextContextMenu } from '../TextContextMenu'
+import { ColorPicker } from './ColorPicker'
 
 interface TextSettingsProps {
     selectedObject: TextBlock
@@ -26,11 +28,18 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
     const initialFontSize = props.selectedObject.fontSize
     const initialIsBold = props.selectedObject.bold
     const initialIsItalic = props.selectedObject.italic
+    const initialColor = props.selectedObject.color.hex
 
     const [selectedFont, setSelectedFont] = useState(initialFont)
     const [selectedFontSize, setSelectedFontSize] = useState(initialFontSize)
     const [isBold, setIsBold] = useState(initialIsBold)
     const [isItalic, setIsItalic] = useState(initialIsItalic)
+    const [colorPickerVisible, setColorPickerVisible] = useState(false)
+    const [colorPickerPosition, setColorPickerPosition] = useState({
+        top: 0,
+        left: 0,
+    })
+    const [selectedColor, setSelectedColor] = useState(initialColor)
 
     const handleFontChange = (font: string) => {
         setSelectedFont(font)
@@ -68,17 +77,39 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
         props.setContextMenuPosition({ top: top + 30, left: left - 63 })
     }
 
+    const handleColorIconClick = (e: React.MouseEvent) => {
+        setColorPickerVisible(!colorPickerVisible)
+        const clickedElement = e.currentTarget
+        const rect = clickedElement.getBoundingClientRect()
+        const top = rect.top + window.scrollY
+        const left = rect.left + window.scrollX
+
+        setColorPickerPosition({ top: top + 30, left: left })
+    }
+
+    const handleColorSelection = (color: string) => {
+        setSelectedColor(color)
+        setColorPickerVisible(false)
+    }
+
     useEffect(() => {
         const updatedSlides = presentationData.slides.map((slide) => {
             if (slide.id === props.selectedSlideId) {
                 const updatedObjects = slide.objects.map((obj) => {
-                    if (obj.id === props.selectedObject.id) {
+                    if (
+                        obj.id === props.selectedObject.id &&
+                        obj.type === ObjectType.TEXTBLOCK
+                    ) {
                         return {
                             ...obj,
                             fontFamily: selectedFont,
                             fontSize: selectedFontSize,
                             bold: isBold,
                             italic: isItalic,
+                            color: {
+                                ...obj.color,
+                                hex: selectedColor,
+                            },
                         }
                     }
                     return obj
@@ -96,7 +127,7 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
             ...presentationData,
             slides: updatedSlides,
         })
-    }, [selectedFont, selectedFontSize, isBold, isItalic])
+    }, [selectedFont, selectedFontSize, isBold, isItalic, selectedColor])
 
     return (
         <div className={styles.textSettings}>
@@ -175,6 +206,26 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                     title="Итальянский текст"
                 />
             </div>
+            <div
+                className={styles.iconContainer}
+                onClick={handleColorIconClick}
+                style={{ position: 'relative' }}
+            >
+                <img
+                    className={styles.icon}
+                    src={textColorIcon}
+                    alt="Цвет текста"
+                    title="Цвет текста"
+                />
+            </div>
+            {colorPickerVisible && (
+                <ColorPicker
+                    position={colorPickerPosition}
+                    handleColorSelection={handleColorSelection}
+                    selectedColor={selectedColor}
+                    setSelectedColor={setSelectedColor}
+                ></ColorPicker>
+            )}
         </div>
     )
 }

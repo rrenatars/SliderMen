@@ -16,6 +16,8 @@ function SlideView(props: {
 }) {
     const { objects, background } = props.slideData
 
+    console.log('backgroudn: ', background)
+
     const slideStyles = {
         backgroundColor: background.color.hex,
         cursor: props.isAddingText ? 'crosshair' : 'auto',

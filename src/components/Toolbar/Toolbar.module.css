@@ -22,3 +22,15 @@
     width: 20px;
     height: 20px;
 }
+
+.button {
+    border: none;
+    font: 16px/1.2 Consolas;
+    background: none;
+}
+
+.button:hover {
+    background: #d9dcea;
+    padding: 8px;
+    cursor: pointer;
+}
