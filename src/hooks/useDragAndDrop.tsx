@@ -21,13 +21,12 @@ const useDragAndDrop = (
                     x: e.pageX - startPos.current.x,
                     y: e.pageY - startPos.current.y,
                 }
-                const newSize = {
+                const newCoords = {
                     x: initialPos.x + delta.x * (type === 'size' ? -1 : 1),
                     y: initialPos.y + delta.y * (type === 'size' ? -1 : 1),
                 }
 
-                // Update the size
-                setPos(newSize)
+                setPos(newCoords)
             }
         }
 

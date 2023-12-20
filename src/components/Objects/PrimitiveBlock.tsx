@@ -19,10 +19,30 @@ function PrimitiveBlock(props: {
         height,
     } = props.primitiveBlockData
 
-    const ref = useRef<HTMLDivElement>(null)
-    const [pos, setPos] = useState({ x: coordinates.x, y: coordinates.y })
+    const refBlock = useRef<HTMLDivElement>(null)
+    const refSize = useRef<HTMLDivElement>(null)
+    const [posBlock, setPosBlock] = useState({
+        x: coordinates.x,
+        y: coordinates.y,
+    })
 
-    const { isDragging } = useDragAndDrop(ref, setPos, pos, 'pos')
+    const [posSize, setPosSize] = useState({
+        x: width,
+        y: height,
+    })
+
+    const { isDragging } = useDragAndDrop(
+        refBlock,
+        setPosBlock,
+        posBlock,
+        'pos',
+    )
+    const { isDragging: isDraggingSize } = useDragAndDrop(
+        refSize,
+        setPosSize,
+        posSize,
+        'size',
+    )
 
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
@@ -35,7 +55,9 @@ function PrimitiveBlock(props: {
                     if (obj.id === id) {
                         return {
                             ...obj,
-                            coordinates: pos,
+                            coordinates: posBlock,
+                            width: posSize.x,
+                            height: posSize.y,
                         }
                     }
                     return obj
@@ -47,7 +69,7 @@ function PrimitiveBlock(props: {
             ...presentationData,
             slides: updatedSlides,
         })
-    }, [isDragging])
+    }, [isDragging, isDraggingSize])
 
     const scalePercent = props.scale / 100
 
@@ -55,10 +77,11 @@ function PrimitiveBlock(props: {
 
     if (primitiveType === 'circle') {
         shapeElement = (
-            <circle
-                cx={(width / 2) * scalePercent}
-                cy={(height / 2) * scalePercent}
-                r={(width / 2) * scalePercent}
+            <ellipse
+                cx={(posSize.x / 2) * scalePercent}
+                cy={(posSize.y / 2) * scalePercent}
+                rx={(posSize.x / 2) * scalePercent}
+                ry={(posSize.y / 2) * scalePercent}
                 fill={fillColor.hex}
                 stroke={outlineColor?.hex || 'transparent'}
                 strokeWidth={2 * scalePercent}
@@ -67,17 +90,17 @@ function PrimitiveBlock(props: {
     } else if (primitiveType === 'triangle') {
         shapeElement = (
             <polygon
-                points={`0,${height * scalePercent} ${
-                    (width / 2) * scalePercent
-                },${0} ${width * scalePercent},${height * scalePercent}`}
+                points={`0,${posSize.y * scalePercent} ${
+                    (posSize.x / 2) * scalePercent
+                },${0} ${posSize.x * scalePercent},${posSize.y * scalePercent}`}
                 fill={fillColor.hex}
             />
         )
     } else if (primitiveType === 'rectangle') {
         shapeElement = (
             <rect
-                width={width * scalePercent}
-                height={height * scalePercent}
+                width={posSize.x * scalePercent}
+                height={posSize.y * scalePercent}
                 fill={fillColor.hex}
                 stroke={outlineColor?.hex || 'transparent'}
                 strokeWidth={2 * scalePercent}
@@ -86,21 +109,37 @@ function PrimitiveBlock(props: {
     }
 
     return (
-        <div ref={ref}>
-            <svg
-                onClick={props.onClick}
+        <div>
+            <div ref={refBlock}>
+                <svg
+                    onClick={props.onClick}
+                    style={{
+                        position: 'absolute',
+                        width: posSize.x * scalePercent,
+                        height: posSize.y * scalePercent,
+                        top: posBlock.y * scalePercent,
+                        left: posBlock.x * scalePercent,
+                        border: props.isSelected ? '2px solid blue' : 'none',
+                        cursor: isDragging ? 'grabbing' : 'grab',
+                    }}
+                >
+                    {shapeElement}
+                </svg>
+            </div>
+            <div
+                ref={refSize}
                 style={{
                     position: 'absolute',
-                    left: pos.x * scalePercent,
-                    top: pos.y * scalePercent,
-                    width: width * scalePercent,
-                    height: height * scalePercent,
-                    border: props.isSelected ? '2px solid blue' : 'none',
-                    cursor: 'move',
+                    width: '10px',
+                    height: '10px',
+                    top: posBlock.y * scalePercent - 7,
+                    left: posBlock.x * scalePercent - 8,
+                    background: 'blue',
+                    cursor: 'nwse-resize',
+                    border: '1px solid white',
+                    visibility: props.isSelected ? 'visible' : 'hidden',
                 }}
-            >
-                {shapeElement}
-            </svg>
+            ></div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import { TextBlock } from '../../types'
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { usePresentationDataContext } from '../PresentationDataContext'
 import styles from './SlideTextBlock.module.css'
 import { useDragAndDrop } from '../../hooks/useDragAndDrop'

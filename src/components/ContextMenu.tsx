@@ -1,69 +1,30 @@
 import React from 'react'
-import { ImageUpload } from './Toolbar/ImageUpload'
 import styles from './ContextMenu.module.css'
-import { TextContextMenu } from './TextContextMenu'
 
-function ContextMenu(props: {
-    type: 'text' | 'image' | 'primitive'
-    setContextMenuVisible: React.Dispatch<React.SetStateAction<boolean>>
-    setLinkPopupVisible?: React.Dispatch<React.SetStateAction<boolean>>
-    contextMenuPosition: { top: number; left: number }
-    selectedSlideId: string
-    handleFontSizeChange?: (fontSize: number) => void
-    selectedFontSize?: number
-}) {
-    const handleMenuItemClick = (
-        action: 'upload' | 'insertLink' | 'changeFontSize',
-        value?: number,
-    ) => {
-        if (action === 'upload') {
-            // Handle the upload action
-        } else if (action === 'insertLink') {
-            // Handle the insertLink action
-            if (props.setLinkPopupVisible) {
-                props.setLinkPopupVisible(true)
-            }
-            props.setContextMenuVisible(false)
-        } else if (
-            action === 'changeFontSize' &&
-            value !== undefined &&
-            props.handleFontSizeChange
-        ) {
-            // Handle the changeFontSize action
-            props.handleFontSizeChange(value)
-            props.setContextMenuVisible(false)
-        }
-    }
+interface ContextMenuProps {
+    position: { top: number; left: number }
+    onClose?: () => void // Возможно, вам потребуется обработчик для закрытия меню
+    onDelete: () => void
+}
 
+const ContextMenu: React.FC<ContextMenuProps> = (props) => {
     return (
         <div
             className={styles.contextMenu}
             style={{
-                top: props.contextMenuPosition.top,
-                left: props.contextMenuPosition.left,
+                position: 'absolute',
+                top: props.position.top,
+                left: props.position.left,
+                // background: 'white',
+                // border: '1px solid #ccc',
+                // padding: '5px',
+                // cursor: 'pointer',
+                // zIndex: 999,
             }}
         >
-            {props.type === 'image' && (
-                <>
-                    <ImageUpload
-                        handleFileChange={() => handleMenuItemClick('upload')}
-                        selectedSlideId={props.selectedSlideId}
-                        setContextMenuVisible={props.setContextMenuVisible}
-                    />
-                    <button
-                        className={styles.contextMenuItem}
-                        onClick={() => handleMenuItemClick('insertLink')}
-                    >
-                        Вставить ссылку
-                    </button>
-                </>
-            )}
-            {props.type === 'text' && (
-                <TextContextMenu
-                    selectedFontSize={props.selectedFontSize || 12}
-                    handleMenuItemClick={handleMenuItemClick}
-                />
-            )}
+            <div className={styles.contextMenuItem} onClick={props.onDelete}>
+                Удалить
+            </div>
         </div>
     )
 }

@@ -10,9 +10,9 @@ import { ObjectToolbarButton } from './ObjectToolbarButton'
 import { newTextBlock } from '../../testData3'
 import { generateUniqueId } from '../../tools'
 import { usePresentationDataContext } from '../PresentationDataContext'
-import { ContextMenu } from '../ContextMenu'
 import { LinkInput } from './LinkInput'
 import { FiguresContextMenu } from './FiguresContextMenu'
+import { ImageUploadContextMenu } from './ImageUploadContextMenu'
 
 interface ToolbarProps {
     selectedObjectId?: string
@@ -215,8 +215,7 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                 <img className={styles.toolbarIcon} src={figureIcon} alt="" />
             </div>
             {props.selectedSlideId && contextMenuVisible && (
-                <ContextMenu
-                    type={'image'}
+                <ImageUploadContextMenu
                     setContextMenuVisible={setContextMenuVisible}
                     setLinkPopupVisible={setLinkPopupVisible}
                     contextMenuPosition={contextMenuPosition}

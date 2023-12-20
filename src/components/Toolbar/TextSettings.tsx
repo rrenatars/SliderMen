@@ -2,10 +2,10 @@ import styles from './TextSettings.module.css'
 import React, { useEffect, useState } from 'react'
 import { usePresentationDataContext } from '../PresentationDataContext'
 import { Image, Primitive, TextBlock } from '../../types'
-import { ContextMenu } from '../ContextMenu'
 import dropDownListIcon from '../../images/toolbar/drop-down-list-icon.png'
 import boldIcon from '../../images/toolbar/bold-icon.png'
 import italicIcon from '../../images/toolbar/italic-text-icon.png'
+import { TextContextMenu } from '../TextContextMenu'
 
 interface TextSettingsProps {
     selectedObject: TextBlock
@@ -130,8 +130,7 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                     </button>
                 </div>
                 {textContextMenuVisible && (
-                    <ContextMenu
-                        type={'text'}
+                    <TextContextMenu
                         contextMenuPosition={props.contextMenuPosition}
                         setContextMenuVisible={setTextContextMenuVisible}
                         selectedSlideId={props.selectedSlideId}
