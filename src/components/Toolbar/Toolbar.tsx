@@ -12,6 +12,7 @@ import { generateUniqueId } from '../../tools'
 import { usePresentationDataContext } from '../PresentationDataContext'
 import { ContextMenu } from '../ContextMenu'
 import { LinkInput } from './LinkInput'
+import { FiguresContextMenu } from './FiguresContextMenu'
 
 interface ToolbarProps {
     selectedObjectId?: string
@@ -28,10 +29,17 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         usePresentationDataContext()
 
     const [contextMenuVisible, setContextMenuVisible] = useState(false)
+    const [contextMenuFiguresVisible, setContextMenuFiguresVisible] =
+        useState(false)
     const [contextMenuPosition, setContextMenuPosition] = useState({
         top: 0,
         left: 0,
     })
+    const [contextMenuFiguresPosition, setContextMenuFiguresPosition] =
+        useState({
+            top: 0,
+            left: 0,
+        })
     const [linkPopupVisible, setLinkPopupVisible] = useState(false)
 
     const selectedObject = props.objects?.find(
@@ -114,6 +122,17 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         setContextMenuPosition({ top: top + 38, left: left })
         setContextMenuVisible(!contextMenuVisible)
     }
+    const handleContextMenuFiguresClick = (e: React.MouseEvent) => {
+        e.preventDefault()
+
+        const clickedElement = e.currentTarget
+        const rect = clickedElement.getBoundingClientRect()
+        const top = rect.top + window.scrollY
+        const left = rect.left + window.scrollX
+
+        setContextMenuFiguresPosition({ top: top + 38, left: left })
+        setContextMenuFiguresVisible(!contextMenuFiguresVisible)
+    }
 
     return (
         <div className={styles.toolbar}>
@@ -182,7 +201,17 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             >
                 <img className={styles.toolbarIcon} src={iconImage} alt="" />
             </div>
-            <div className={styles.toolbarIconContainer}>
+            <div
+                onClick={handleContextMenuFiguresClick}
+                className={styles.toolbarIconContainer}
+                style={{
+                    ...(contextMenuFiguresVisible && {
+                        background: '#A1C5FF',
+                        borderRadius: '5px',
+                        padding: '8px',
+                    }),
+                }}
+            >
                 <img className={styles.toolbarIcon} src={figureIcon} alt="" />
             </div>
             {props.selectedSlideId && contextMenuVisible && (
@@ -191,6 +220,13 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                     setContextMenuVisible={setContextMenuVisible}
                     setLinkPopupVisible={setLinkPopupVisible}
                     contextMenuPosition={contextMenuPosition}
+                    selectedSlideId={props.selectedSlideId}
+                />
+            )}
+            {props.selectedSlideId && contextMenuFiguresVisible && (
+                <FiguresContextMenu
+                    setContextMenuFiguresVisible={setContextMenuFiguresVisible}
+                    contextMenuFiguresPosition={contextMenuFiguresPosition}
                     selectedSlideId={props.selectedSlideId}
                 />
             )}

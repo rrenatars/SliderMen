@@ -1,16 +1,16 @@
 .contextMenuItem {
-  border: none;
-  background: white;
-  padding: 8px;
-  width: 85px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    border: none;
+    background: white;
+    padding: 8px;
+    width: 85px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .contextMenuItem:hover {
-  background-color: #f0f0f0;
+    background-color: #f0f0f0;
 }
 
 .selected {
-  background: #e4e4e4;
+    background: #e4e4e4;
 }
