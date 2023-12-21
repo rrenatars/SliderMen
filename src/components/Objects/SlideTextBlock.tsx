@@ -27,6 +27,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
         height,
         bold,
         italic,
+        underline,
     } = props.textBlockData
 
     const refBlock = useRef<HTMLDivElement>(null)
@@ -155,6 +156,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                     fontFamily: fontFamily,
                     fontWeight: bold ? 'bold' : 'normal',
                     fontStyle: italic ? 'italic' : 'normal',
+                    textDecoration: underline ? 'underline' : 'none',
                     lineHeight: (fontSize + 10) * scalePercent + 'px',
                     top: posBlock.y * scalePercent,
                     left: posBlock.x * scalePercent,

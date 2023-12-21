@@ -49,6 +49,7 @@ const textBlock: TextBlock = {
     fontFamily: 'Monocraft',
     bold: false,
     italic: false,
+    underline: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -68,6 +69,7 @@ const textBlock2: TextBlock = {
     fontFamily: 'Oxygen',
     bold: false,
     italic: false,
+    underline: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -87,6 +89,7 @@ const textBlock3: TextBlock = {
     fontFamily: 'oxygen',
     bold: false,
     italic: false,
+    underline: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -106,6 +109,7 @@ const textBlock4: TextBlock = {
     fontFamily: 'oxygen',
     bold: false,
     italic: false,
+    underline: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -123,6 +127,7 @@ const newStartSlideTextBlock: TextBlock = {
     fontFamily: 'Consolas',
     bold: false,
     italic: false,
+    underline: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -140,6 +145,7 @@ const newSlideTextBlock: TextBlock = {
     fontFamily: 'Consolas',
     bold: false,
     italic: false,
+    underline: false,
     type: ObjectType.TEXTBLOCK,
 }
 
@@ -154,6 +160,7 @@ const newTextBlock: TextBlock = {
     fontFamily: 'Consolas',
     bold: false,
     italic: false,
+    underline: false,
     type: ObjectType.TEXTBLOCK,
 }
 

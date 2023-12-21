@@ -6,6 +6,7 @@ import dropDownListIcon from '../../images/toolbar/drop-down-list-icon.png'
 import boldIcon from '../../images/toolbar/bold-icon.png'
 import italicIcon from '../../images/toolbar/italic-text-icon.png'
 import textColorIcon from '../../images/toolbar/text-color.png'
+import underlineIcon from '../../images/toolbar/underline-icon.png'
 import { TextContextMenu } from '../TextContextMenu'
 import { ColorPicker } from './ColorPicker'
 
@@ -28,12 +29,14 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
     const initialFontSize = props.selectedObject.fontSize
     const initialIsBold = props.selectedObject.bold
     const initialIsItalic = props.selectedObject.italic
+    const initialIsUnderline = props.selectedObject.underline
     const initialColor = props.selectedObject.color.hex
 
     const [selectedFont, setSelectedFont] = useState(initialFont)
     const [selectedFontSize, setSelectedFontSize] = useState(initialFontSize)
     const [isBold, setIsBold] = useState(initialIsBold)
     const [isItalic, setIsItalic] = useState(initialIsItalic)
+    const [isUnderline, setIsUnderline] = useState(initialIsUnderline)
     const [colorPickerVisible, setColorPickerVisible] = useState(false)
     const [colorPickerPosition, setColorPickerPosition] = useState({
         top: 0,
@@ -55,6 +58,9 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
 
     const handleSetItalic = () => {
         setIsItalic(!isItalic)
+    }
+    const handleSetUnderline = () => {
+        setIsUnderline(!isUnderline)
     }
 
     const handleCustomFontSizeChange = (
@@ -106,6 +112,7 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                             fontSize: selectedFontSize,
                             bold: isBold,
                             italic: isItalic,
+                            underline: isUnderline,
                             color: {
                                 ...obj.color,
                                 hex: selectedColor,
@@ -127,7 +134,14 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
             ...presentationData,
             slides: updatedSlides,
         })
-    }, [selectedFont, selectedFontSize, isBold, isItalic, selectedColor])
+    }, [
+        selectedFont,
+        selectedFontSize,
+        isBold,
+        isItalic,
+        isUnderline,
+        selectedColor,
+    ])
 
     return (
         <div className={styles.textSettings}>
@@ -226,6 +240,24 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                     setSelectedColor={setSelectedColor}
                 ></ColorPicker>
             )}
+            <div
+                className={styles.iconContainer}
+                onClick={handleSetUnderline}
+                style={{
+                    ...(isUnderline && {
+                        background: '#b4cfff',
+                        borderRadius: '5px',
+                        padding: '8px',
+                    }),
+                }}
+            >
+                <img
+                    className={styles.icon}
+                    src={underlineIcon}
+                    alt="Нижнее подчеркивание"
+                    title="Нижнее подчеркивание"
+                />
+            </div>
         </div>
     )
 }
