@@ -5,6 +5,11 @@
     outline: 2px solid #c4c7c5;
     border-radius: 10px;
     cursor: default;
+    transition: outline-color 0.3s, outline-width 0.02s;
+}
+
+.sideSlide:hover {
+    outline: 3px solid #a9a0a0;
 }
 
 .dragging {
