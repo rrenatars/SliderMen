@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { usePresentationDataContext } from '../components/PresentationDataContext'
 import { Slide } from '../types'
+import { useAppSelector } from '../redux/hooks'
 
 interface DragAndDropState {
     draggedFrom: number
@@ -22,24 +23,25 @@ interface useDraggableListProps {
     slides: Slide[]
 }
 
-const useDraggableList: (props: useDraggableListProps) => {
+const useDraggableList: () => {
     onDrop: () => void
     onDragOver: (event: React.DragEvent<HTMLDivElement>) => void
     onDragStart: (event: React.DragEvent<HTMLDivElement>) => void
     list: Slide[]
     dragAndDrop: DragAndDropState
-} = (props) => {
-    const { presentationData, setPresentationData } =
-        usePresentationDataContext()
+} = () => {
+    const { presentationData } = usePresentationDataContext()
 
     const [dragAndDrop, setDragAndDrop] =
         useState<DragAndDropState>(initialDnDState)
 
-    const [list, setList] = useState<Slide[]>(presentationData.slides)
+    const slides = useAppSelector((state) => state.slides)
+
+    const [list, setList] = useState<Slide[]>(slides)
 
     useEffect(() => {
-        setList(presentationData.slides)
-    }, [presentationData])
+        setList(slides)
+    }, [slides])
 
     const onDragStart = (event: React.DragEvent<HTMLDivElement>) => {
         const initialPosition = Number(event.currentTarget.dataset.position)

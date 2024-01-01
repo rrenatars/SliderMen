@@ -1,33 +1,32 @@
 import styles from './SideSlides.module.css'
 import { SlideView } from './SlideView'
 import React, { useEffect } from 'react'
-import { usePresentationDataContext } from './PresentationDataContext'
-import { useDraggableList } from '../hooks/useDraggableList'
-import { Slide } from '../types'
+import { usePresentationDataContext } from '../PresentationDataContext'
+import { useDraggableList } from '../../hooks/useDraggableList'
+import { Slide } from '../../types'
+import { useAppActions, useAppSelector } from '../../redux/hooks'
 
 function SideSlides(props: {
-    slides: Slide[]
     selectedSlideId?: string
     onSlideClick: (slideId: string) => void
 }) {
-    const { presentationData, setPresentationData } =
-        usePresentationDataContext()
+    const slides = useAppSelector((state) => state.slides)
+    const { createChangeOrderSlidesAction } = useAppActions()
 
     const { dragAndDrop, onDragStart, onDragOver, onDrop, list } =
-        useDraggableList({
-            slides: props.slides,
-        })
+        useDraggableList()
 
     useEffect(() => {
-        setPresentationData({
-            ...presentationData,
-            slides: list,
-        })
+        // setPresentationData({
+        //     ...presentationData,
+        //     slides: list,
+        // })
+        createChangeOrderSlidesAction(list)
     }, [dragAndDrop])
 
     return (
         <div className={styles.slides}>
-            {list.map((slide, index) => (
+            {slides.map((slide, index) => (
                 <div
                     key={slide.id}
                     onDrop={onDrop}

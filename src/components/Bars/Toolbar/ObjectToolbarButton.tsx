@@ -1,8 +1,7 @@
-import { Image, ObjectType, Primitive, TextBlock } from '../../types'
-import fillIcon from '../../images/toolbar/fill-icon.png'
-import styles from './Toolbar.module.css'
+import { Image, ObjectType, Primitive, TextBlock } from '../../../types'
 import React from 'react'
-import { TextSettings } from './TextSettings'
+import { TextSettings } from './TextSettings/TextSettings'
+import { PrimitiveSettings } from './PrimitiveSettings'
 
 interface ObjectToolbarButtonProps {
     selectedObject: Primitive | Image | TextBlock
@@ -18,7 +17,12 @@ interface ObjectToolbarButtonProps {
 const ObjectToolbarButton: React.FC<ObjectToolbarButtonProps> = (props) => {
     switch (props.selectedObject.type) {
         case ObjectType.PRIMITIVE:
-            return <img className={styles.toolbarIcon} src={fillIcon} alt="" />
+            return (
+                <PrimitiveSettings
+                    selectedObject={props.selectedObject}
+                    selectedSlideId={props.selectedSlideId}
+                ></PrimitiveSettings>
+            )
         case ObjectType.TEXTBLOCK:
             return (
                 <TextSettings

@@ -1,4 +1,5 @@
 import { Presentation } from '../types'
+import { useAppSelector } from '../redux/hooks'
 
 function useExportPresentationToJSON(presentationData: Presentation) {
     const text = JSON.stringify(presentationData)

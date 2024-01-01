@@ -1,5 +1,5 @@
-import { Menu } from './Menu'
-import { Toolbar } from './Toolbar'
+import { Menu } from './Menu/Menu'
+import { Toolbar } from './Toolbar/Toolbar'
 import React from 'react'
 import { Primitive, TextBlock, Image } from '../../types'
 
@@ -14,10 +14,7 @@ function Bars(props: {
 }) {
     return (
         <div>
-            <Menu
-                selectedObjectId={props.selectedObjectId}
-                objects={props.objects}
-            ></Menu>
+            <Menu></Menu>
             <Toolbar
                 selectedObjectId={props.selectedObjectId}
                 selectedSlideId={props.selectedSlideId}

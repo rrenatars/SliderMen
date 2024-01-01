@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Primitive } from '../../types'
 import { useDragAndDrop } from '../../hooks/useDragAndDrop'
 import { usePresentationDataContext } from '../PresentationDataContext'
+import { useAppActions, useAppSelector } from '../../redux/hooks'
 
 function PrimitiveBlock(props: {
     primitiveBlockData: Primitive
@@ -26,6 +27,8 @@ function PrimitiveBlock(props: {
         y: coordinates.y,
     })
 
+    const { createChangeSelectedObjectAction } = useAppActions()
+
     const [posSize, setPosSize] = useState({
         x: width,
         y: height,
@@ -46,6 +49,9 @@ function PrimitiveBlock(props: {
 
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
+
+    const selection = useAppSelector((state) => state.selection)
+    const { createChangeObjectAction } = useAppActions()
 
     useEffect(() => {
         const updatedSlides = presentationData.slides.map((slide) => {
@@ -69,6 +75,14 @@ function PrimitiveBlock(props: {
             ...presentationData,
             slides: updatedSlides,
         })
+
+        if (selection.slideId && selection.objectId) {
+            createChangeObjectAction(selection.slideId, selection.objectId, {
+                coordinates: posBlock,
+                width: posSize.x,
+                height: posSize.y,
+            })
+        }
     }, [isDragging, isDraggingSize])
 
     const scalePercent = props.scale / 100
@@ -108,18 +122,29 @@ function PrimitiveBlock(props: {
         )
     }
 
+    const handleClick = () => {
+        if (id == selection.objectId) {
+            createChangeSelectedObjectAction('')
+        } else {
+            createChangeSelectedObjectAction(id)
+        }
+    }
+
     return (
         <div>
-            <div ref={refBlock}>
+            <div ref={refBlock} key={id}>
                 <svg
-                    onClick={props.onClick}
+                    onClick={handleClick}
                     style={{
                         position: 'absolute',
                         width: posSize.x * scalePercent,
                         height: posSize.y * scalePercent,
                         top: posBlock.y * scalePercent,
                         left: posBlock.x * scalePercent,
-                        border: props.isSelected ? '2px solid blue' : 'none',
+                        border:
+                            scalePercent === 1 && id === selection.objectId
+                                ? '2px solid blue'
+                                : 'none',
                         cursor: isDragging ? 'grabbing' : 'grab',
                     }}
                 >
@@ -137,7 +162,10 @@ function PrimitiveBlock(props: {
                     background: 'blue',
                     cursor: 'nwse-resize',
                     border: '1px solid white',
-                    visibility: props.isSelected ? 'visible' : 'hidden',
+                    visibility:
+                        scalePercent === 1 && id === selection.objectId
+                            ? 'visible'
+                            : 'hidden',
                 }}
             ></div>
         </div>

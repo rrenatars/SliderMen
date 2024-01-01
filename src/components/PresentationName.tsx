@@ -1,12 +1,13 @@
 import React, { ChangeEvent, useState } from 'react'
 import styles from './PresentationName.module.css'
+import { useAppSelector, useAppActions } from '../redux/hooks' // Подставьте путь к вашему настройщику Redux
 
-function PresentationName(props: {
-    name: string
-    onChange: (newName: string) => void
-}) {
+function PresentationName() {
+    const name = useAppSelector((state) => state.title)
+    const { createChangeNameAction } = useAppActions()
+
     const [isEditing, setIsEditing] = useState(false)
-    const [editedValue, setEditedValue] = useState(props.name)
+    const [editedValue, setEditedValue] = useState(name)
 
     const handleClick = () => {
         setIsEditing(true)
@@ -14,10 +15,16 @@ function PresentationName(props: {
 
     const handleBlur = (e: ChangeEvent<HTMLDivElement>) => {
         setIsEditing(false)
-        const newTextContent = e.currentTarget.textContent
-        if (newTextContent !== null) {
-            setEditedValue(newTextContent)
-            props.onChange(newTextContent)
+        // const newTextContent = e.currentTarget.textContent
+        // if (newTextContent !== null && newTextContent !== name) {
+        //     setEditedValue(newTextContent)
+        //     createChangeTitleAction(newTextContent)
+        // } else {
+        //     // Если текст не изменился, восстановите предыдущее значение
+        //     setEditedValue(name)
+        // }
+        if (e.currentTarget.textContent) {
+            createChangeNameAction(e.currentTarget.textContent)
         }
     }
 

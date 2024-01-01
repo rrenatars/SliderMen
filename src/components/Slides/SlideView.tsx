@@ -1,7 +1,7 @@
 import React from 'react'
-import { Slide } from '../types'
+import { Slide } from '../../types'
 import styles from './SlideView.module.css'
-import { ObjectBlock } from './Objects/ObjectBlock'
+import { ObjectBlock } from '../Objects/ObjectBlock'
 
 function SlideView(props: {
     slideData: Slide
@@ -16,10 +16,16 @@ function SlideView(props: {
 }) {
     const { objects, background } = props.slideData
 
-    console.log('backgroudn: ', background)
-
     const slideStyles = {
-        backgroundColor: background.color.hex,
+        backgroundImage: background.base64
+            ? `url('${background.base64}')`
+            : 'none',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: background.base64
+            ? 'transparent'
+            : background.color.hex,
+        backgroundPosition: 'center',
         cursor: props.isAddingText ? 'crosshair' : 'auto',
         ...(props.isSlideSelected && {
             outlineColor: 'blue',

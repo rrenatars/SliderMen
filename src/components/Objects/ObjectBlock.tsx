@@ -3,8 +3,9 @@ import { Image, ObjectType, Primitive, TextBlock } from '../../types'
 import { SlideTextBlock } from './SlideTextBlock'
 import { ImageBlock } from './ImageBlock'
 import { PrimitiveBlock } from './PrimitiveBlock'
-import { ContextMenu } from '../ContextMenu'
+import { ContextMenu } from './ContextMenu'
 import useObjectDeletion from '../../hooks/useObjectDeletion'
+import { useAppSelector } from '../../redux/hooks'
 
 function ObjectBlock(props: {
     objectData: Primitive | Image | TextBlock
@@ -24,10 +25,10 @@ function ObjectBlock(props: {
         e.preventDefault()
         setContextMenuVisible(!contextMenuVisible)
 
-        const clickedElement = e.currentTarget
-        const rect = clickedElement.getBoundingClientRect()
-        const top = rect.top + window.scrollY
-        const left = rect.left + window.scrollX
+        // const clickedElement = e.currentTarget
+        // const rect = clickedElement.getBoundingClientRect()
+        // const top = rect.top + window.scrollY
+        // const left = rect.left + window.scrollX
 
         setContextMenuPosition({ top: e.clientY - 150, left: e.clientX - 320 })
     }
@@ -41,10 +42,12 @@ function ObjectBlock(props: {
         case ObjectType.TEXTBLOCK:
             return (
                 <div
+                    key={props.objectData.id}
                     onContextMenu={handleContextMenuClick}
                     style={{ position: 'relative' }}
                 >
                     <SlideTextBlock
+                        key={props.objectData.id}
                         textBlockData={props.objectData}
                         selectedSlideId={props.selectedSlideId}
                         scale={props.scale}
@@ -52,50 +55,45 @@ function ObjectBlock(props: {
                         onClick={props.onClick}
                     />
                     {contextMenuVisible && (
-                        <ContextMenu
-                            position={contextMenuPosition}
-                            onDelete={handleDelete}
-                        />
+                        <ContextMenu position={contextMenuPosition} />
                     )}
                 </div>
             )
         case ObjectType.IMAGE:
             return (
                 <div
+                    key={props.objectData.id}
                     onContextMenu={handleContextMenuClick}
                     style={{ position: 'relative' }}
                 >
                     <ImageBlock
+                        key={props.objectData.id}
                         imageBlockData={props.objectData}
                         scale={props.scale}
                         isSelected={props.isSelected}
                         onClick={props.onClick}
                     />
                     {contextMenuVisible && (
-                        <ContextMenu
-                            position={contextMenuPosition}
-                            onDelete={handleDelete}
-                        />
+                        <ContextMenu position={contextMenuPosition} />
                     )}
                 </div>
             )
         case ObjectType.PRIMITIVE:
             return (
                 <div
+                    key={props.objectData.id}
                     onContextMenu={handleContextMenuClick}
                     style={{ position: 'relative' }}
                 >
                     <PrimitiveBlock
+                        key={props.objectData.id}
                         primitiveBlockData={props.objectData}
                         scale={props.scale}
                         isSelected={props.isSelected}
                         onClick={props.onClick}
                     />
                     {contextMenuVisible && (
-                        <ContextMenu
-                            position={contextMenuPosition}
-                            onDelete={handleDelete}
-                        />
+                        <ContextMenu position={contextMenuPosition} />
                     )}
                 </div>
             )

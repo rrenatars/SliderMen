@@ -11,9 +11,12 @@
     "@types/node": "^16.18.59",
     "@types/react": "^18.2.30",
     "@types/react-dom": "^18.2.14",
+    "@types/react-redux": "^7.1.33",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.0.4",
     "react-scripts": "5.0.1",
+    "redux": "^5.0.1",
     "root": "github:react-buddy/ide-toolbox",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"

@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
-import styles from './LinkInput.module.css'
-import { generateUniqueId } from '../../tools'
-import { usePresentationDataContext } from '../PresentationDataContext'
-import { Image, ObjectType } from '../../types'
+import styles from './AddImagePopup.module.css'
+import { generateUniqueId } from '../../../tools'
+import { usePresentationDataContext } from '../../PresentationDataContext'
+import { Image, ObjectType } from '../../../types'
+import { useAppActions, useAppSelector } from '../../../redux/hooks'
 
 interface LinkInputProps {
     selectedSlideId: string
     setLinkPopupVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const LinkInput: React.FC<LinkInputProps> = (props) => {
+const AddImagePopup: React.FC<LinkInputProps> = (props) => {
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
 
     const [imageUrl, setImageUrl] = useState('')
+
+    const selection = useAppSelector((state) => state.selection)
+    const { createAddObjectAction } = useAppActions()
 
     const handleInsertImage = () => {
         const newImageId = generateUniqueId()
@@ -25,11 +29,15 @@ const LinkInput: React.FC<LinkInputProps> = (props) => {
         img.onload = () => {
             const newImage: Image = {
                 id: newImageId,
-                coordinates: { x: 400, y: 150 },
+                coordinates: { x: 200, y: 50 },
                 width: img.width,
                 height: img.height,
                 type: ObjectType.IMAGE,
                 url: imageUrl,
+            }
+
+            if (selection.slideId) {
+                createAddObjectAction(selection.slideId, newImage)
             }
 
             const updatedSlides = presentationData.slides.map((slide) =>
@@ -40,8 +48,6 @@ const LinkInput: React.FC<LinkInputProps> = (props) => {
                       }
                     : slide,
             )
-
-            console.log('updatedSlides: ', updatedSlides)
 
             setPresentationData((prevData) => ({
                 ...prevData,
@@ -100,4 +106,4 @@ const LinkInput: React.FC<LinkInputProps> = (props) => {
     )
 }
 
-export { LinkInput }
+export { AddImagePopup }

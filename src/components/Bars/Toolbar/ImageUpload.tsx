@@ -1,9 +1,8 @@
 import React, { useRef } from 'react'
-import { useImageUpload } from '../../hooks/useUploadFile'
+import { useImageUpload } from '../../../hooks/useUploadFile'
 import styles from './ImageUpload.module.css'
 
 interface ImageUploadProps {
-    handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void
     selectedSlideId: string
     setContextMenuVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -17,7 +16,7 @@ const ImageUpload: React.FC<ImageUploadProps> = (props) => {
         }
     }
 
-    const { handleFileChange: uploadFileChange } = useImageUpload({
+    const { handleFileChange } = useImageUpload({
         selectedSlideId: props.selectedSlideId,
         setContextMenuVisible: props.setContextMenuVisible,
     })
@@ -26,7 +25,7 @@ const ImageUpload: React.FC<ImageUploadProps> = (props) => {
         <>
             <input
                 type="file"
-                onChange={uploadFileChange}
+                onChange={handleFileChange}
                 ref={fileInputRef}
                 className={styles.entry}
             />

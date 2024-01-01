@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { Bars } from './Toolbar/Bars'
-import { SideSlides } from './SideSlides'
+import { Bars } from './Bars/Bars'
+import { SideSlides } from './Slides/SideSlides'
 import styles from './PresentationView.module.css'
-import { SlideEditor } from './SlideEditor'
+import { SlideEditor } from './Slides/SlideEditor'
 import { emptySlide, newSlideTextBlock } from '../testData3'
 import { PresentationName } from './PresentationName'
 import { generateUniqueId } from '../tools'
 import { usePresentationDataContext } from './PresentationDataContext'
+import { useAppActions, useAppSelector } from '../redux/hooks'
 
 function PresentationView() {
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
 
-    const { name, slides, selection } = presentationData
+    const slides = useAppSelector((state) => state.slides)
 
-    const [selectedSlideId, setSelectedSlideId] = useState(
-        presentationData.selection?.slideId,
-    )
+    const selection = useAppSelector((state) => state.selection)
+    console.log('selection: ', selection)
+    const {
+        createChangeSelectedSlideAction,
+        createChangeSelectedObjectAction,
+    } = useAppActions()
+
     const [selectedObjectId, setSelectedObjectId] = useState(
         selection?.objectId,
     )
@@ -24,7 +29,7 @@ function PresentationView() {
     const [isAddingTextBlock, setIsAddingTextBlock] = useState(false)
 
     function handleSlideClick(clickedSlideId: string): void {
-        setSelectedSlideId(clickedSlideId)
+        createChangeSelectedSlideAction(clickedSlideId)
     }
 
     function handleAddSlide(): void {
@@ -45,8 +50,6 @@ function PresentationView() {
         }
 
         setPresentationData(updatedPresentationData)
-
-        setSelectedSlideId(newSlideId)
     }
 
     function handleRemoveSlide(slideId: string): void {
@@ -71,21 +74,17 @@ function PresentationView() {
         }
 
         setPresentationData(updatedPresentationData)
-
-        setSelectedSlideId(newSelectedSlideId)
     }
 
     function handleObjectClick(clickedObjectId: string): void {
         if (clickedObjectId === selectedObjectId) {
-            setSelectedObjectId(undefined)
+            createChangeSelectedObjectAction('')
         } else {
-            setSelectedObjectId(clickedObjectId)
+            createChangeSelectedObjectAction(clickedObjectId)
         }
     }
 
-    const selectedSlide = presentationData.slides.find(
-        (slide) => slide.id === selectedSlideId,
-    )
+    const selectedSlide = slides.find((slide) => slide.id === selection.slideId)
 
     const handlePresentationNameChange = (newName: string) => {
         setPresentationData({ ...presentationData, name: newName })
@@ -101,14 +100,11 @@ function PresentationView() {
                 zIndex: 11,
             }}
         >
-            <PresentationName
-                name={name}
-                onChange={handlePresentationNameChange}
-            ></PresentationName>
+            <PresentationName></PresentationName>
             <div className={styles.icon}></div>
             <Bars
                 selectedObjectId={selectedObjectId}
-                selectedSlideId={selectedSlideId}
+                selectedSlideId={selection.slideId}
                 objects={selectedSlide?.objects}
                 onAddSlide={handleAddSlide}
                 onRemoveSlide={handleRemoveSlide}
@@ -117,8 +113,8 @@ function PresentationView() {
             ></Bars>
             <div className={styles.workfield}>
                 <SideSlides
-                    slides={presentationData.slides}
-                    selectedSlideId={selectedSlideId}
+                    // slides={presentationData.slides}
+                    selectedSlideId={selection.slideId}
                     onSlideClick={handleSlideClick}
                 />
                 {selectedSlide && (

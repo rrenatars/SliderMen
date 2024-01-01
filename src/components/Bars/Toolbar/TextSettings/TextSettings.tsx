@@ -1,14 +1,15 @@
 import styles from './TextSettings.module.css'
 import React, { useEffect, useState } from 'react'
-import { usePresentationDataContext } from '../PresentationDataContext'
-import { ObjectType, TextBlock } from '../../types'
-import dropDownListIcon from '../../images/toolbar/drop-down-list-icon.png'
-import boldIcon from '../../images/toolbar/bold-icon.png'
-import italicIcon from '../../images/toolbar/italic-text-icon.png'
-import textColorIcon from '../../images/toolbar/text-color.png'
-import underlineIcon from '../../images/toolbar/underline-icon.png'
-import { TextContextMenu } from '../TextContextMenu'
-import { ColorPicker } from './ColorPicker'
+import { usePresentationDataContext } from '../../../PresentationDataContext'
+import { ObjectType, TextBlock } from '../../../../types'
+import dropDownListIcon from '../../../../images/toolbar/drop-down-list-icon.png'
+import boldIcon from '../../../../images/toolbar/bold-icon.png'
+import italicIcon from '../../../../images/toolbar/italic-text-icon.png'
+import textColorIcon from '../../../../images/toolbar/text-color.png'
+import underlineIcon from '../../../../images/toolbar/underline-icon.png'
+import { TextContextMenu } from './TextContextMenu'
+import { ColorPicker } from '../ColorPicker'
+import { useAppActions, useAppSelector } from '../../../../redux/hooks'
 
 interface TextSettingsProps {
     selectedObject: TextBlock
@@ -43,6 +44,9 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
         left: 0,
     })
     const [selectedColor, setSelectedColor] = useState(initialColor)
+
+    const selection = useAppSelector((state) => state.selection)
+    const { createChangeObjectAction } = useAppActions()
 
     const handleFontChange = (font: string) => {
         setSelectedFont(font)
@@ -130,10 +134,18 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
             return slide
         })
 
-        setPresentationData({
-            ...presentationData,
-            slides: updatedSlides,
-        })
+        if (selection.slideId && selection.objectId) {
+            createChangeObjectAction(selection.slideId, selection.objectId, {
+                fontFamily: selectedFont,
+                fontSize: selectedFontSize,
+                bold: isBold,
+                italic: isItalic,
+                underline: isUnderline,
+                color: {
+                    hex: selectedColor,
+                },
+            })
+        }
     }, [
         selectedFont,
         selectedFontSize,
@@ -170,6 +182,11 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                         <img
                             className={styles.icon}
                             src={dropDownListIcon}
+                            style={{
+                                transform: textContextMenuVisible
+                                    ? 'rotate(180deg)'
+                                    : 'none',
+                            }}
                             alt=""
                         />
                     </button>
@@ -222,26 +239,6 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
             </div>
             <div
                 className={styles.iconContainer}
-                onClick={handleColorIconClick}
-                style={{ position: 'relative' }}
-            >
-                <img
-                    className={styles.icon}
-                    src={textColorIcon}
-                    alt="Цвет текста"
-                    title="Цвет текста"
-                />
-            </div>
-            {colorPickerVisible && (
-                <ColorPicker
-                    position={colorPickerPosition}
-                    handleColorSelection={handleColorSelection}
-                    selectedColor={selectedColor}
-                    setSelectedColor={setSelectedColor}
-                ></ColorPicker>
-            )}
-            <div
-                className={styles.iconContainer}
                 onClick={handleSetUnderline}
                 style={{
                     ...(isUnderline && {
@@ -258,6 +255,32 @@ const TextSettings: React.FC<TextSettingsProps> = (props) => {
                     title="Нижнее подчеркивание"
                 />
             </div>
+            <div
+                className={styles.iconContainer}
+                onClick={handleColorIconClick}
+                style={{
+                    ...(colorPickerVisible && {
+                        background: '#b4cfff',
+                        borderRadius: '5px',
+                        padding: '8px',
+                    }),
+                }}
+            >
+                <img
+                    className={styles.icon}
+                    src={textColorIcon}
+                    alt="Цвет текста"
+                    title="Цвет текста"
+                />
+            </div>
+            {colorPickerVisible && (
+                <ColorPicker
+                    position={colorPickerPosition}
+                    handleColorSelection={handleColorSelection}
+                    selectedColor={selectedColor}
+                    setSelectedColor={setSelectedColor}
+                ></ColorPicker>
+            )}
         </div>
     )
 }

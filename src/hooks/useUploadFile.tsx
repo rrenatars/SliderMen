@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { usePresentationDataContext } from '../components/PresentationDataContext'
 import { generateUniqueId } from '../tools'
 import { Image, ObjectType } from '../types'
+import { useAppActions, useAppSelector } from '../redux/hooks'
 
 interface ImageUploadProps {
     selectedSlideId: string
@@ -14,6 +15,9 @@ const useImageUpload = ({
 }: ImageUploadProps) => {
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
+
+    const selection = useAppSelector((state) => state.selection)
+    const { createAddObjectAction } = useAppActions()
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0]
@@ -39,6 +43,10 @@ const useImageUpload = ({
                             height: height,
                             type: ObjectType.IMAGE,
                             base64: base64String,
+                        }
+
+                        if (selection.slideId) {
+                            createAddObjectAction(selection.slideId, newImage)
                         }
 
                         const updatedSlides = presentationData.slides.map(

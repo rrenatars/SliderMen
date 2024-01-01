@@ -3,7 +3,6 @@ import {
     Color,
     Figures,
     History,
-    Image,
     ObjectType,
     Presentation,
     Primitive,
@@ -152,7 +151,7 @@ const newSlideTextBlock: TextBlock = {
 const newTextBlock: TextBlock = {
     id: generateUniqueId(),
     value: 'Новый текст',
-    coordinates: { x: 100, y: 200 },
+    coordinates: { x: 30, y: 40 },
     width: 150,
     height: 50,
     color: blackColor,
@@ -256,7 +255,7 @@ const emptySlide: Slide = {
 }
 
 const startSlide: Slide = {
-    id: '',
+    id: generateUniqueId(),
     objects: [newStartSlideTextBlock],
     background: background3,
 }

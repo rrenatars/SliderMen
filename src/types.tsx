@@ -10,6 +10,11 @@ enum ObjectType {
     PRIMITIVE = 'primitive',
 }
 
+type Coordinates = {
+    x: number
+    y: number
+}
+
 type SlideObject = {
     id: string
     coordinates: {
@@ -72,7 +77,7 @@ type Selection = {
 type Presentation = {
     id: string
     name: string
-    history: History
+    history?: History
     slides: Array<Slide>
     selection?: Selection
 }
@@ -87,5 +92,7 @@ export type {
     Background,
     Slide,
     Color,
+    Coordinates,
     History,
+    Selection,
 }

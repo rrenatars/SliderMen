@@ -10,6 +10,7 @@ interface ColorPickerProps {
 
 const ColorPicker: React.FC<ColorPickerProps> = (props) => {
     const colors = [
+        '#FFFFFF',
         '#FF0000',
         '#00FF00',
         '#0000FF',

@@ -17,11 +17,7 @@
     font-size: 16px;
     display: flex;
     align-items: center;
-
-    /* border: 2px solid #3498db; */
     border: none;
-
-    /* border-radius: 4px; */
     cursor: pointer;
     background-color: white;
     border-radius: 10px 0 0 10px;
@@ -31,7 +27,6 @@
     border-color: #2980b9;
 }
 
-/* Стили для select в фокусе */
 .fontChangeSelect:focus {
     outline: none;
     border-color: #2980b9;
@@ -49,7 +44,6 @@
     min-width: 100px;
 }
 
-/* Стили для вариантов выбора при наведении */
 .fontChangeSelect option:hover {
     background-color: #3498db;
     color: white;
@@ -79,6 +73,10 @@
     border-radius: 0 10px 10px 0;
 }
 
+.iconContainer {
+    position: relative;
+}
+
 .iconContainer:hover {
     background: #d9dcea;
     padding: 8px;
@@ -88,6 +86,7 @@
 .icon {
     width: 20px;
     height: 20px;
+    transition: transform 0.3s;
 }
 
 .iconColor {

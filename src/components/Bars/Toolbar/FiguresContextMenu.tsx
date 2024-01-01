@@ -1,15 +1,17 @@
 import React from 'react'
 import styles from './FiguresContextMenu.module.css'
-import { Color, Figures, ObjectType, Primitive } from '../../types'
-import { generateUniqueId } from '../../tools'
-import { usePresentationDataContext } from '../PresentationDataContext'
+import { Color, Figures, ObjectType, Primitive } from '../../../types'
+import { generateUniqueId } from '../../../tools'
+import { usePresentationDataContext } from '../../PresentationDataContext'
+import { useAppActions, useAppSelector } from '../../../redux/hooks'
 
 function FiguresContextMenu(props: {
     setContextMenuFiguresVisible: React.Dispatch<React.SetStateAction<boolean>>
     contextMenuFiguresPosition: { top: number; left: number }
     selectedSlideId: string
 }) {
-    const { setPresentationData } = usePresentationDataContext()
+    const selection = useAppSelector((state) => state.selection)
+    const { createAddObjectAction } = useAppActions()
 
     const color: Color = {
         hex: '#FF7600',
@@ -27,26 +29,9 @@ function FiguresContextMenu(props: {
                 type: ObjectType.PRIMITIVE,
             }
 
-            setPresentationData((prevData) => {
-                const updatedSlides = prevData.slides.map((slide) =>
-                    slide.id === props.selectedSlideId
-                        ? {
-                              ...slide,
-                              objects: [...slide.objects, primitive],
-                          }
-                        : slide,
-                )
-
-                return {
-                    ...prevData,
-                    slides: updatedSlides,
-                    selection: {
-                        ...prevData.selection,
-                        slideId: props.selectedSlideId,
-                        objectId: primitive.id,
-                    },
-                }
-            })
+            if (selection.slideId) {
+                createAddObjectAction(selection.slideId, primitive)
+            }
 
             props.setContextMenuFiguresVisible(false)
         } catch (error) {

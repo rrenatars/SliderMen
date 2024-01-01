@@ -1,7 +1,7 @@
 import { SlideView } from './SlideView'
-import styles from './PresentationView.module.css'
+import styles from '../PresentationView.module.css'
 import React from 'react'
-import { Slide } from '../types'
+import { Slide } from '../../types'
 
 function SlideEditor(props: {
     selectedSlide: Slide

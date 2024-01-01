@@ -1,19 +1,21 @@
 import styles from './Toolbar.module.css'
-import textFieldImage from '../../images/toolbar/text-field.png'
-import iconImage from '../../images/toolbar/icon-image.png'
-import figureIcon from '../../images/toolbar/figure-icon.png'
-import newSlideButton from '../../images/toolbar/new-slide-button.png'
-import binIcon from '../../images/toolbar/bin-icon.png'
+import textFieldImage from '../../../images/toolbar/text-field.png'
+import iconImage from '../../../images/toolbar/icon-image.png'
+import figureIcon from '../../../images/toolbar/figure-icon.png'
+import newSlideButton from '../../../images/toolbar/new-slide-button.png'
+import binIcon from '../../../images/toolbar/bin-icon.png'
 import React, { useEffect, useState } from 'react'
-import { Image, Primitive, TextBlock } from '../../types'
+import { Coordinates, Image, Primitive, TextBlock } from '../../../types'
 import { ObjectToolbarButton } from './ObjectToolbarButton'
-import { newTextBlock } from '../../testData3'
-import { generateUniqueId } from '../../tools'
-import { usePresentationDataContext } from '../PresentationDataContext'
-import { LinkInput } from './LinkInput'
+import { newTextBlock } from '../../../testData3'
+import { generateUniqueId } from '../../../tools'
+import { usePresentationDataContext } from '../../PresentationDataContext'
+import { AddImagePopup } from './AddImagePopup'
 import { FiguresContextMenu } from './FiguresContextMenu'
-import { ImageUploadContextMenu } from './ImageUploadContextMenu'
+import { AddImageContextMenu } from './AddImageContextMenu'
 import { BackgroundChanger } from './BackgroundChanger'
+import { createAddSlideAction } from '../../../redux/actionCreator'
+import { useAppActions, useAppSelector } from '../../../redux/hooks'
 
 interface ToolbarProps {
     selectedObjectId?: string
@@ -28,6 +30,15 @@ interface ToolbarProps {
 const Toolbar: React.FC<ToolbarProps> = (props) => {
     const { presentationData, setPresentationData } =
         usePresentationDataContext()
+
+    const slides = useAppSelector((state) => state.slides)
+    const selection = useAppSelector((state) => state.selection)
+    const {
+        createAddSlideAction,
+        createRemoveSlideAction,
+        createChangeSelectedSlideAction,
+        createAddObjectAction,
+    } = useAppActions()
 
     const [contextMenuVisible, setContextMenuVisible] = useState(false)
     const [contextMenuFiguresVisible, setContextMenuFiguresVisible] =
@@ -46,11 +57,39 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
         useState(false)
 
     const selectedObject = props.objects?.find(
-        (object) => object.id === props.selectedObjectId,
+        (object) => object.id === selection.objectId,
     )
+
+    const handleRemoveSlide = () => {
+        if (selection.slideId) {
+            const removedIndex = slides.findIndex(
+                (slide) => slide.id === selection.slideId,
+            )
+
+            const newSelectedSlideId =
+                removedIndex === 0 && slides.length > 1
+                    ? slides[1].id
+                    : removedIndex > 0
+                    ? slides[removedIndex - 1].id
+                    : undefined
+
+            createRemoveSlideAction(selection.slideId)
+            if (newSelectedSlideId) {
+                createChangeSelectedSlideAction(newSelectedSlideId)
+            }
+        }
+    }
 
     const handleNewTextButton = () => {
         props.setIsAddingTextBlock(true)
+    }
+
+    function createNewTextBlock(coordinates: Coordinates) {
+        return {
+            ...newTextBlock,
+            id: generateUniqueId(),
+            coordinates: coordinates,
+        }
     }
 
     useEffect(() => {
@@ -70,6 +109,11 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                     const containerRect = container.getBoundingClientRect()
                     const offsetX = e.clientX - containerRect.left - 5
                     const offsetY = e.clientY - containerRect.top - 5
+
+                    const newCoordinates: Coordinates = {
+                        x: offsetX,
+                        y: offsetY,
+                    }
 
                     const updatedSlides = presentationData.slides.map(
                         (slide) => {
@@ -96,6 +140,13 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                     const updatedPresentationData = {
                         ...presentationData,
                         slides: updatedSlides,
+                    }
+
+                    if (selection.slideId) {
+                        createAddObjectAction(
+                            selection.slideId,
+                            createNewTextBlock(newCoordinates),
+                        )
                     }
 
                     setPresentationData(updatedPresentationData)
@@ -144,7 +195,8 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
     return (
         <div className={styles.toolbar}>
             <div
-                onClick={props.onAddSlide}
+                // onClick={props.onAddSlide}
+                onClick={() => createAddSlideAction()}
                 className={styles.toolbarIconContainer}
             >
                 <img
@@ -155,10 +207,11 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                 />
             </div>
             <div
-                onClick={() =>
-                    props.selectedSlideId &&
-                    props.onRemoveSlide(props.selectedSlideId)
-                }
+                // onClick={() =>
+                //     props.selectedSlideId &&
+                //     props.onRemoveSlide(props.selectedSlideId)
+                // }
+                onClick={() => selection.slideId && handleRemoveSlide()}
                 className={styles.toolbarIconContainer}
             >
                 <img
@@ -224,11 +277,26 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
             <button
                 className={styles.button}
                 onClick={handleBackgroundButtonClick}
+                style={{
+                    ...(backgroundChangerVisible && {
+                        background: '#b4cfff',
+                        borderRadius: '5px',
+                        padding: '8px',
+                    }),
+                }}
             >
                 Фон
             </button>
+            {props.selectedSlideId && backgroundChangerVisible && (
+                <BackgroundChanger
+                    selectedSlideId={props.selectedSlideId}
+                    setBackgroundChangerPopupVisible={
+                        setBackgroundChangerPopupVisible
+                    }
+                ></BackgroundChanger>
+            )}
             {props.selectedSlideId && contextMenuVisible && (
-                <ImageUploadContextMenu
+                <AddImageContextMenu
                     setContextMenuVisible={setContextMenuVisible}
                     setLinkPopupVisible={setLinkPopupVisible}
                     contextMenuPosition={contextMenuPosition}
@@ -243,18 +311,10 @@ const Toolbar: React.FC<ToolbarProps> = (props) => {
                 />
             )}
             {props.selectedSlideId && linkPopupVisible && (
-                <LinkInput
+                <AddImagePopup
                     selectedSlideId={props.selectedSlideId}
                     setLinkPopupVisible={setLinkPopupVisible}
-                ></LinkInput>
-            )}
-            {props.selectedSlideId && backgroundChangerVisible && (
-                <BackgroundChanger
-                    selectedSlideId={props.selectedSlideId}
-                    setBackgroundChangerPopupVisible={
-                        setBackgroundChangerPopupVisible
-                    }
-                ></BackgroundChanger>
+                ></AddImagePopup>
             )}
         </div>
     )

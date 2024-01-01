@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { usePresentationDataContext } from '../PresentationDataContext'
 import styles from './SlideTextBlock.module.css'
 import { useDragAndDrop } from '../../hooks/useDragAndDrop'
+import { useAppActions, useAppSelector } from '../../redux/hooks'
 
 interface SlideTextBlockProps {
     textBlockData: TextBlock
@@ -30,6 +31,10 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
         underline,
     } = props.textBlockData
 
+    const selection = useAppSelector((state) => state.selection)
+    const { createChangeObjectAction, createChangeSelectedObjectAction } =
+        useAppActions()
+
     const refBlock = useRef<HTMLDivElement>(null)
     const refSize = useRef<HTMLDivElement>(null)
     const [posBlock, setPosBlock] = useState({
@@ -48,7 +53,12 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
         posBlock,
         'pos',
     )
-    useDragAndDrop(refSize, setPosSize, posSize, 'size')
+    const { isDragging: isResizing } = useDragAndDrop(
+        refSize,
+        setPosSize,
+        posSize,
+        'size',
+    )
 
     const scalePercent = props.scale / 100
 
@@ -70,39 +80,13 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
             const newTextContent = e.currentTarget.textContent
             if (newTextContent !== null) {
                 setEditedValue(newTextContent)
-
-                const updatedSlides = presentationData.slides.map((slide) => {
-                    return {
-                        ...slide,
-                        objects: slide.objects.map((obj) => {
-                            if (obj.id === id) {
-                                return {
-                                    ...obj,
-                                    value: newTextContent,
-                                    coordinates: posBlock,
-                                    width: posSize.x,
-                                    height: posSize.y,
-                                }
-                            }
-                            return obj
-                        }),
-                    }
-                })
-
-                setPresentationData({
-                    ...presentationData,
-                    slides: updatedSlides,
-                    selection: {
-                        ...presentationData.selection,
-                        slideId: props.selectedSlideId,
-                        objectId: undefined,
-                    },
-                })
             }
 
-            if (props.onClick) {
-                props.onClick(e as React.MouseEvent<HTMLDivElement>)
-            }
+            // if (props.onClick) {
+            //     props.onClick(e as React.MouseEvent<HTMLDivElement>)
+            // }
+
+            createChangeSelectedObjectAction('')
         }
     }
 
@@ -110,7 +94,16 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
         if (!props.isSelected) {
             setIsEditing(false)
         }
-    }, [props.isSelected])
+
+        if (selection.slideId && selection.objectId) {
+            createChangeObjectAction(selection.slideId, selection.objectId, {
+                value: editedValue,
+                coordinates: posBlock,
+                width: posSize.x,
+                height: posSize.y,
+            })
+        }
+    }, [props.isSelected, posSize, posBlock, editedValue])
 
     return (
         <div>
@@ -124,7 +117,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                     left: posBlock.x * scalePercent - 5,
                     border: '4px solid blue',
                     cursor: isDragging ? 'grabbing' : 'grab',
-                    visibility: isEditing ? 'visible' : 'hidden',
+                    visibility: isEditing || isResizing ? 'visible' : 'hidden',
                 }}
             ></div>
             <div
@@ -138,7 +131,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                     background: 'blue',
                     cursor: 'nwse-resize',
                     border: '1px solid white',
-                    visibility: isEditing ? 'visible' : 'hidden',
+                    visibility: isEditing || isResizing ? 'visible' : 'hidden',
                 }}
             ></div>
             <div
@@ -147,6 +140,7 @@ const SlideTextBlock: React.FC<SlideTextBlockProps> = (props) => {
                 contentEditable={isEditing}
                 onBlur={handleBlur}
                 suppressContentEditableWarning={true}
+                key={id}
                 style={{
                     position: 'absolute',
                     color: color.hex,

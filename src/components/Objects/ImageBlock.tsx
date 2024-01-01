@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Image } from '../../types'
 import { useDragAndDrop } from '../../hooks/useDragAndDrop'
 import { usePresentationDataContext } from '../PresentationDataContext'
+import { useAppActions, useAppSelector } from '../../redux/hooks'
 
 interface ImageBlockProps {
     imageBlockData: Image
@@ -24,6 +25,10 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
         x: width,
         y: height,
     })
+
+    const selection = useAppSelector((state) => state.selection)
+    const { createChangeSelectedObjectAction, createChangeObjectAction } =
+        useAppActions()
 
     const { isDragging } = useDragAndDrop(
         refBlock,
@@ -63,22 +68,42 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
             ...presentationData,
             slides: updatedSlides,
         })
+
+        if (selection.slideId && selection.objectId) {
+            createChangeObjectAction(selection.slideId, selection.objectId, {
+                coordinates: posBlock,
+                width: posSize.x,
+                height: posSize.y,
+            })
+        }
     }, [isDragging, isDraggingSize])
 
     const scalePercent = props.scale / 100
+
+    const handleClick = () => {
+        if (id == selection.objectId) {
+            createChangeSelectedObjectAction('')
+        } else {
+            createChangeSelectedObjectAction(id)
+        }
+    }
 
     return (
         <div>
             <div
                 ref={refBlock}
-                onClick={props.onClick}
+                onClick={handleClick}
+                key={id}
                 style={{
                     width: posSize.x * scalePercent,
                     height: posSize.y * scalePercent,
                     top: posBlock.y * scalePercent,
                     left: posBlock.x * scalePercent,
                     position: 'absolute',
-                    border: props.isSelected ? '2px solid blue' : 'none',
+                    border:
+                        scalePercent === 1 && id === selection.objectId
+                            ? '2px solid blue'
+                            : 'none',
                     cursor: isDragging ? 'grabbing' : 'grab',
                 }}
             >
@@ -102,7 +127,10 @@ const ImageBlock: React.FC<ImageBlockProps> = (props) => {
                     background: 'blue',
                     cursor: 'nwse-resize',
                     border: '1px solid white',
-                    visibility: props.isSelected ? 'visible' : 'hidden',
+                    visibility:
+                        scalePercent === 1 && id === selection.objectId
+                            ? 'visible'
+                            : 'hidden',
                 }}
             ></div>
         </div>

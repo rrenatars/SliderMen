@@ -1,0 +1,15 @@
+.iconContainer {
+    position: relative;
+}
+
+.iconContainer:hover {
+    background: #d9dcea;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s;
+}
